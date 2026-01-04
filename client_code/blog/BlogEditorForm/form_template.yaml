@@ -1,8 +1,7 @@
 components:
-- components: []
-  layout_properties: {slot: default}
+- layout_properties: {slot: default}
   name: content_panel
-  properties: {col_widths: '{}'}
+  properties: {}
   type: ColumnPanel
 - layout_properties: {slot: nav-right}
   name: navbar_links

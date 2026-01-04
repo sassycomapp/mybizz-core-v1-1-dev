@@ -1,5 +1,6 @@
 from ._anvil_designer import Guestbook_FormTemplate
 from anvil import *
+import anvil.server
 import anvil.google.auth, anvil.google.drive
 from anvil.google.drive import app_files
 import stripe.checkout
