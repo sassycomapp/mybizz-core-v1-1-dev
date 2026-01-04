@@ -1,12 +1,19 @@
 allow_embedding: false
-dependencies: []
-name: M3 App 1
-package_name: M3_App_1
+dependencies:
+- dep_id: dep_drhle3x51mp2ek
+  resolution_hints: {app_id: C6ZZPAPN4YYF5NVJ, name: Anvil Extras, package_name: anvil_extras}
+  version: {version_tag: v3.6.1}
+metadata: {description: 'mybizz_core_v1_dev ', title: MyBizz Master Template}
+name: mybizz_core_v1_dev
+package_name: mybizz_core_v1_dev
 renamed: true
 runtime_options:
   client_version: '3'
   legacy_features: {bootstrap3: true, class_names: true}
-  server_spec: {base: python310-minimal}
+  server_spec: {base: python310-standard}
   version: 3
-services: []
+services:
+- client_config: {}
+  server_config: {}
+  source: /runtime/services/tables.yml
 startup_form: Form1
