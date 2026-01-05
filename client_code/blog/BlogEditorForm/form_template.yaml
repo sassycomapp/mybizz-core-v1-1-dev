@@ -1,5 +1,91 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'FDITRT,NIRUTQ'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'FDITRT,BTFNOZ'}
+      name: btn_save_draft
+      properties: {text: button_1}
+      type: Button
+    - layout_properties: {grid_position: 'FDITRT,ECJMSO'}
+      name: btn_publish
+      properties: {text: button_2}
+      type: Button
+    - layout_properties: {grid_position: 'HOLMDQ,NWBFQL'}
+      name: lbl_title_field
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'LZZHWP,IONPOP'}
+      name: txt_title
+      properties: {}
+      type: TextBox
+    - layout_properties: {grid_position: 'ADECMH,KXEBXI'}
+      name: lbl_slug_field
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'AWPSZJ,OKWMZC'}
+      name: txt_slug
+      properties: {}
+      type: TextBox
+    - layout_properties: {grid_position: 'KEAFLO,GWZBFV'}
+      name: lbl_category_field
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'KEAFLO,OPXWDX'}
+      name: lbl_status_field
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'YSIRIV,LAPISP'}
+      name: dd_category
+      properties: {}
+      type: DropDown
+    - layout_properties: {grid_position: 'YSIRIV,HSALII'}
+      name: dd_status
+      properties: {}
+      type: DropDown
+    - layout_properties: {grid_position: 'XSDVFI,PLILWX'}
+      name: lbl_excerpt_field
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'ZPQWRZ,PQMIVW'}
+      name: txt_excerpt
+      properties: {}
+      type: TextArea
+    - layout_properties: {grid_position: 'PNASQD,AVTADQ'}
+      name: lbl_content_field
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'LGYTVJ,HRBZEV'}
+      name: txt_content
+      properties: {}
+      type: RichText
+    - layout_properties: {grid_position: 'ZOMRMC,HVVETK'}
+      name: lbl_image_field
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'WVGYEK,JCBYZU'}
+      name: fu_featured_image
+      properties: {}
+      type: FileLoader
+    - layout_properties: {grid_position: 'RUETOC,AIKHYP'}
+      name: lbl_current_image
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'PJAVLI,WQCJLP'}
+      name: btn_remove_image
+      properties: {text: button_3}
+      type: Button
+    - layout_properties: {grid_position: 'DGXLWW,RPLRIU'}
+      name: lbl_message
+      properties: {}
+      type: Label
+    layout_properties: {grid_position: 'ECYPRE,DTOEDS'}
+    name: column_panel_1
+    properties: {col_widths: '{"NIRUTQ":30,"BTFNOZ":15,"ECJMSO":15}'}
+    type: ColumnPanel
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel

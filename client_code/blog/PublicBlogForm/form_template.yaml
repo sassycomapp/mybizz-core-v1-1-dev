@@ -1,7 +1,55 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'YQNNLD,GEEEHS'}
+      name: link_back
+      properties: {}
+      type: Link
+    - layout_properties: {grid_position: 'YQNNLD,XLVZYJ'}
+      name: txt_search
+      properties: {}
+      type: TextBox
+    - layout_properties: {grid_position: 'XZCKYJ,ILFFMJ'}
+      name: spacer_1
+      properties: {height: 32}
+      type: Spacer
+    layout_properties: {grid_position: 'RTBSVR,GXOUTR'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  - components:
+    - layout_properties: {grid_position: 'NENUAA,FRMYVE'}
+      name: lbl_categories_title
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'RWNJEZ,HBODRR'}
+      name: rp_categories
+      properties: {item_template: blog.PublicBlogForm.ItemTemplate1}
+      type: RepeatingPanel
+    layout_properties: {grid_position: 'LCQZSI,OZGNUD'}
+    name: col_sidebar
+    properties: {}
+    type: ColumnPanel
+  - components:
+    - layout_properties: {grid_position: 'ZCNCMH,TESLVW'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'ROZMIL,WLPYBQ'}
+      name: rp_posts
+      properties: {item_template: blog.PublicBlogForm.ItemTemplate2}
+      type: RepeatingPanel
+    - layout_properties: {grid_position: 'HGMAEB,CHZSRW'}
+      name: lbl_no_posts
+      properties: {}
+      type: Label
+    layout_properties: {grid_position: 'LCQZSI,MVOZTH'}
+    name: col_main
+    properties: {}
+    type: ColumnPanel
+  layout_properties: {slot: default}
   name: content_panel
-  properties: {}
+  properties: {col_widths: '{"OZGNUD":15,"MVOZTH":45}'}
   type: ColumnPanel
 - layout_properties: {slot: nav-right}
   name: navbar_links

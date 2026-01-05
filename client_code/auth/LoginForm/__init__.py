@@ -1,4 +1,4 @@
-from ._anvil_designer import BlogEditorFormTemplate
+from ._anvil_designer import LoginFormTemplate
 from anvil import *
 import anvil.server
 import anvil.google.auth, anvil.google.drive
@@ -93,10 +93,12 @@ class LoginForm(LoginFormTemplate):
     except Exception as e:
       self.show_error(f"Login failed: {str(e)}")
 
+  @handle("link_forgot_password", "click")
   def link_forgot_password_click(self, **event_args):
     """Navigate to password reset"""
     open_form('auth.PasswordResetForm')
 
+  @handle("link_create_account", "click")
   def link_create_account_click(self, **event_args):
     """Navigate to signup"""
     open_form('auth.SignupForm')
@@ -105,3 +107,8 @@ class LoginForm(LoginFormTemplate):
     """Display error message"""
     self.lbl_error.text = message
     self.lbl_error.visible = True
+
+  @handle("btn_login", "click")
+  def btn_login_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass

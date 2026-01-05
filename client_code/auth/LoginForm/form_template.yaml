@@ -1,5 +1,50 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'FFSRAI,OSCCOU'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'DSLGFG,EKZCOJ'}
+      name: lbl_subtitle
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'VCELYR,ODIZVT'}
+      name: txt_email
+      properties: {}
+      type: TextBox
+    - layout_properties: {grid_position: 'LCBXJI,GJTCCY'}
+      name: txt_password
+      properties: {}
+      type: TextBox
+    - event_bindings: {}
+      layout_properties: {grid_position: 'YTAAOD,VBMYLF'}
+      name: link_forgot_password
+      properties: {}
+      type: Link
+    - event_bindings: {}
+      layout_properties: {grid_position: 'BZBMHJ,KAXWYM'}
+      name: btn_login
+      properties: {text: button_1}
+      type: Button
+    layout_properties: {grid_position: 'PEPCDO,IDXHHP'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  - layout_properties: {grid_position: 'THSIDS,BUEFOW'}
+    name: lbl_divider
+    properties: {}
+    type: Label
+  - event_bindings: {}
+    layout_properties: {grid_position: 'OGZHWV,WWWQPS'}
+    name: link_create_account
+    properties: {}
+    type: Link
+  - layout_properties: {grid_position: 'BYABYZ,TCTRUL'}
+    name: lbl_error
+    properties: {}
+    type: Label
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel

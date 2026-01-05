@@ -1,5 +1,39 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'FEVXUN,KPCHQG'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'JYXBAD,TVOHWD'}
+      name: lbl_subtitle
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'JTHBIO,FEZUVZ'}
+      name: txt_email
+      properties: {}
+      type: TextBox
+    - layout_properties: {grid_position: 'PDPKTJ,OAZZKJ'}
+      name: btn_send_reset
+      properties: {text: button_1}
+      type: Button
+    - layout_properties: {grid_position: 'DBPZBZ,SQGOIB'}
+      name: lbl_success
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'NOYVZJ,PWMOLL'}
+      name: lbl_error
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'MZFGGG,ITMELA'}
+      name: link_back_to_login
+      properties: {}
+      type: Link
+    layout_properties: {grid_position: 'VDWGJU,VNJUTJ'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel

@@ -1,5 +1,27 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'QMHOWJ,XJWEBM'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'QMHOWJ,LZJQRG'}
+      name: btn_new_category
+      properties: {text: button_1}
+      type: Button
+    - layout_properties: {grid_position: 'XKSMOQ,NRHVKN'}
+      name: rp_categories
+      properties: {item_template: blog.CategoryManagementForm.ItemTemplate3}
+      type: RepeatingPanel
+    - layout_properties: {grid_position: 'BNBFQX,UZIIXU'}
+      name: lbl_no_categories
+      properties: {}
+      type: Label
+    layout_properties: {grid_position: 'OWJIBS,HCRLIT'}
+    name: column_panel_1
+    properties: {col_widths: '{"XJWEBM":40,"LZJQRG":20}'}
+    type: ColumnPanel
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel

@@ -1,5 +1,47 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'HIYORN,FUUMWE'}
+      name: link_back
+      properties: {}
+      type: Link
+    - layout_properties: {grid_position: 'FCIDDZ,CERERH'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    layout_properties: {grid_position: 'ASKJGO,ZIMRTK'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  - layout_properties: {grid_position: 'NTGXQY,LLJVZF'}
+    name: lbl_meta
+    properties: {}
+    type: Label
+  - layout_properties: {grid_position: 'FNOTSY,LKGRSX'}
+    name: img_featured
+    properties: {}
+    type: Image
+  - layout_properties: {grid_position: 'CXIBTT,GGSMIO'}
+    name: rt_content
+    properties: {}
+    type: RichText
+  - layout_properties: {grid_position: 'BYXOPK,ODNZMA'}
+    name: lbl_share_title
+    properties: {}
+    type: Label
+  - layout_properties: {grid_position: 'BCLLYN,FIYLKG'}
+    name: fp_share_buttons
+    properties: {}
+    type: FlowPanel
+  - layout_properties: {grid_position: 'PMZHZJ,WULAWV'}
+    name: lbl_views
+    properties: {}
+    type: Label
+  - layout_properties: {grid_position: 'FKZHDX,XYYZAQ'}
+    name: lbl_not_found
+    properties: {}
+    type: Label
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel
