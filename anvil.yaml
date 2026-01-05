@@ -73,5 +73,5 @@ services:
 - client_config: {}
   server_config: {}
   source: /runtime/services/google.yml
-startup: {module: auth.LoginForm, type: form}
+startup: {module: blog.BlogListForm, type: form}
 startup_form: null
