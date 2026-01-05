@@ -26,27 +26,78 @@ class LoginForm(LoginFormTemplate):
   def __init__(self, **properties):
     self.init_components(**properties)
 
+    # Configure title
+    self.lbl_title.text = "Welcome Back"
+    self.lbl_title.font_size = 24
+    self.lbl_title.bold = True
+    self.lbl_title.align = "center"
+    self.lbl_title.role = "headline"
+
+    # Configure subtitle
+    self.lbl_subtitle.text = "Sign in to your account"
+    self.lbl_subtitle.font_size = 14
+    self.lbl_subtitle.align = "center"
+    self.lbl_subtitle.foreground = "#666666"
+
+    # Configure email field
+    self.txt_email.placeholder = "Email address"
+    self.txt_email.type = "email"
+    self.txt_email.icon = "fa:envelope"
+
+    # Configure password field
+    self.txt_password.placeholder = "Password"
+    self.txt_password.type = "password"
+    self.txt_password.hide_text = True
+    self.txt_password.icon = "fa:lock"
+
+    # Configure forgot password link
+    self.link_forgot_password.text = "Forgot Password?"
+    self.link_forgot_password.align = "right"
+    self.link_forgot_password.font_size = 12
+    self.link_forgot_password.role = "secondary-color"
+
+    # Configure login button
+    self.btn_login.text = "Sign In"
+    self.btn_login.icon = "fa:sign-in"
+    self.btn_login.role = "primary-color"
+
+    # Configure divider
+    self.lbl_divider.text = "────── or ──────"
+    self.lbl_divider.align = "center"
+    self.lbl_divider.foreground = "#CCCCCC"
+    self.lbl_divider.font_size = 12
+
+    # Configure create account link
+    self.link_create_account.text = "Create New Account"
+    self.link_create_account.align = "center"
+    self.link_create_account.font_size = 14
+    self.link_create_account.role = "primary-color"
+
+    # Configure error label (hidden by default)
+    self.lbl_error.visible = False
+    self.lbl_error.role = "alert-danger"
+    self.lbl_error.align = "center"
+
   def button_login_click(self, **event_args):
-    """Sign in with Anvil Users"""
+    """Sign in using Anvil Users"""
     try:
-      # Hide error
       self.lbl_error.visible = False
 
-      # Validate inputs
       if not self.txt_email.text:
         self.show_error("Email is required")
         return
+
       if not self.txt_password.text:
         self.show_error("Password is required")
         return
 
-      # Attempt login
+      # Login with Anvil Users
       anvil.users.login_with_email(
         self.txt_email.text,
         self.txt_password.text
       )
 
-      # Success - navigate to dashboard
+      # Success - go to dashboard
       open_form('dashboard.DashboardForm')
 
     except anvil.users.AuthenticationFailed:
