@@ -1,0 +1,38 @@
+components:
+- components:
+  - layout_properties: {grid_position: 'VEPJHF,FISKTU'}
+    name: lbl_title
+    properties: {text: ''}
+    type: Label
+  - layout_properties: {grid_position: 'VEPJHF,CUWZFU'}
+    name: lbl_category
+    properties: {}
+    type: Label
+  - layout_properties: {grid_position: 'VEPJHF,JQKHMI'}
+    name: lbl_status
+    properties: {}
+    type: Label
+  - layout_properties: {grid_position: 'VEPJHF,BUVDAB'}
+    name: lbl_date
+    properties: {}
+    type: Label
+  - layout_properties: {grid_position: 'VEPJHF,AAEUMX'}
+    name: link_edit
+    properties: {}
+    type: Link
+  - layout_properties: {grid_position: 'VEPJHF,XSRBIE'}
+    name: link_delete
+    properties: {}
+    type: Link
+  layout_properties: {slot: default}
+  name: content_panel
+  properties: {col_widths: '{"FISKTU":20,"CUWZFU":15,"JQKHMI":10,"BUVDAB":5,"AAEUMX":5,"XSRBIE":5}'}
+  type: ColumnPanel
+- layout_properties: {slot: nav-right}
+  name: navbar_links
+  properties: {}
+  type: FlowPanel
+container:
+  properties: {html: '@theme:standard-page.html'}
+  type: HtmlTemplate
+is_package: true

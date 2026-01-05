@@ -10,6 +10,7 @@ unique_ids:
     blog.BlogListForm: '1767522280536173610643295.39166'
     blog.BlogListForm.RowTemplate1: '1767609548047200298661410.74225'
     blog.BlogPostDetailForm: '1767522346182990336174066.3286'
+    blog.BlogPostRowTemplate: '1767623851428620886071332.3096'
     blog.CategoryManagementForm: '1767522312267306046528545.7572'
     blog.CategoryManagementForm.ItemTemplate3: '1767611437624296312719483.38025'
     blog.PublicBlogForm: '1767522329797193208669504.88913'
@@ -161,3 +162,4 @@ unique_ids:
     server_shared.ticket_service: '1767524642769242285990121.88467'
     server_shared.utilities: '1767524512784235425936777.61548'
     server_shared.validators: '1767524538320363157362312.7643'
+    temporary_stubs: '176752349699256251347658.55'

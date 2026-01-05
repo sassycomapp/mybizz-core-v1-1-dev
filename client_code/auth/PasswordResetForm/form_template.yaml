@@ -13,7 +13,8 @@ components:
       name: txt_email
       properties: {}
       type: TextBox
-    - layout_properties: {grid_position: 'PDPKTJ,OAZZKJ'}
+    - event_bindings: {}
+      layout_properties: {grid_position: 'PDPKTJ,OAZZKJ'}
       name: btn_send_reset
       properties: {text: button_1}
       type: Button
@@ -25,7 +26,8 @@ components:
       name: lbl_error
       properties: {}
       type: Label
-    - layout_properties: {grid_position: 'MZFGGG,ITMELA'}
+    - event_bindings: {}
+      layout_properties: {grid_position: 'MZFGGG,ITMELA'}
       name: link_back_to_login
       properties: {}
       type: Link

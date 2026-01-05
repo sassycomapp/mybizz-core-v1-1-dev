@@ -101,3 +101,23 @@ class BlogListForm(BlogListFormTemplate):
     """Handle row actions"""
     # This will be handled by row template with edit/delete links
     pass
+
+  @handle("btn_new_post", "click")
+  def btn_new_post_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass
+
+  @handle("dd_status_filter", "change")
+  def dd_status_filter_change(self, **event_args):
+    """This method is called when an item is selected"""
+    pass
+
+  @handle("btn_search", "click")
+  def btn_search_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass
+
+  @handle("txt_search", "pressed_enter")
+  def txt_search_pressed_enter(self, **event_args):
+    """This method is called when the user presses Enter in this text box"""
+    pass

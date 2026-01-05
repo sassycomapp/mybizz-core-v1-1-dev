@@ -84,6 +84,7 @@ class PasswordResetForm(PasswordResetFormTemplate):
     except Exception as e:
       self.show_error(f"Failed to send reset email: {str(e)}")
 
+  @handle("link_back_to_login", "click")
   def link_back_to_login_click(self, **event_args):
     """Navigate back to login"""
     open_form('auth.LoginForm')
@@ -99,3 +100,8 @@ class PasswordResetForm(PasswordResetFormTemplate):
     self.lbl_error.text = message
     self.lbl_error.visible = True
     self.lbl_success.visible = False
+
+  @handle("btn_send_reset", "click")
+  def btn_send_reset_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass

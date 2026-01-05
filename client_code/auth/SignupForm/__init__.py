@@ -118,6 +118,7 @@ class SignupForm(SignupFormTemplate):
     except Exception as e:
       self.show_error(f"Signup failed: {str(e)}")
 
+  @handle("link_sign_in", "click")
   def link_sign_in_click(self, **event_args):
     """Navigate to login"""
     open_form('auth.LoginForm')
@@ -131,3 +132,8 @@ class SignupForm(SignupFormTemplate):
     """Display error message"""
     self.lbl_error.text = message
     self.lbl_error.visible = True
+
+  @handle("btn_create_account", "click")
+  def btn_create_account_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass
