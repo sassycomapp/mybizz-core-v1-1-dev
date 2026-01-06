@@ -1,0 +1,7 @@
+components:
+- layout_properties: {grid_position: 'EFBGSU,MMEOAZ'}
+  name: cb_category
+  properties: {text: check_box_1}
+  type: CheckBox
+container: {type: ColumnPanel}
+is_package: true

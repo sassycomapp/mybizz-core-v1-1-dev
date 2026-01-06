@@ -1,5 +1,100 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'FZBPPU,FZEMKE'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'QYCWPA,JCCEIR'}
+      name: lbl_client_field
+      properties: {}
+      type: Label
+    - event_bindings: {}
+      layout_properties: {grid_position: 'LCSLIV,PSECSW'}
+      name: dd_client
+      properties: {}
+      type: DropDown
+    - layout_properties: {grid_position: 'HVLGII,VAQIRY'}
+      name: lbl_service_field
+      properties: {}
+      type: Label
+    - event_bindings: {}
+      layout_properties: {grid_position: 'TDZYMS,CXQNSW'}
+      name: dd_service
+      properties: {}
+      type: DropDown
+    - layout_properties: {grid_position: 'WYWDKF,NDUTMP'}
+      name: lbl_service_info
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'NAEXGW,ESDMQI'}
+      name: lbl_staff_field
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'OBJVPO,EYTNIA'}
+      name: dd_staff
+      properties: {}
+      type: DropDown
+    - layout_properties: {grid_position: 'FCGFYJ,RSSNUB'}
+      name: lbl_meeting_type_field
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'HQDBRW,ZHAZTX'}
+      name: rb_in_person
+      properties: {text: radio_button_1}
+      type: RadioButton
+    - layout_properties: {grid_position: 'YZEKFU,DMYNQP'}
+      name: rb_video
+      properties: {text: radio_button_2}
+      type: RadioButton
+    - layout_properties: {grid_position: 'HWIOXV,JZCXGN'}
+      name: rb_phone
+      properties: {text: radio_button_3}
+      type: RadioButton
+    - layout_properties: {grid_position: 'UYSPLB,XQWDAR'}
+      name: lbl_date_field
+      properties: {}
+      type: Label
+    - event_bindings: {}
+      layout_properties: {grid_position: 'OMHQPM,RXOWII'}
+      name: dp_date
+      properties: {}
+      type: DatePicker
+    - layout_properties: {grid_position: 'IVBVJG,PGFDKF'}
+      name: lbl_timeslots_field
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'XBAJFY,UGNIPV'}
+      name: rp_timeslots
+      properties: {item_template: bookings.AppointmentSchedulerForm.ItemTemplate1}
+      type: RepeatingPanel
+    - layout_properties: {grid_position: 'INCCVI,EJBRCG'}
+      name: lbl_notes_field
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'ULPVWD,LPPYED'}
+      name: txt_notes
+      properties: {}
+      type: TextArea
+    - layout_properties: {grid_position: 'LUVXPD,KPVWCH'}
+      name: lbl_message
+      properties: {}
+      type: Label
+    - event_bindings: {}
+      layout_properties: {grid_position: 'LMGGIC,VMJBPI'}
+      name: btn_schedule
+      properties: {text: button_1}
+      type: Button
+    - event_bindings: {}
+      layout_properties: {grid_position: 'LMGGIC,QUKQEJ'}
+      name: btn_cancel
+      properties: {text: button_2}
+      type: Button
+    layout_properties: {grid_position: 'JOBXHF,BQOQAV'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel

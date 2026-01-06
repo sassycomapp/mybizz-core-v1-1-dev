@@ -1,4 +1,4 @@
-from ._anvil_designer import PublicBlogFormTemplate
+from ._anvil_designer import BlogEditorFormTemplate
 from anvil import *
 import anvil.server
 import anvil.google.auth, anvil.google.drive
@@ -83,6 +83,7 @@ class PublicBlogForm(PublicBlogFormTemplate):
     except Exception as e:
       alert(f"Error loading posts: {str(e)}")
 
+  @handle("link_back", "click")
   def link_back_click(self, **event_args):
     """Navigate back to home"""
     open_form('HomePage')  # Or whatever your home form is
@@ -95,3 +96,8 @@ class PublicBlogForm(PublicBlogFormTemplate):
     """Called by category row template"""
     self.selected_category = category_id
     self.load_posts()
+
+  @handle("txt_search", "pressed_enter")
+  def txt_search_pressed_enter(self, **event_args):
+    """This method is called when the user presses Enter in this text box"""
+    pass

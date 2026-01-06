@@ -270,4 +270,142 @@ def delete_blog_category(category_id):
 
     *****
 
-    
+@anvil.server.callable
+def get_public_blog_categories():
+  """Get categories that have published posts"""
+  # Get all categories with at least one published post
+  categories = []
+  for cat in app_tables.tbl_blog_categories.search():
+    posts_count = len(list(
+      app_tables.tbl_blog_posts.search(
+        category_id=cat,
+        status='published'
+      )
+    ))
+    if posts_count > 0:
+      categories.append(cat)
+
+  return categories
+
+@anvil.server.callable
+def get_public_blog_posts(category_id=None, search_term=None):
+  """Get published blog posts"""
+  query = {'status': 'published'}
+
+  if category_id:
+    category = app_tables.tbl_blog_categories.get_by_id(category_id)
+    query['category_id'] = category
+
+  posts = list(app_tables.tbl_blog_posts.search(
+    tables.order_by('published_at', ascending=False),
+    **query
+  ))
+
+  # Search filter
+  if search_term:
+    search_lower = search_term.lower()
+    posts = [
+      p for p in posts 
+      if search_lower in p['title'].lower() or 
+      search_lower in (p.get('excerpt', '') or '').lower()
+    ]
+
+  # Add category name for display
+  for post in posts:
+    if post.get('category_id'):
+      post['category_name'] = post['category_id']['name']
+    else:
+      post['category_name'] = 'Uncategorized'
+
+  return posts
+
+*****
+
+@anvil.server.callable
+def get_available_appointment_slots(staff_id, date, duration_minutes):
+  """Get available appointment slots for staff on date"""
+  try:
+    # Get staff availability
+    day_of_week = date.weekday()
+
+    # If staff_id provided, check their schedule
+    if staff_id:
+      staff = app_tables.users.get_by_id(staff_id)
+      # For now, use standard business hours
+      start_hour, end_hour = 9, 17  # 9 AM to 5 PM
+    else:
+      start_hour, end_hour = 9, 17
+
+    # Generate slots
+    slots = []
+    current_hour = start_hour
+
+    while current_hour < end_hour:
+      slot_time = f"{current_hour:02d}:00"
+      slot_datetime = datetime.combine(date, datetime.min.time()).replace(hour=current_hour)
+
+      # Check if slot is available (not booked)
+      is_available = len(list(app_tables.tbl_bookings.search(
+        staff_id=staff if staff_id else None,
+        start_datetime=slot_datetime,
+        status=q.any_of('pending', 'confirmed')
+      ))) == 0
+
+      if is_available:
+        slots.append({
+          'time': slot_time,
+          'time_display': datetime.strptime(slot_time, '%H:%M').strftime('%I:%M %p')
+        })
+
+      current_hour += 1
+
+    return slots
+
+  except Exception as e:
+    print(f"Error getting appointment slots: {e}")
+    return []
+
+@anvil.server.callable
+def schedule_appointment(appointment_data):
+  """Schedule new appointment"""
+  try:
+    user = anvil.users.get_user()
+
+    # Get related records
+    customer = app_tables.users.get_by_id(appointment_data['customer_id'])
+    service = app_tables.tbl_services.get_by_id(appointment_data['service_id'])
+
+    staff = None
+    if appointment_data.get('staff_id'):
+      staff = app_tables.users.get_by_id(appointment_data['staff_id'])
+
+    # Create booking
+    booking = app_tables.tbl_bookings.add_row(
+      client_id=user,
+      customer_id=customer,
+      service_id=service,
+      staff_id=staff,
+      booking_type='appointment',
+      start_datetime=appointment_data['start_datetime'],
+      end_datetime=appointment_data['end_datetime'],
+      status='confirmed',
+      total_amount=appointment_data['total_amount'],
+      metadata={
+        'meeting_type': appointment_data['meeting_type'],
+        'client_notes': appointment_data.get('client_notes', '')
+      },
+      created_at=datetime.now(),
+      booking_number=f"APT-{datetime.now().strftime('%Y%m%d')}-{len(list(app_tables.tbl_bookings.search()))+1:03d}"
+    )
+
+    # TODO: Send confirmation email
+    # TODO: Create calendar event
+
+    return {'success': True, 'booking_id': booking.get_id()}
+
+  except Exception as e:
+    print(f"Error scheduling appointment: {e}")
+    return {'success': False, 'error': str(e)}
+
+*****
+
