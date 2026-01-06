@@ -497,3 +497,224 @@ def schedule_appointment(appointment_data):
 
 *****
 
+@anvil.server.callable
+def get_booking_analytics(days):
+  """Get booking analytics for specified days"""
+  try:
+    user = anvil.users.get_user()
+
+    # Calculate date range
+    end_date = datetime.now()
+    start_date = end_date - timedelta(days=days)
+
+    # Get bookings in range
+    bookings = list(app_tables.tbl_bookings.search(
+      client_id=user
+    ))
+
+    # Filter by date
+    current_bookings = [
+      b for b in bookings
+      if start_date <= b['start_datetime'] <= end_date
+    ]
+
+    # Previous period for comparison
+    prev_start = start_date - timedelta(days=days)
+    prev_bookings = [
+      b for b in bookings
+      if prev_start <= b['start_datetime'] < start_date
+    ]
+
+    # Calculate stats
+    total_bookings = len(current_bookings)
+    prev_total = len(prev_bookings)
+    bookings_change = f"+{int((total_bookings - prev_total) / prev_total * 100) if prev_total > 0 else 0}%"
+
+    total_revenue = sum(b.get('total_amount', 0) for b in current_bookings)
+    prev_revenue = sum(b.get('total_amount', 0) for b in prev_bookings)
+    revenue_change = f"+{int((total_revenue - prev_revenue) / prev_revenue * 100) if prev_revenue > 0 else 0}%"
+
+    no_shows = len([b for b in current_bookings if b['status'] == 'no_show'])
+
+    avg_value = total_revenue / total_bookings if total_bookings > 0 else 0
+
+    # Top resources
+    resource_counts = {}
+    for booking in current_bookings:
+      if booking.get('resource_id'):
+        resource_name = booking['resource_id']['resource_name']
+        resource_counts[resource_name] = resource_counts.get(resource_name, 0) + 1
+
+    top_resources = [
+      {
+        'rank': i + 1,
+        'resource_name': name,
+        'booking_count': count
+      }
+      for i, (name, count) in enumerate(
+        sorted(resource_counts.items(), key=lambda x: x[1], reverse=True)[:5]
+      )
+    ]
+
+    # Peak times
+    time_counts = {}
+    for booking in current_bookings:
+      hour = booking['start_datetime'].hour
+      time_str = f"{hour:02d}:00"
+      time_counts[time_str] = time_counts.get(time_str, 0) + 1
+
+    peak_times = [
+      {'time': time, 'count': count}
+      for time, count in sorted(time_counts.items(), key=lambda x: x[1], reverse=True)[:5]
+    ]
+
+    return {
+      'total_bookings': total_bookings,
+      'bookings_change': bookings_change,
+      'total_revenue': total_revenue,
+      'revenue_change': revenue_change,
+      'no_shows': no_shows,
+      'noshows_change': '0%',
+      'avg_booking_value': avg_value,
+      'avg_change': '+0%',
+      'top_resources': top_resources,
+      'peak_times': peak_times
+    }
+
+  except Exception as e:
+    print(f"Error getting analytics: {e}")
+    return {}
+
+*****
+
+@anvil.server.callable
+def get_all_bookable_resources():
+  """Get all bookable resources"""
+  user = anvil.users.get_user()
+  return list(app_tables.tbl_bookable_resources.search(
+    client_id=user,
+    is_active=True
+  ))
+
+@anvil.server.callable
+def get_bookings_for_calendar(start_date, end_date, resource_id=None):
+  """Get bookings for calendar date range"""
+  user = anvil.users.get_user()
+
+  query = {
+    'client_id': user
+  }
+
+  if resource_id:
+    resource = app_tables.tbl_bookable_resources.get_by_id(resource_id)
+    query['resource_id'] = resource
+
+  # Get bookings in date range
+  bookings = list(app_tables.tbl_bookings.search(
+    **query
+  ))
+
+  # Filter by date range (Anvil doesn't support date range queries easily)
+  filtered = [
+    b for b in bookings
+    if start_date <= b['start_datetime'] < end_date
+  ]
+
+  # Add denormalized data for display
+  for booking in filtered:
+    if booking.get('customer_id'):
+      booking['customer_name'] = booking['customer_id']['email'].split('@')[0]
+    else:
+      booking['customer_name'] = 'Guest'
+
+    if booking.get('resource_id'):
+      booking['resource_name'] = booking['resource_id']['resource_name']
+    else:
+      booking['resource_name'] = 'Unknown'
+
+  return filtered
+
+*****
+
+@anvil.server.callable
+def get_all_customers():
+  """Get all customers for dropdown"""
+  user = anvil.users.get_user()
+  return list(app_tables.users.search(
+    role='customer',
+    account_status='active'
+  ))
+
+@anvil.server.callable
+def get_booking_metadata_schema(booking_type):
+  """Get metadata schema for booking type"""
+  schema = app_tables.tbl_booking_metadata_schemas.get(
+    booking_type=booking_type
+  )
+  return dict(schema) if schema else None
+
+@anvil.server.callable
+def check_availability(resource_id, start_datetime, end_datetime, exclude_booking_id=None):
+  """Check if resource is available for time slot"""
+  try:
+    resource = app_tables.tbl_bookable_resources.get_by_id(resource_id)
+
+    # Check for overlapping bookings
+    overlapping = list(app_tables.tbl_bookings.search(
+      resource_id=resource,
+      status=q.any_of('pending', 'confirmed')
+    ))
+
+    # Filter by datetime overlap
+    for booking in overlapping:
+      if exclude_booking_id and booking.get_id() == exclude_booking_id:
+        continue
+
+      if (start_datetime < booking['end_datetime'] and 
+          end_datetime > booking['start_datetime']):
+        return {
+          'available': False,
+          'reason': f"Conflicts with booking {booking['booking_number']}"
+        }
+
+    return {'available': True}
+
+  except Exception as e:
+    print(f"Error checking availability: {e}")
+    return {'available': False, 'reason': str(e)}
+
+@anvil.server.callable
+def get_booking(booking_id):
+  """Get single booking"""
+  booking = app_tables.tbl_bookings.get_by_id(booking_id)
+  return booking
+
+@anvil.server.callable
+def save_booking(booking_id, booking_data):
+  """Save or update booking"""
+  try:
+    user = anvil.users.get_user()
+
+    if booking_id:
+      # Update existing
+      booking = app_tables.tbl_bookings.get_by_id(booking_id)
+      booking.update(**booking_data)
+    else:
+      # Create new
+      booking_data['client_id'] = user
+      booking_data['created_at'] = datetime.now()
+
+      # Generate booking number
+      count = len(list(app_tables.tbl_bookings.search(client_id=user)))
+      booking_data['booking_number'] = f"BK-{datetime.now().strftime('%Y%m%d')}-{count+1:03d}"
+
+      app_tables.tbl_bookings.add_row(**booking_data)
+
+    return {'success': True}
+
+  except Exception as e:
+    print(f"Error saving booking: {e}")
+    return {'success': False, 'error': str(e)}
+
+*****
+

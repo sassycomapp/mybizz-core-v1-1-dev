@@ -1,5 +1,62 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'FFLQTM,QRURSM'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    - event_bindings: {}
+      layout_properties: {grid_position: 'OJCCIF,ZLWBAK'}
+      name: btn_view_day
+      properties: {text: button_1}
+      type: Button
+    - event_bindings: {}
+      layout_properties: {grid_position: 'ZZWIMY,MSRTXT'}
+      name: btn_view_week
+      properties: {text: button_2}
+      type: Button
+    - event_bindings: {}
+      layout_properties: {grid_position: 'MARPNP,HZPYHY'}
+      name: btn_view_month
+      properties: {text: button_3}
+      type: Button
+    - event_bindings: {}
+      layout_properties: {grid_position: 'GROAIN,APFNBI'}
+      name: btn_prev
+      properties: {text: button_4}
+      type: Button
+    - event_bindings: {}
+      layout_properties: {grid_position: 'NOGXVP,JWODMB'}
+      name: btn_next
+      properties: {text: button_5}
+      type: Button
+    - event_bindings: {}
+      layout_properties: {grid_position: 'QODNJA,SOSFLJ'}
+      name: btn_today
+      properties: {text: button_6}
+      type: Button
+    - event_bindings: {}
+      layout_properties: {grid_position: 'VQUGVV,VJSOTE'}
+      name: dd_resource_filter
+      properties: {}
+      type: DropDown
+    - layout_properties: {grid_position: 'ZIZVSU,VHDSXQ'}
+      name: col_calendar
+      properties: {}
+      type: ColumnPanel
+    - layout_properties: {grid_position: 'RSWTNE,OANZBA'}
+      name: lbl_legend
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'AIMJNI,HGXIOF'}
+      name: lbl_loading
+      properties: {}
+      type: Label
+    layout_properties: {grid_position: 'PFXIYP,WWGUHB'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel

@@ -1,5 +1,40 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'LJXCOP,BYXDBH'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    - event_bindings: {}
+      layout_properties: {grid_position: 'LJXCOP,OISROE'}
+      name: dd_date_range
+      properties: {}
+      type: DropDown
+    - layout_properties: {grid_position: 'XYIZNZ,UCNDJK'}
+      name: fp_stats_cards
+      properties: {}
+      type: FlowPanel
+    - layout_properties: {grid_position: 'FXBZCS,FBWLXP'}
+      name: lbl_top_resources_section
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'IWZWSR,JJDWCD'}
+      name: rp_top_resources
+      properties: {item_template: bookings.BookingAnalyticsWidget.TopResourceTemplate}
+      type: RepeatingPanel
+    - layout_properties: {grid_position: 'NGGHHP,CKIKKA'}
+      name: lbl_peak_times_section
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'OVPQMN,TKLXZO'}
+      name: col_peak_times
+      properties: {}
+      type: ColumnPanel
+    layout_properties: {grid_position: 'UCLOXN,WADNKW'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel

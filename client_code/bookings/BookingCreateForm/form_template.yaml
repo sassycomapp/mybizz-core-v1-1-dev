@@ -1,5 +1,100 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'YNNLVJ,YMXKXC'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    layout_properties: {grid_position: 'UZIDEF,OBIFEC'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  - event_bindings: {}
+    layout_properties: {grid_position: 'TXEENH,PNSMEB'}
+    name: btn_check_availability
+    properties: {text: button_1}
+    type: Button
+  - layout_properties: {grid_position: 'CEUPEP,HFYVQF'}
+    name: lbl_customer_field
+    properties: {}
+    type: Label
+  - layout_properties: {grid_position: 'PKXIVE,DBADQZ'}
+    name: dd_customer
+    properties: {}
+    type: DropDown
+  - layout_properties: {grid_position: 'AYWWGW,JDXUNA'}
+    name: lbl_resource_field
+    properties: {}
+    type: Label
+  - layout_properties: {grid_position: 'TZCZPV,VTGEVG'}
+    name: dd_resource
+    properties: {}
+    type: DropDown
+  - layout_properties: {grid_position: 'MBQKWF,KWRWXN'}
+    name: lbl_type_field
+    properties: {}
+    type: Label
+  - event_bindings: {}
+    layout_properties: {grid_position: 'BEWYSS,YJKKYI'}
+    name: dd_booking_type
+    properties: {}
+    type: DropDown
+  - layout_properties: {grid_position: 'FMDUJE,DMBVJG'}
+    name: lbl_start_field
+    properties: {}
+    type: Label
+  - layout_properties: {grid_position: 'BURLLA,AELMWN'}
+    name: dp_start_date
+    properties: {}
+    type: DatePicker
+  - layout_properties: {grid_position: 'WPUHTN,LMLDCS'}
+    name: txt_start_time
+    properties: {}
+    type: TextBox
+  - layout_properties: {grid_position: 'BEGLQZ,JYNFDE'}
+    name: lbl_end_field
+    properties: {}
+    type: Label
+  - layout_properties: {grid_position: 'HOJPGE,LHXUWM'}
+    name: dp_end_date
+    properties: {}
+    type: DatePicker
+  - layout_properties: {grid_position: 'MXORPU,MNRKPV'}
+    name: txt_end_time
+    properties: {}
+    type: TextBox
+  - layout_properties: {grid_position: 'ZBFUEI,IMGITH'}
+    name: col_metadata
+    properties: {}
+    type: ColumnPanel
+  - layout_properties: {grid_position: 'TIJDVH,YMUVKE'}
+    name: lbl_total_amount
+    properties: {}
+    type: Label
+  - layout_properties: {grid_position: 'YSGNYQ,AEIFAW'}
+    name: lbl_availability
+    properties: {}
+    type: Label
+  - layout_properties: {grid_position: 'QDNRSH,YCGIXF'}
+    name: lbl_message
+    properties: {}
+    type: Label
+  - event_bindings: {}
+    layout_properties: {grid_position: 'LDJAFO,IAJFPC'}
+    name: btn_cancel
+    properties: {text: button_3}
+    type: Button
+  - event_bindings: {}
+    layout_properties: {grid_position: 'TOPAKW,LDVMGH'}
+    name: btn_save_pending
+    properties: {text: button_2}
+    type: Button
+  - event_bindings: {}
+    layout_properties: {grid_position: 'YVCXVK,QAFRMZ'}
+    name: btn_confirm_pay
+    properties: {text: button_4}
+    type: Button
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel

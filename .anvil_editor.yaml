@@ -19,6 +19,7 @@ unique_ids:
     bookings.AppointmentSchedulerForm: '1767519813541848323580577.9481'
     bookings.AppointmentSchedulerForm.TimeSlotRadioTemplate: '1767698397766842630275483.8434'
     bookings.BookingAnalyticsWidget: '1767519984348797101708118.4677'
+    bookings.BookingAnalyticsWidget.TopResourceTemplate: '1767710361168776777981621.1403'
     bookings.BookingCalendarComponent: '1767519547078493407125422.7356'
     bookings.BookingCreateForm: '1767519568728553495075913.9708'
     bookings.BookingListForm: '176751962689866034115438.74249'

@@ -1,0 +1,15 @@
+components:
+- layout_properties: {grid_position: 'SQHGQV,BOGIXB'}
+  name: lbl_rank
+  properties: {}
+  type: Label
+- layout_properties: {grid_position: 'SQHGQV,JKANUH'}
+  name: lbl_resource
+  properties: {}
+  type: Label
+- layout_properties: {grid_position: 'SQHGQV,WXGYBK'}
+  name: lbl_count
+  properties: {}
+  type: Label
+container: {type: ColumnPanel}
+is_package: true
