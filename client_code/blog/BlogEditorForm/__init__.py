@@ -218,3 +218,23 @@ class BlogEditorForm(BlogEditorFormTemplate):
     self.lbl_message.text = text
     self.lbl_message.role = f"alert-{style}"
     self.lbl_message.visible = True
+
+  @handle("btn_save_draft", "click")
+  def btn_save_draft_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass
+
+  @handle("btn_publish", "click")
+  def btn_publish_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass
+
+  @handle("txt_title", "pressed_enter")
+  def txt_title_pressed_enter(self, **event_args):
+    """This method is called when the user presses Enter in this text box"""
+    pass
+
+  @handle("btn_remove_image", "click")
+  def btn_remove_image_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass

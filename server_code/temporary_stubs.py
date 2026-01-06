@@ -83,4 +83,52 @@ def delete_blog_post(post_id):
 
     #*****
 
-    
+    @anvil.server.callable
+    def get_blog_categories():
+      """Get all blog categories"""
+  user = anvil.users.get_user()
+  return list(app_tables.tbl_blog_categories.search(client_id=user))
+
+@anvil.server.callable
+def get_blog_post(post_id):
+  """Get single blog post"""
+  user = anvil.users.get_user()
+  post = app_tables.tbl_blog_posts.get_by_id(post_id)
+
+  if post and post['client_id'] == user:
+    return post
+  return None
+
+@anvil.server.callable
+def save_blog_post(post_id, post_data):
+  """Save or update blog post"""
+  try:
+    user = anvil.users.get_user()
+
+    if post_id:
+      # Update existing
+      post = app_tables.tbl_blog_posts.get_by_id(post_id)
+      if post and post['client_id'] == user:
+        post.update(**post_data)
+        if post_data['status'] == 'published' and not post['published_at']:
+          post['published_at'] = datetime.now()
+    else:
+      # Create new
+      post_data['client_id'] = user
+      post_data['author_id'] = user
+      post_data['view_count'] = 0
+      post_data['created_at'] = datetime.now()
+
+      if post_data['status'] == 'published':
+        post_data['published_at'] = datetime.now()
+
+      app_tables.tbl_blog_posts.add_row(**post_data)
+
+    return {'success': True}
+
+  except Exception as e:
+    print(f"Error saving post: {e}")
+    return {'success': False, 'error': str(e)}
+
+*****
+
