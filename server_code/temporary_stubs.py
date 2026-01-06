@@ -211,4 +211,63 @@ def delete_blog_post(post_id):
 
     *****
 
+    @anvil.server.callable
+    def get_blog_category(category_id):
+      """Get single category"""
+  user = anvil.users.get_user()
+  category = app_tables.tbl_blog_categories.get_by_id(category_id)
+
+  if category and category['client_id'] == user:
+    return category
+  return None
+
+@anvil.server.callable
+def save_blog_category(category_id, category_data):
+  """Save or update blog category"""
+  try:
+    user = anvil.users.get_user()
+
+    if category_id:
+      # Update existing
+      category = app_tables.tbl_blog_categories.get_by_id(category_id)
+      if category and category['client_id'] == user:
+        category.update(**category_data)
+    else:
+      # Create new
+      category_data['client_id'] = user
+      app_tables.tbl_blog_categories.add_row(**category_data)
+
+    return {'success': True}
+
+  except Exception as e:
+    print(f"Error saving category: {e}")
+    return {'success': False, 'error': str(e)}
+
+@anvil.server.callable
+def delete_blog_category(category_id):
+  """Delete a blog category"""
+  try:
+    user = anvil.users.get_user()
+    category = app_tables.tbl_blog_categories.get_by_id(category_id)
+
+    if category and category['client_id'] == user:
+      # Check if any posts use this category
+      posts_count = len(list(
+        app_tables.tbl_blog_posts.search(category_id=category)
+      ))
+
+      if posts_count > 0:
+        return {'success': False, 'error': f'{posts_count} posts use this category'}
+
+      category.delete()
+      return {'success': True}
+    else:
+      return {'success': False, 'error': 'Category not found'}
+
+  except Exception as e:
+    print(f"Error deleting category: {e}")
+    return {'success': False, 'error': str(e)}
+
+    *****
+
     
