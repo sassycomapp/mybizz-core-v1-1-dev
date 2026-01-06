@@ -5,13 +5,14 @@ components:
       name: lbl_title
       properties: {}
       type: Label
-    - layout_properties: {grid_position: 'QMHOWJ,LZJQRG'}
+    - event_bindings: {}
+      layout_properties: {grid_position: 'QMHOWJ,LZJQRG'}
       name: btn_new_category
       properties: {text: button_1}
       type: Button
-    - layout_properties: {grid_position: 'XKSMOQ,NRHVKN'}
+    - layout_properties: {grid_position: 'AMQYWG,KGUREF'}
       name: rp_categories
-      properties: {item_template: blog.CategoryManagementForm.CategoryManagementItemTemplate}
+      properties: {item_template: blog.CategoryManagementForm.CategoryRowTemplate}
       type: RepeatingPanel
     - layout_properties: {grid_position: 'BNBFQX,UZIIXU'}
       name: lbl_no_categories

@@ -132,3 +132,83 @@ def save_blog_post(post_id, post_data):
 
 *****
 
+@anvil.server.callable
+def get_all_blog_posts(status_filter='all', search_term=None):
+  """Get all blog posts for admin"""
+  try:
+    user = anvil.users.get_user()
+    if not user:
+      return []
+
+    # Build query
+    query = {'client_id': user}
+
+    if status_filter != 'all':
+      query['status'] = status_filter
+
+    # Search by title if provided
+    posts = app_tables.tbl_blog_posts.search(**query)
+
+    if search_term:
+      posts = [p for p in posts if search_term.lower() in p['title'].lower()]
+
+    return list(posts)
+
+  except Exception as e:
+    print(f"Error getting blog posts: {e}")
+    return []
+
+@anvil.server.callable
+def delete_blog_post(post_id):
+  """Delete a blog post"""
+  try:
+    user = anvil.users.get_user()
+    post = app_tables.tbl_blog_posts.get_by_id(post_id)
+
+    if post and post['client_id'] == user:
+      post.delete()
+      return {'success': True}
+    else:
+      return {'success': False, 'error': 'Post not found'}
+
+  except Exception as e:
+    print(f"Error deleting post: {e}")
+    return {'success': False, 'error': str(e)}
+
+    *****
+
+    @anvil.server.callable
+    def get_public_blog_post(slug):
+      """Get published post by slug and increment view count"""
+  try:
+    post = app_tables.tbl_blog_posts.get(
+      slug=slug,
+      status='published'
+    )
+
+    if not post:
+      return None
+
+    # Increment view count
+    post['view_count'] = (post['view_count'] or 0) + 1
+    post.update()
+
+    # Add author name
+    if post.get('author_id'):
+      post['author_name'] = post['author_id']['email'].split('@')[0]
+
+    # Add category name
+    if post.get('category_id'):
+      post['category_name'] = post['category_id']['name']
+    else:
+      post['category_name'] = 'Uncategorized'
+
+    return post
+
+  except Exception as e:
+    print(f"Error getting post: {e}")
+    return None
+
+    *****
+
+    

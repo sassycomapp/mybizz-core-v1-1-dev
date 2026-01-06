@@ -192,6 +192,7 @@ class BlogPostDetailForm(BlogPostDetailFormTemplate):
       # Fallback for browsers without clipboard API
       alert(f"Copy this link:\n{url}", title="Share Link")
 
+  @handle("link_back", "click")
   def link_back_click(self, **event_args):
     """Navigate back to blog list"""
     open_form('blog.PublicBlogForm')

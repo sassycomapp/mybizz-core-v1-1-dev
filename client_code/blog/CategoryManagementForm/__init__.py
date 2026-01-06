@@ -64,3 +64,8 @@ class CategoryManagementForm(CategoryManagementFormTemplate):
 
     if result:
       self.load_categories()
+
+  @handle("btn_new_category", "click")
+  def btn_new_category_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass

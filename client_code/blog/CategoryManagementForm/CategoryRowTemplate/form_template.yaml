@@ -1,0 +1,11 @@
+components:
+- layout_properties: {grid_position: 'CGRZBY,QYYYZA'}
+  name: lbl_name
+  properties: {}
+  type: Label
+- layout_properties: {grid_position: 'CGRZBY,KDTQEO'}
+  name: lbl_slug
+  properties: {}
+  type: Label
+container: {type: ColumnPanel}
+is_package: true
