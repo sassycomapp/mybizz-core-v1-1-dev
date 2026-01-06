@@ -66,7 +66,7 @@ components:
       type: Label
     - layout_properties: {grid_position: 'XBAJFY,UGNIPV'}
       name: rp_timeslots
-      properties: {item_template: bookings.AppointmentSchedulerForm.ItemTemplate1}
+      properties: {item_template: bookings.AppointmentSchedulerForm.TimeSlotRadioTemplate}
       type: RepeatingPanel
     - layout_properties: {grid_position: 'INCCVI,EJBRCG'}
       name: lbl_notes_field
