@@ -24,7 +24,7 @@ components:
       type: Label
     - layout_properties: {grid_position: 'RWNJEZ,HBODRR'}
       name: rp_categories
-      properties: {item_template: blog.PublicBlogForm.ItemTemplate1}
+      properties: {item_template: blog.PublicBlogForm.PublicBlogItemTemplate1}
       type: RepeatingPanel
     layout_properties: {grid_position: 'LCQZSI,OZGNUD'}
     name: col_sidebar
@@ -37,7 +37,7 @@ components:
       type: Label
     - layout_properties: {grid_position: 'ROZMIL,WLPYBQ'}
       name: rp_posts
-      properties: {item_template: blog.PublicBlogForm.ItemTemplate2}
+      properties: {item_template: blog.PublicBlogForm.PublicBlogItemTemplate2}
       type: RepeatingPanel
     - layout_properties: {grid_position: 'HGMAEB,CHZSRW'}
       name: lbl_no_posts

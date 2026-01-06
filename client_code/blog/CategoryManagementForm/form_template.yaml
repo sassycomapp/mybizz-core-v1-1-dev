@@ -11,7 +11,7 @@ components:
       type: Button
     - layout_properties: {grid_position: 'XKSMOQ,NRHVKN'}
       name: rp_categories
-      properties: {item_template: blog.CategoryManagementForm.categorymanagementItemTemplate}
+      properties: {item_template: blog.CategoryManagementForm.CategoryManagementItemTemplate}
       type: RepeatingPanel
     - layout_properties: {grid_position: 'BNBFQX,UZIIXU'}
       name: lbl_no_categories
