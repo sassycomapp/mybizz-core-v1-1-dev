@@ -1,5 +1,64 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'JSOCWQ,EXGFGP'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    - event_bindings: {}
+      layout_properties: {grid_position: 'EPGGCX,KUNQGC'}
+      name: btn_new_booking
+      properties: {text: button_1}
+      type: Button
+    - layout_properties: {grid_position: 'CIQEYF,USRCSE'}
+      name: lbl_filters
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'XBRMWG,SNSZMM'}
+      name: dd_status_filter
+      properties: {}
+      type: DropDown
+    - layout_properties: {grid_position: 'EMPTWH,ZFSIQM'}
+      name: dd_resource_filter
+      properties: {}
+      type: DropDown
+    - layout_properties: {grid_position: 'FUPGOT,LUIJKS'}
+      name: dp_date_from
+      properties: {}
+      type: DatePicker
+    - event_bindings: {}
+      layout_properties: {grid_position: 'CJVGVT,CCLPZK'}
+      name: dp_date_to
+      properties: {}
+      type: DatePicker
+    - layout_properties: {grid_position: 'GSYERP,MUABER'}
+      name: btn_search
+      properties: {text: button_1}
+      type: Button
+    - components:
+      - name: repeating_panel_1
+        properties: {item_template: bookings.BookingListForm.RowTemplate1}
+        type: RepeatingPanel
+      layout_properties: {grid_position: 'KJHKST,WKKWEZ'}
+      name: dg_bookings
+      properties:
+        columns:
+        - {data_key: column_1, id: JKSDUP, title: booking_number}
+        - {data_key: column_2, id: VJQQOR, title: customer_name}
+        - {data_key: column_3, id: OJLQEN, title: resource_name}
+        - {data_key: column_1, id: HIIVVL, title: datetime}
+        - {data_key: column_1, id: NIFLQL, title: status}
+        - {data_key: column_1, id: AZIVQQ, title: action}
+      type: DataGrid
+    - layout_properties: {grid_position: 'VFKKJI,HMUHQV'}
+      name: lbl_no_bookings
+      properties: {}
+      type: Label
+    layout_properties: {grid_position: 'SXXRBM,OJQLWH'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel
