@@ -718,3 +718,63 @@ def save_booking(booking_id, booking_data):
 
 *****
 
+@anvil.server.callable
+def get_all_bookings(filters):
+  """Get all bookings with filters"""
+  user = anvil.users.get_user()
+
+  query = {'client_id': user}
+
+  # Status filter
+  if filters.get('status'):
+    query['status'] = filters['status']
+
+  # Resource filter
+  if filters.get('resource_id'):
+    resource = app_tables.tbl_bookable_resources.get_by_id(filters['resource_id'])
+    query['resource_id'] = resource
+
+  # Get bookings
+  bookings = list(app_tables.tbl_bookings.search(
+    tables.order_by('start_datetime', ascending=False),
+    **query
+  ))
+
+  # Date range filter (client-side for now)
+  if filters.get('date_from') and filters.get('date_to'):
+    date_from = filters['date_from']
+    date_to = filters['date_to']
+    bookings = [
+      b for b in bookings
+      if date_from <= b['start_datetime'].date() <= date_to
+    ]
+
+  return bookings
+
+@anvil.server.callable
+def update_booking_status(booking_id, new_status):
+  """Update booking status"""
+  booking = app_tables.tbl_bookings.get_by_id(booking_id)
+  if booking:
+    booking['status'] = new_status
+    booking.update()
+    return {'success': True}
+  return {'success': False, 'error': 'Booking not found'}
+
+@anvil.server.callable
+def cancel_booking(booking_id, reason):
+  """Cancel a booking"""
+  booking = app_tables.tbl_bookings.get_by_id(booking_id)
+  if booking:
+    booking['status'] = 'cancelled'
+    booking['notes'] = f"Cancelled: {reason}"
+    booking.update()
+
+    # TODO: Send cancellation email
+    # TODO: Process refund if payment made
+
+    return {'success': True}
+  return {'success': False, 'error': 'Booking not found'}
+
+*****
+

@@ -1,0 +1,27 @@
+components:
+- layout_properties: {column: JKSDUP}
+  name: lbl_booking_number
+  properties: {}
+  type: Label
+- layout_properties: {column: VJQQOR}
+  name: lbl_customer
+  properties: {}
+  type: Label
+- layout_properties: {column: OJLQEN}
+  name: lbl_resource
+  properties: {}
+  type: Label
+- layout_properties: {column: HIIVVL}
+  name: lbl_datetime
+  properties: {}
+  type: Label
+- layout_properties: {column: NIFLQL}
+  name: lbl_status
+  properties: {}
+  type: Label
+- layout_properties: {column: AZIVQQ}
+  name: btn_actions
+  properties: {text: button_1}
+  type: Button
+container: {type: DataRowPanel}
+is_package: true

@@ -23,7 +23,7 @@ unique_ids:
     bookings.BookingCalendarComponent: '1767519547078493407125422.7356'
     bookings.BookingCreateForm: '1767519568728553495075913.9708'
     bookings.BookingListForm: '176751962689866034115438.74249'
-    bookings.BookingListForm.RowTemplate1: '1767718056004547740111927.8109'
+    bookings.BookingListForm.BookingRowTemplate: '1767718056004547740111927.8109'
     bookings.CheckInOutForm: '176751966665347430469422.21407'
     bookings.ClientNotesForm: '1767519870408937791128571.831'
     bookings.Guestbook_Form: '1767519687218447290402421.31415'
