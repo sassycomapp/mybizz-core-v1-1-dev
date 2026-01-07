@@ -1512,3 +1512,111 @@ def add_guest_note(guest_id, note_text):
 
 *****
 
+@anvil.server.callable
+def get_my_tickets(status_filter='all'):
+  """Get current user's tickets"""
+  user = anvil.users.get_user()
+
+  query = {'customer_id': user}
+
+  if status_filter != 'all':
+    query['status'] = status_filter
+
+  tickets = list(app_tables.tbl_tickets.search(
+    tables.order_by('created_at', ascending=False),
+    **query
+  ))
+
+  return tickets
+
+@anvil.server.callable
+def create_ticket(ticket_data):
+  """Create new support ticket"""
+  try:
+    user = anvil.users.get_user()
+
+    # Generate ticket number
+    count = len(list(app_tables.tbl_tickets.search()))
+    ticket_number = f"TKT-{datetime.now().strftime('%Y%m%d')}-{count+1:03d}"
+
+    # Create ticket
+    ticket = app_tables.tbl_tickets.add_row(
+      ticket_number=ticket_number,
+      customer_id=user,
+      customer_email=user['email'],
+      subject=ticket_data['subject'],
+      description=ticket_data['description'],
+      category=ticket_data['category'],
+      priority=ticket_data['priority'],
+      status='open',
+      created_at=datetime.now(),
+      updated_at=datetime.now()
+    )
+
+    # Add initial message
+    app_tables.tbl_ticket_messages.add_row(
+      ticket_id=ticket,
+      author_id=user,
+      author_type='customer',
+      message=ticket_data['description'],
+      is_internal_note=False,
+      created_at=datetime.now()
+    )
+
+    # TODO: Send confirmation email
+
+    return {'success': True, 'ticket_id': ticket.get_id()}
+
+  except Exception as e:
+    print(f"Error creating ticket: {e}")
+    return {'success': False, 'error': str(e)}
+
+@anvil.server.callable
+def get_ticket_messages(ticket_id):
+  """Get all messages for a ticket"""
+  ticket = app_tables.tbl_tickets.get_by_id(ticket_id)
+
+  messages = list(app_tables.tbl_ticket_messages.search(
+    ticket_id=ticket,
+    tables.order_by('created_at')
+  ))
+
+  # Add author name
+  for msg in messages:
+    if msg.get('author_id'):
+      msg['author_name'] = msg['author_id']['email'].split('@')[0]
+    else:
+      msg['author_name'] = 'Support'
+
+  return messages
+
+@anvil.server.callable
+def add_ticket_message(ticket_id, message_text):
+  """Add message to ticket"""
+  try:
+    user = anvil.users.get_user()
+    ticket = app_tables.tbl_tickets.get_by_id(ticket_id)
+
+    app_tables.tbl_ticket_messages.add_row(
+      ticket_id=ticket,
+      author_id=user,
+      author_type='customer',
+      message=message_text,
+      is_internal_note=False,
+      created_at=datetime.now()
+    )
+
+    # Update ticket
+    ticket['updated_at'] = datetime.now()
+    ticket.update()
+
+    # TODO: Notify support staff
+
+    return {'success': True}
+
+  except Exception as e:
+    print(f"Error adding message: {e}")
+    return {'success': False, 'error': str(e)}
+
+*****
+
