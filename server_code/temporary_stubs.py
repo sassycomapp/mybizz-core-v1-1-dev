@@ -1620,3 +1620,157 @@ def add_ticket_message(ticket_id, message_text):
 
 *****
 
+@anvil.server.callable
+def get_all_customers_filtered(filters):
+  """Get all customers with filters"""
+  user = anvil.users.get_user()
+
+  query = {}
+
+  # Role filter
+  if filters.get('role'):
+    query['role'] = filters['role']
+
+  # Status filter
+  if filters.get('status'):
+    query['account_status'] = filters['status']
+
+  # Get customers
+  customers = list(app_tables.users.search(
+    tables.order_by('created_at', ascending=False),
+    **query
+  ))
+
+  # Search filter (client-side for simplicity)
+  if filters.get('search'):
+    search_term = filters['search'].lower()
+    customers = [
+      c for c in customers
+      if search_term in c['email'].lower()
+    ]
+
+  return customers
+
+@anvil.server.callable
+def save_customer(customer_id, customer_data):
+  """Save or update customer"""
+  try:
+    if customer_id:
+      # Update existing
+      customer = app_tables.users.get_by_id(customer_id)
+      if customer:
+        customer.update(**customer_data)
+    else:
+      # Create new
+      customer_data['created_at'] = datetime.now()
+      # TODO: Send welcome email with password setup link
+      app_tables.users.add_row(**customer_data)
+
+    return {'success': True}
+
+  except Exception as e:
+    print(f"Error saving customer: {e}")
+    return {'success': False, 'error': str(e)}
+
+
+*****
+
+@anvil.server.callable
+def get_customer_details(customer_id):
+  """Get customer with activity summary"""
+  try:
+    customer = app_tables.users.get_by_id(customer_id)
+
+    if not customer:
+      return None
+
+    # Calculate summary
+    orders = list(app_tables.tbl_orders.search(customer_id=customer))
+    bookings = list(app_tables.tbl_bookings.search(customer_id=customer))
+    tickets = list(app_tables.tbl_tickets.search(customer_id=customer))
+    reviews = list(app_tables.tbl_reviews.search(customer_id=customer))
+
+    total_spent = sum(o.get('total_amount', 0) for o in orders)
+
+    return {
+      'customer': customer,
+      'summary': {
+        'orders_count': len(orders),
+        'total_spent': total_spent,
+        'bookings_count': len(bookings),
+        'tickets_count': len(tickets),
+        'reviews_count': len(reviews)
+      }
+    }
+
+  except Exception as e:
+    print(f"Error getting customer details: {e}")
+    return None
+
+@anvil.server.callable
+def get_customer_orders(customer_id):
+  """Get customer's orders"""
+  customer = app_tables.users.get_by_id(customer_id)
+  orders = list(app_tables.tbl_orders.search(
+    customer_id=customer,
+    tables.order_by('created_at', ascending=False)
+  ))
+
+  return [{
+    'number': o['order_number'],
+    'date': o['created_at'],
+    'amount': o['total_amount'],
+    'status': o['status']
+  } for o in orders[:10]]
+
+@anvil.server.callable
+def get_customer_bookings(customer_id):
+  """Get customer's bookings"""
+  customer = app_tables.users.get_by_id(customer_id)
+  bookings = list(app_tables.tbl_bookings.search(
+    customer_id=customer,
+    tables.order_by('start_datetime', ascending=False)
+  ))
+
+  return [{
+    'number': b['booking_number'],
+    'date': b['start_datetime'],
+    'amount': b.get('total_amount', 0),
+    'status': b['status']
+  } for b in bookings[:10]]
+
+@anvil.server.callable
+def get_customer_tickets(customer_id):
+  """Get customer's support tickets"""
+  customer = app_tables.users.get_by_id(customer_id)
+  tickets = list(app_tables.tbl_tickets.search(
+    customer_id=customer,
+    tables.order_by('created_at', ascending=False)
+  ))
+
+  return [{
+    'number': t['ticket_number'],
+    'date': t['created_at'],
+    'amount': None,
+    'status': t['status']
+  } for t in tickets[:10]]
+
+@anvil.server.callable
+def get_customer_reviews(customer_id):
+  """Get customer's reviews"""
+  customer = app_tables.users.get_by_id(customer_id)
+  reviews = list(app_tables.tbl_reviews.search(
+    customer_id=customer,
+    tables.order_by('created_at', ascending=False)
+  ))
+
+  return [{
+    'number': f"⭐ {r.get('rating', 0)}/5",
+    'date': r['created_at'],
+    'amount': None,
+    'status': r.get('status', 'pending')
+  } for r in reviews[:10]]
+
+  *****
+
+  

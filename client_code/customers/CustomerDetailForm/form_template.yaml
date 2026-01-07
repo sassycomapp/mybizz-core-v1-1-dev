@@ -1,5 +1,77 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - event_bindings: {}
+      layout_properties: {grid_position: 'XEACIQ,ICRFOE'}
+      name: link_back
+      properties: {}
+      type: Link
+    - layout_properties: {grid_position: 'XEACIQ,FPWMYZ'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    - event_bindings: {}
+      layout_properties: {grid_position: 'XEACIQ,LHAQHH'}
+      name: btn_edit
+      properties: {text: button_1}
+      type: Button
+    - layout_properties: {grid_position: 'FRXYNQ,UUCMSA'}
+      name: lbl_info_section
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'ZRAZMT,YTZPCQ'}
+      name: lbl_email
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'OSKSAN,GHYIJU'}
+      name: lbl_role
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'WLPYXS,LDAHBH'}
+      name: lbl_status
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'BRGAFQ,YSGJFC'}
+      name: lbl_phone
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'LQMDCL,FYSIZK'}
+      name: lbl_joined
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'JVVFMV,QSVNOD'}
+      name: lbl_last_login
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'KNCBEZ,FEPRKJ'}
+      name: lbl_summary_section
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'CVPKQA,ECFEVV'}
+      name: lbl_summary
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'OFOHSU,KLMKHN'}
+      name: fp_tabs
+      properties: {}
+      type: FlowPanel
+    - layout_properties: {grid_position: 'YATNLO,BGUBUS'}
+      name: lbl_activity_section
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'DLNISW,ZVXNFE'}
+      name: rp_activity
+      properties: {item_template: customers.CustomerDetailForm.ActivityItemTemplate}
+      type: RepeatingPanel
+    - layout_properties: {grid_position: 'QCJJBV,NSRUCD'}
+      name: lbl_no_activity
+      properties: {}
+      type: Label
+    layout_properties: {grid_position: 'GPWCRJ,THKACP'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel
