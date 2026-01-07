@@ -8,8 +8,20 @@ components:
   name: column_panel_1
   properties: {}
   type: ColumnPanel
-- layout_properties: {grid_position: 'ITFXGN,PHKVOQ'}
+- layout_properties: {grid_position: 'DVRJVG,HAXVAE'}
   name: lbl_duration
+  properties: {}
+  type: Label
+- layout_properties: {grid_position: 'DVRJVG,CELXQO'}
+  name: lbl_price
+  properties: {}
+  type: Label
+- layout_properties: {grid_position: 'DVRJVG,PKIQZP'}
+  name: link_edit
+  properties: {}
+  type: Label
+- layout_properties: {grid_position: 'DVRJVG,UPBMOE'}
+  name: link_delete
   properties: {}
   type: Label
 container: {type: ColumnPanel}

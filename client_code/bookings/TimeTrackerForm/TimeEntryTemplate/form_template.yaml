@@ -1,0 +1,36 @@
+components:
+- components:
+  - layout_properties: {grid_position: 'FOXGMP,FAFDSU'}
+    name: lbl_date
+    properties: {}
+    type: Label
+  - layout_properties: {grid_position: 'YEPTJG,XLQDST'}
+    name: lbl_client
+    properties: {}
+    type: Label
+  - layout_properties: {grid_position: 'BHQAHK,BZRZYO'}
+    name: lbl_service
+    properties: {}
+    type: Label
+  - layout_properties: {grid_position: 'UJUMSZ,AGWPHA'}
+    name: lbl_duration
+    properties: {}
+    type: Label
+  - layout_properties: {grid_position: 'PEVIZE,QITMPC'}
+    name: lbl_rate
+    properties: {}
+    type: Label
+  - layout_properties: {grid_position: 'RKZJTN,LYONUS'}
+    name: lbl_total
+    properties: {}
+    type: Label
+  - layout_properties: {grid_position: 'HRJTNT,EOZJNT'}
+    name: link_delete
+    properties: {}
+    type: Link
+  layout_properties: {grid_position: 'VEFPSZ,SJBDVH'}
+  name: column_panel_1
+  properties: {}
+  type: ColumnPanel
+container: {type: ColumnPanel}
+is_package: true

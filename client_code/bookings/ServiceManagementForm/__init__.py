@@ -63,3 +63,8 @@ class ServiceManagementForm(ServiceManagementFormTemplate):
 
     if result:
       self.load_services()
+
+  @handle("btn_add_service", "click")
+  def btn_add_service_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass

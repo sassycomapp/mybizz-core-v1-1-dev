@@ -9,7 +9,8 @@ components:
     name: column_panel_1
     properties: {}
     type: ColumnPanel
-  - layout_properties: {grid_position: 'NXJVRR,JKTHPJ'}
+  - event_bindings: {}
+    layout_properties: {grid_position: 'NXJVRR,JKTHPJ'}
     name: btn_add_service
     properties: {text: button_1}
     type: Button

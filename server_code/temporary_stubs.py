@@ -1208,3 +1208,91 @@ def update_room_status(room_id, new_status):
 
 *****
 
+@anvil.server.callable
+def get_all_services():
+  """Get all services"""
+  user = anvil.users.get_user()
+  return list(app_tables.tbl_services.search(
+    client_id=user,
+    tables.order_by('service_name')
+  ))
+
+@anvil.server.callable
+def get_service(service_id):
+  """Get single service"""
+  user = anvil.users.get_user()
+  service = app_tables.tbl_services.get_by_id(service_id)
+
+  if service and service['client_id'] == user:
+    return service
+  return None
+
+@anvil.server.callable
+def get_staff_members():
+  """Get staff members for dropdown"""
+  user = anvil.users.get_user()
+  return list(app_tables.users.search(
+    role=q.any_of('staff', 'manager', 'owner'),
+    account_status='active'
+  ))
+
+@anvil.server.callable
+def save_service(service_id, service_data):
+  """Save or update service"""
+  try:
+    user = anvil.users.get_user()
+
+    # Get staff member if provided
+    if service_data.get('staff_id'):
+      staff = app_tables.users.get_by_id(service_data['staff_id'])
+      service_data['staff_id'] = staff
+    else:
+      service_data['staff_id'] = None
+
+    if service_id:
+      # Update existing
+      service = app_tables.tbl_services.get_by_id(service_id)
+      if service and service['client_id'] == user:
+        service.update(**service_data)
+    else:
+      # Create new
+      service_data['client_id'] = user
+      app_tables.tbl_services.add_row(**service_data)
+
+    return {'success': True}
+
+  except Exception as e:
+    print(f"Error saving service: {e}")
+    return {'success': False, 'error': str(e)}
+
+@anvil.server.callable
+def delete_service(service_id):
+  """Delete a service"""
+  try:
+    user = anvil.users.get_user()
+    service = app_tables.tbl_services.get_by_id(service_id)
+
+    if service and service['client_id'] == user:
+      # Check if any active bookings use this service
+      active_bookings = len(list(
+        app_tables.tbl_bookings.search(
+          service_id=service,
+          status=q.any_of('pending', 'confirmed')
+        )
+      ))
+
+      if active_bookings > 0:
+        return {'success': False, 'error': f'{active_bookings} active bookings exist'}
+
+      service.delete()
+      return {'success': True}
+    else:
+      return {'success': False, 'error': 'Service not found'}
+
+  except Exception as e:
+    print(f"Error deleting service: {e}")
+    return {'success': False, 'error': str(e)}
+
+
+*****
+
