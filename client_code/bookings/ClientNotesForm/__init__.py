@@ -114,6 +114,12 @@ class ClientNotesForm(ClientNotesFormTemplate):
     except Exception as e:
       alert(f"Error adding note: {str(e)}")
 
+  @handle("link_back", "click")
   def link_back_click(self, **event_args):
     """Navigate back"""
     open_form('bookings.BookingListForm')
+
+  @handle("btn_add_note", "click")
+  def btn_add_note_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass

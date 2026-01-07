@@ -1,5 +1,45 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - event_bindings: {}
+      layout_properties: {grid_position: 'GTPNPP,QHKMCA'}
+      name: link_back
+      properties: {}
+      type: Link
+    - layout_properties: {grid_position: 'GTPNPP,NHLGPW'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'KHGXWY,WYPLPL'}
+      name: rp_notes
+      properties: {item_template: bookings.ClientNotesForm.ClientNoteTemplate}
+      type: RepeatingPanel
+    layout_properties: {grid_position: 'ACPLOI,WDKUCP'}
+    name: ColumnPanel
+    properties: {}
+    type: ColumnPanel
+  - layout_properties: {grid_position: 'QQEEGM,WSKDRV'}
+    name: lbl_no_notes
+    properties: {}
+    type: Label
+  - layout_properties: {grid_position: 'PHWFGX,DOJSHY'}
+    name: lbl_add_note_section
+    properties: {}
+    type: Label
+  - layout_properties: {grid_position: 'NPJIIO,SNMTRX'}
+    name: txt_new_note
+    properties: {}
+    type: TextArea
+  - layout_properties: {grid_position: 'HDNHJN,YMEUYR'}
+    name: cb_confidential
+    properties: {text: check_box_1}
+    type: CheckBox
+  - event_bindings: {}
+    layout_properties: {grid_position: 'HDNHJN,LTGQSD'}
+    name: btn_add_note
+    properties: {text: button_1}
+    type: Button
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel

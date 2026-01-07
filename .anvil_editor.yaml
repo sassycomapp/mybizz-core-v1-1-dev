@@ -26,6 +26,7 @@ unique_ids:
     bookings.BookingListForm.BookingRowTemplate: '1767718056004547740111927.8109'
     bookings.CheckInOutForm: '176751966665347430469422.21407'
     bookings.ClientNotesForm: '1767519870408937791128571.831'
+    bookings.ClientNotesForm.ClientNoteTemplate: '1767774915008338331368756.7858'
     bookings.Guestbook_Form: '1767519687218447290402421.31415'
     bookings.MultiResourceCalenderForm: '1767519957389685675941147.4514'
     bookings.PublicBookingWidget: '1767519589337778755769150.6426'
