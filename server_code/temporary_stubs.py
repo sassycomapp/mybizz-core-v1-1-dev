@@ -1296,3 +1296,58 @@ def delete_service(service_id):
 
 *****
 
+@anvil.server.callable
+def get_time_entries():
+  """Get all time entries"""
+  user = anvil.users.get_user()
+  return list(app_tables.tbl_time_entries.search(
+    client_id=user,
+    tables.order_by('start_time', ascending=False)
+  ))
+
+@anvil.server.callable
+def save_time_entry(entry_data):
+  """Save time entry"""
+  try:
+    user = anvil.users.get_user()
+
+    customer = app_tables.users.get_by_id(entry_data['customer_id'])
+    service = app_tables.tbl_services.get_by_id(entry_data['service_id'])
+
+    # Calculate billable amount
+    hourly_rate = service['price'] / (service['duration_minutes'] / 60)
+    hours = entry_data['duration_minutes'] / 60
+    total_amount = hourly_rate * hours
+
+    app_tables.tbl_time_entries.add_row(
+      client_id=user,
+      customer_id=customer,
+      service_id=service,
+      start_time=entry_data['start_time'],
+      end_time=entry_data['end_time'],
+      duration_minutes=entry_data['duration_minutes'],
+      hourly_rate=hourly_rate,
+      total_amount=total_amount,
+      description=entry_data.get('description', ''),
+      billable=True,
+      invoiced=False,
+      created_by=user,
+      created_at=datetime.now()
+    )
+
+    return {'success': True}
+
+  except Exception as e:
+    print(f"Error saving time entry: {e}")
+    return {'success': False, 'error': str(e)}
+
+@anvil.server.callable
+def delete_time_entry(entry_id):
+  """Delete time entry"""
+  entry = app_tables.tbl_time_entries.get_by_id(entry_id)
+  if entry:
+    entry.delete()
+  return {'success': True}
+
+  *****
+
