@@ -1,0 +1,16 @@
+components:
+- components:
+  - layout_properties: {grid_position: 'DXWKKF,QDGVNF'}
+    name: lbl_name
+    properties: {}
+    type: Label
+  layout_properties: {grid_position: 'DVRJVG,LLNOJW'}
+  name: column_panel_1
+  properties: {}
+  type: ColumnPanel
+- layout_properties: {grid_position: 'ITFXGN,PHKVOQ'}
+  name: lbl_duration
+  properties: {}
+  type: Label
+container: {type: ColumnPanel}
+is_package: true

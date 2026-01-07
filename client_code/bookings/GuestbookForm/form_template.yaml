@@ -1,0 +1,73 @@
+components:
+- components:
+  - components:
+    - event_bindings: {}
+      layout_properties: {grid_position: 'BLZGDQ,EPSYJM'}
+      name: link_back
+      properties: {}
+      type: Link
+    - layout_properties: {grid_position: 'BLZGDQ,ENIGRD'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'KHRQXN,SCPKFN'}
+      name: lbl_subtitle
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'OCADBI,YKGMSC'}
+      name: rp_entries
+      properties: {item_template: bookings.GuestbookForm.GuestbookEntryTemplate}
+      type: RepeatingPanel
+    - layout_properties: {grid_position: 'CCMUJM,KKKUBQ'}
+      name: grid_panel_1
+      properties: {}
+      type: GridPanel
+    - layout_properties: {grid_position: 'WWZJKE,CFAKLG'}
+      name: lbl_no_entries
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'MOIWTM,TJKMVE'}
+      name: lbl_review_section
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'FRNOZS,DJLRJC'}
+      name: txt_guest_name
+      properties: {}
+      type: TextBox
+    - layout_properties: {grid_position: 'GRNIEC,JGOPTI'}
+      name: txt_email
+      properties: {}
+      type: TextBox
+    - layout_properties: {grid_position: 'WZTIOT,LERAVM'}
+      name: txt_review
+      properties: {}
+      type: TextArea
+    - layout_properties: {grid_position: 'KXVRKX,UHAZPZ'}
+      name: col_rating
+      properties: {}
+      type: ColumnPanel
+    - event_bindings: {}
+      layout_properties: {grid_position: 'OZVFFO,LRTEMA'}
+      name: btn_submit
+      properties: {text: button_1}
+      type: Button
+    - layout_properties: {grid_position: 'YTJFAS,DAUGUS'}
+      name: lbl_message
+      properties: {}
+      type: Label
+    layout_properties: {grid_position: 'OBJJRW,GMDEED'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  layout_properties: {slot: default}
+  name: content_panel
+  properties: {}
+  type: ColumnPanel
+- layout_properties: {slot: nav-right}
+  name: navbar_links
+  properties: {}
+  type: FlowPanel
+container:
+  properties: {html: '@theme:standard-page.html'}
+  type: HtmlTemplate
+is_package: true

@@ -1,5 +1,28 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'EZVLBA,GMQDCA'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    layout_properties: {grid_position: 'CSDTDZ,PCLRDI'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  - event_bindings: {}
+    layout_properties: {grid_position: 'CSDTDZ,KSPERG'}
+    name: btn_add_room
+    properties: {text: button_1}
+    type: Button
+  - layout_properties: {grid_position: 'CDRBMA,KXMAPR'}
+    name: rp_rooms
+    properties: {item_template: bookings.RoomManagementForm.RoomRowTemplate}
+    type: RepeatingPanel
+  - layout_properties: {grid_position: 'RVTNHU,KPKATQ'}
+    name: lbl_no_rooms
+    properties: {}
+    type: Label
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel

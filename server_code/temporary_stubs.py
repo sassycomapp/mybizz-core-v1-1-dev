@@ -877,3 +877,334 @@ def process_check_out(booking_id, checkout_data):
 
 *****
 
+@anvil.server.callable
+def get_customer(customer_id):
+  """Get customer details"""
+  customer = app_tables.users.get_by_id(customer_id)
+  return customer
+
+@anvil.server.callable
+def get_client_notes(customer_id):
+  """Get all notes for a customer"""
+  user = anvil.users.get_user()
+  customer = app_tables.users.get_by_id(customer_id)
+
+  # Check user permissions
+  if user['role'] not in ['owner', 'manager', 'staff']:
+    return []
+
+  # Get notes
+  notes = list(app_tables.tbl_client_notes.search(
+    customer_id=customer,
+    tables.order_by('created_at', ascending=False)
+  ))
+
+  # Filter confidential notes if not manager/owner
+  if user['role'] not in ['owner', 'manager']:
+    notes = [n for n in notes if not n.get('is_confidential', False)]
+
+  return notes
+
+@anvil.server.callable
+def add_client_note(note_data):
+  """Add new client note"""
+  try:
+    user = anvil.users.get_user()
+
+    # Check permissions
+    if user['role'] not in ['owner', 'manager', 'staff']:
+      return {'success': False, 'error': 'Insufficient permissions'}
+
+    customer = app_tables.users.get_by_id(note_data['customer_id'])
+
+    # Create note
+    app_tables.tbl_client_notes.add_row(
+      client_id=user,
+      customer_id=customer,
+      note=note_data['note'],
+      is_confidential=note_data.get('is_confidential', False),
+      created_by=user,
+      created_at=datetime.now()
+    )
+
+    return {'success': True}
+
+  except Exception as e:
+    print(f"Error adding client note: {e}")
+    return {'success': False, 'error': str(e)}
+
+
+    *****
+
+    @anvil.server.callable
+    def get_public_guestbook_entries():
+      """Get approved public guestbook entries"""
+  # Get entries where is_approved = True and is_public = True
+  entries = list(app_tables.tbl_guestbook_entries.search(
+    is_approved=True,
+    is_public=True,
+    tables.order_by('created_at', ascending=False)
+  ))
+
+  return entries
+
+@anvil.server.callable
+def submit_guestbook_entry(entry_data):
+  """Submit new guestbook entry"""
+  try:
+    # Add entry (requires approval)
+    app_tables.tbl_guestbook_entries.add_row(
+      guest_name=entry_data['guest_name'],
+      guest_email=entry_data['guest_email'],
+      rating=entry_data['rating'],
+      comment=entry_data['comment'],
+      is_approved=False,  # Requires admin approval
+      is_public=False,    # Will be set to True when approved
+      created_at=datetime.now()
+    )
+
+    # TODO: Send notification to admin for approval
+
+    return {'success': True}
+
+  except Exception as e:
+    print(f"Error submitting guestbook entry: {e}")
+    return {'success': False, 'error': str(e)}
+
+*****
+
+@anvil.server.callable
+def get_public_bookable_resources():
+  """Get resources available for public booking"""
+  # Get resources where public_booking_enabled = True
+  return list(app_tables.tbl_bookable_resources.search(
+    is_active=True
+  ))
+
+@anvil.server.callable
+def get_available_time_slots(resource_id, date):
+  """Get available time slots for resource on date"""
+  try:
+    resource = app_tables.tbl_bookable_resources.get_by_id(resource_id)
+
+    # Get availability hours for this day of week
+    day_of_week = date.weekday()  # 0=Monday, 6=Sunday
+    availability = app_tables.tbl_availability.get(
+      resource_id=resource,
+      day_of_week=day_of_week
+    )
+
+    if not availability or not availability['is_available']:
+      return []
+
+    # Generate hourly slots
+    slots = []
+    start_hour, start_min = map(int, availability['start_time'].split(':'))
+    end_hour, end_min = map(int, availability['end_time'].split(':'))
+
+    current_hour = start_hour
+    while current_hour < end_hour:
+      slot_time = f"{current_hour:02d}:00"
+
+      # Check if slot is booked
+      slot_datetime = datetime.combine(date, datetime.min.time()).replace(hour=current_hour)
+
+      is_booked = len(list(app_tables.tbl_bookings.search(
+        resource_id=resource,
+        start_datetime=slot_datetime,
+        status=q.any_of('pending', 'confirmed')
+      ))) > 0
+
+      if not is_booked:
+        slots.append({
+          'time': slot_time,
+          'time_display': datetime.strptime(slot_time, '%H:%M').strftime('%I:%M %p')
+        })
+
+      current_hour += 1
+
+    return slots
+
+  except Exception as e:
+    print(f"Error getting time slots: {e}")
+    return []
+
+@anvil.server.callable
+def create_public_booking(booking_data):
+  """Create booking from public widget"""
+  try:
+    # Get or create customer
+    customer = app_tables.users.get(email=booking_data['customer_email'])
+
+    if not customer:
+      # Create guest customer
+      customer = app_tables.users.add_row(
+        email=booking_data['customer_email'],
+        role='customer',
+        account_status='active',
+        created_at=datetime.now()
+      )
+
+    # Get resource
+    resource = app_tables.tbl_bookable_resources.get_by_id(booking_data['resource_id'])
+
+    # Calculate end time (default 1 hour)
+    end_datetime = booking_data['start_datetime'] + timedelta(hours=1)
+
+    # Create booking
+    booking = app_tables.tbl_bookings.add_row(
+      client_id=resource['client_id'],
+      customer_id=customer,
+      resource_id=resource,
+      booking_type='appointment',
+      start_datetime=booking_data['start_datetime'],
+      end_datetime=end_datetime,
+      status='pending',
+      total_amount=0,
+      customer_notes=booking_data.get('notes', ''),
+      created_at=datetime.now(),
+      booking_number=f"BK-{datetime.now().strftime('%Y%m%d')}-{len(list(app_tables.tbl_bookings.search()))+1:03d}"
+    )
+
+    # Send confirmation email
+    # TODO: Implement in Phase 2
+
+    return {'success': True, 'booking_id': booking.get_id()}
+
+  except Exception as e:
+    print(f"Error creating public booking: {e}")
+    return {'success': False, 'error': str(e)}
+
+
+    *****
+
+    @anvil.server.callable
+    def get_all_rooms():
+      """Get all rooms"""
+  user = anvil.users.get_user()
+  return list(app_tables.tbl_rooms.search(
+    client_id=user,
+    tables.order_by('room_number')
+  ))
+
+@anvil.server.callable
+def get_room(room_id):
+  """Get single room"""
+  user = anvil.users.get_user()
+  room = app_tables.tbl_rooms.get_by_id(room_id)
+
+  if room and room['client_id'] == user:
+    return room
+  return None
+
+@anvil.server.callable
+def save_room(room_id, room_data):
+  """Save or update room"""
+  try:
+    user = anvil.users.get_user()
+
+    if room_id:
+      # Update existing
+      room = app_tables.tbl_rooms.get_by_id(room_id)
+      if room and room['client_id'] == user:
+        room.update(**room_data)
+    else:
+      # Create new
+      room_data['client_id'] = user
+      app_tables.tbl_rooms.add_row(**room_data)
+
+    return {'success': True}
+
+  except Exception as e:
+    print(f"Error saving room: {e}")
+    return {'success': False, 'error': str(e)}
+
+@anvil.server.callable
+def delete_room(room_id):
+  """Delete a room"""
+  try:
+    user = anvil.users.get_user()
+    room = app_tables.tbl_rooms.get_by_id(room_id)
+
+    if room and room['client_id'] == user:
+      # Check if any active bookings exist
+      active_bookings = len(list(
+        app_tables.tbl_bookings.search(
+          resource_id=room,
+          status=q.any_of('pending', 'confirmed')
+        )
+      ))
+
+      if active_bookings > 0:
+        return {'success': False, 'error': f'{active_bookings} active bookings exist'}
+
+      room.delete()
+      return {'success': True}
+    else:
+      return {'success': False, 'error': 'Room not found'}
+
+  except Exception as e:
+    print(f"Error deleting room: {e}")
+    return {'success': False, 'error': str(e)}
+
+    *****
+
+@anvil.server.callable
+def get_rooms_with_status():
+  """Get all rooms with current status and occupancy"""
+  user = anvil.users.get_user()
+  rooms = list(app_tables.tbl_rooms.search(
+    client_id=user,
+    tables.order_by('room_number')
+  ))
+
+  # Enhance with current status
+  for room in rooms:
+    # Determine display status
+    if room['status'] == 'maintenance':
+      room['display_status'] = 'maintenance'
+    elif room['status'] == 'dirty':
+      room['display_status'] = 'dirty'
+    else:
+      # Check if currently occupied
+      current_booking = app_tables.tbl_bookings.get(
+        resource_id=room,
+        status='checked_in'
+      )
+
+      if current_booking:
+        room['display_status'] = 'occupied'
+
+        # Add guest info
+        if current_booking.get('customer_id'):
+          room['current_guest'] = current_booking['customer_id']['email'].split('@')[0]
+        else:
+          room['current_guest'] = 'Guest'
+
+        room['checkout_date'] = current_booking['end_datetime'].strftime('%b %d')
+        room['current_booking_id'] = current_booking.get_id()
+      else:
+        room['display_status'] = 'vacant'
+
+  return rooms
+
+@anvil.server.callable
+def update_room_status(room_id, new_status):
+  """Update room status"""
+  try:
+    room = app_tables.tbl_rooms.get_by_id(room_id)
+
+    if room:
+      room['status'] = new_status
+      room.update()
+      return {'success': True}
+    else:
+      return {'success': False, 'error': 'Room not found'}
+
+  except Exception as e:
+    print(f"Error updating room status: {e}")
+    return {'success': False, 'error': str(e)}
+
+
+*****
+

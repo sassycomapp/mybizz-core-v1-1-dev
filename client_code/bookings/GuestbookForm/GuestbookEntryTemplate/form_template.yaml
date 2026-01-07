@@ -1,0 +1,19 @@
+components:
+- layout_properties: {grid_position: 'CHUHCF,NPHJNQ'}
+  name: lbl_stars
+  properties: {}
+  type: Label
+- layout_properties: {grid_position: 'CHUHCF,YFYBEL'}
+  name: lbl_title
+  properties: {}
+  type: Label
+- layout_properties: {grid_position: 'CHUHCF,TQEHBY'}
+  name: lbl_comment
+  properties: {}
+  type: Label
+- layout_properties: {grid_position: 'CHUHCF,GKDEVO'}
+  name: lbl_meta
+  properties: {}
+  type: Label
+container: {type: ColumnPanel}
+is_package: true

@@ -1,5 +1,32 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'KVGTJO,QFIUMT'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    layout_properties: {grid_position: 'GDVEUB,YCWVGV'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  - event_bindings: {}
+    layout_properties: {grid_position: 'GDVEUB,YMUNBY'}
+    name: btn_refresh
+    properties: {text: button_1}
+    type: Button
+  - layout_properties: {grid_position: 'AYGJPZ,JGWRUP'}
+    name: lbl_legend
+    properties: {}
+    type: Label
+  - layout_properties: {grid_position: 'KHMVJV,NCTKAE'}
+    name: rp_rooms
+    properties: {item_template: bookings.RoomStatusBoardForm.RoomStatusCardTemplate}
+    type: RepeatingPanel
+  - layout_properties: {grid_position: 'XZATST,XYJUGO'}
+    name: lbl_summary
+    properties: {}
+    type: Label
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel

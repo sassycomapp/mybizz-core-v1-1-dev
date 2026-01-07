@@ -1,4 +1,4 @@
-from ._anvil_designer import Guestbook_FormTemplate
+from ._anvil_designer import ServiceRowTemplateTemplate
 from anvil import *
 import anvil.server
 import anvil.google.auth, anvil.google.drive
@@ -10,7 +10,7 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 
 
-class Guestbook_Form(Guestbook_FormTemplate):
+class ServiceRowTemplate(ServiceRowTemplateTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
