@@ -1351,3 +1351,164 @@ def delete_time_entry(entry_id):
 
   *****
 
+@anvil.server.callable
+def get_client_portal_data():
+  """Get all client portal data"""
+  try:
+    user = anvil.users.get_user()
+
+    # Upcoming appointments
+    upcoming = list(app_tables.tbl_bookings.search(
+      customer_id=user,
+      status=q.any_of('pending', 'confirmed'),
+      start_datetime=q.greater_than(datetime.now())
+    ))
+
+    upcoming_data = []
+    for booking in upcoming:
+      service_name = booking.get('service_id', {}).get('service_name', 'Appointment')
+      staff_name = booking.get('staff_id', {}).get('email', 'Staff').split('@')[0]
+
+      upcoming_data.append({
+        'booking_id': booking.get_id(),
+        'datetime': booking['start_datetime'],
+        'service_name': service_name,
+        'staff_name': staff_name
+      })
+
+    # Past appointments
+    past = list(app_tables.tbl_bookings.search(
+      customer_id=user,
+      status=q.any_of('completed', 'cancelled'),
+      tables.order_by('start_datetime', ascending=False)
+    ))
+
+    past_data = [{
+      'datetime': b['start_datetime'],
+      'service_name': b.get('service_id', {}).get('service_name', 'Appointment'),
+      'status': b['status']
+    } for b in past]
+
+    # Invoices (placeholder)
+    invoices = []
+
+    # Documents (placeholder)
+    documents = []
+
+    return {
+      'upcoming': upcoming_data,
+      'past': past_data,
+      'invoices': invoices,
+      'documents': documents
+    }
+
+  except Exception as e:
+    print(f"Error getting portal data: {e}")
+    return {
+      'upcoming': [],
+      'past': [],
+      'invoices': [],
+      'documents': []
+    }
+
+*****
+
+@anvil.server.callable
+def get_guest_history(guest_id):
+  """Get complete guest history"""
+  try:
+    guest = app_tables.users.get_by_id(guest_id)
+
+    if not guest:
+      return None
+
+    # Get all bookings
+    bookings = list(app_tables.tbl_bookings.search(
+      customer_id=guest,
+      tables.order_by('start_datetime', ascending=False)
+    ))
+
+    # Calculate stats
+    total_stays = len([b for b in bookings if b['status'] in ['completed', 'checked_in']])
+
+    total_nights = 0
+    for booking in bookings:
+      if booking['status'] in ['completed', 'checked_in']:
+        nights = (booking['end_datetime'].date() - booking['start_datetime'].date()).days
+        total_nights += nights
+
+    total_revenue = sum(b.get('total_amount', 0) for b in bookings if b['status'] == 'completed')
+
+    last_visit = None
+    if bookings:
+      last_visit = bookings[0]['start_datetime']
+
+    # Find favorite room
+    room_counts = {}
+    for booking in bookings:
+      if booking.get('resource_id'):
+        room_name = booking['resource_id']['room_number']
+        room_counts[room_name] = room_counts.get(room_name, 0) + 1
+
+    favorite_room = max(room_counts.items(), key=lambda x: x[1])[0] if room_counts else 'None'
+
+    # Format booking data
+    booking_data = []
+    for booking in bookings:
+      nights = (booking['end_datetime'].date() - booking['start_datetime'].date()).days
+      room_name = booking['resource_id']['room_number'] if booking.get('resource_id') else 'Unknown'
+
+      booking_data.append({
+        'start_date': booking['start_datetime'],
+        'end_date': booking['end_datetime'],
+        'nights': nights,
+        'room_name': room_name,
+        'amount': booking.get('total_amount', 0),
+        'status': booking['status']
+      })
+
+    # Get notes
+    notes = list(app_tables.tbl_client_notes.search(
+      customer_id=guest,
+      tables.order_by('created_at', ascending=False)
+    ))
+
+    note_data = [{'note': n['note']} for n in notes]
+
+    return {
+      'guest': guest,
+      'stats': {
+        'total_stays': total_stays,
+        'total_nights': total_nights,
+        'total_revenue': total_revenue,
+        'last_visit': last_visit,
+        'favorite_room': favorite_room
+      },
+      'bookings': booking_data,
+      'notes': note_data
+    }
+
+  except Exception as e:
+    print(f"Error getting guest history: {e}")
+    return None
+
+@anvil.server.callable
+def add_guest_note(guest_id, note_text):
+  """Add note to guest profile"""
+  user = anvil.users.get_user()
+  guest = app_tables.users.get_by_id(guest_id)
+
+  app_tables.tbl_client_notes.add_row(
+    client_id=user,
+    customer_id=guest,
+    note=note_text,
+    is_confidential=False,
+    created_by=user,
+    created_at=datetime.now()
+  )
+
+  return {'success': True}
+
+
+*****
+

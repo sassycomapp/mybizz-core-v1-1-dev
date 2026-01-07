@@ -1,5 +1,62 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - event_bindings: {}
+      layout_properties: {grid_position: 'SGHWVK,FCUMTV'}
+      name: link_back
+      properties: {}
+      type: Link
+    - layout_properties: {grid_position: 'SGHWVK,OGRGJV'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'NDKLYI,ABWYSC'}
+      name: lbl_summary_section
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'IQUJQF,OGISRK'}
+      name: lbl_summary_line1
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'QQRYUV,VYZODR'}
+      name: lbl_summary_line2
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'MYVHTG,GDRRGD'}
+      name: lbl_summary_line3
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'RARMMV,NKFCZL'}
+      name: lbl_bookings_section
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'AKLOER,ECPKYU'}
+      name: rp_bookings
+      properties: {item_template: customers.GuestHistoryForm.GuestNoteTemplate}
+      type: RepeatingPanel
+    - layout_properties: {grid_position: 'YXUZJF,QUMOAK'}
+      name: lbl_notes_section
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'VXMCEL,SUJLKW'}
+      name: rp_notes
+      properties: {item_template: customers.GuestHistoryForm.ItemTemplate2}
+      type: RepeatingPanel
+    - event_bindings: {}
+      layout_properties: {grid_position: 'VWYAAT,DTWGOP'}
+      name: btn_add_note
+      properties: {text: button_1}
+      type: Button
+    - event_bindings: {}
+      layout_properties: {grid_position: 'VWYAAT,KXJWAX'}
+      name: btn_full_profile
+      properties: {text: button_1}
+      type: Button
+    layout_properties: {grid_position: 'XFCUNX,ZDNVTF'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel

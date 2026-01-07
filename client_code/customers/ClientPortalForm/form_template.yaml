@@ -5,7 +5,8 @@ components:
       name: lbl_title
       properties: {}
       type: Label
-    - layout_properties: {grid_position: 'JZICUU,CTQBGF'}
+    - event_bindings: {}
+      layout_properties: {grid_position: 'JZICUU,CTQBGF'}
       name: btn_logout
       properties: {text: button_1}
       type: Button
@@ -19,13 +20,14 @@ components:
       type: Label
     - layout_properties: {grid_position: 'BPEJFK,CAHUCL'}
       name: rp_upcoming
-      properties: {item_template: customers.ClientPortalForm.ItemTemplate2}
+      properties: {item_template: customers.ClientPortalForm.PastAppointmentTemplate}
       type: RepeatingPanel
     - layout_properties: {grid_position: 'KFXVRC,STZBQJ'}
       name: lbl_no_upcoming
       properties: {}
       type: Label
-    - layout_properties: {grid_position: 'VGYZHM,HMDNYO'}
+    - event_bindings: {}
+      layout_properties: {grid_position: 'VGYZHM,HMDNYO'}
       name: btn_book_new
       properties: {text: button_1}
       type: Button
@@ -39,7 +41,7 @@ components:
     type: Label
   - layout_properties: {grid_position: 'SUKCBK,OIECPI'}
     name: rp_past
-    properties: {item_template: customers.ClientPortalForm.ItemTemplate3}
+    properties: {item_template: customers.ClientPortalForm.InvoiceTemplate}
     type: RepeatingPanel
   - layout_properties: {grid_position: 'VJKFJX,MNKQME'}
     name: lbl_invoices_section
@@ -47,7 +49,7 @@ components:
     type: Label
   - layout_properties: {grid_position: 'ZVWDUS,WFJINQ'}
     name: rp_invoices
-    properties: {item_template: customers.ClientPortalForm.ItemTemplate4}
+    properties: {item_template: customers.ClientPortalForm.DocumentTemplate}
     type: RepeatingPanel
   - layout_properties: {grid_position: 'ZWXGAN,OKRHMV'}
     name: lbl_documents_section

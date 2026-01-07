@@ -110,3 +110,13 @@ class ClientPortalForm(ClientPortalFormTemplate):
     """Logout"""
     anvil.users.logout()
     open_form('HomePage')
+
+  @handle("btn_book_new", "click")
+  def btn_book_new_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass
+
+  @handle("btn_logout", "click")
+  def btn_logout_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass
