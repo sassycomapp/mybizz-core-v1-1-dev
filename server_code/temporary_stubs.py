@@ -778,3 +778,102 @@ def cancel_booking(booking_id, reason):
 
 *****
 
+@anvil.server.callable
+def search_booking_for_checkin(search_term):
+  """Search for booking by number or guest name"""
+  user = anvil.users.get_user()
+
+  # Try booking number first
+  booking = app_tables.tbl_bookings.get(
+    client_id=user,
+    booking_number=search_term
+  )
+
+  if booking:
+    return booking
+
+  # Try guest email
+  bookings = list(app_tables.tbl_bookings.search(
+    client_id=user
+  ))
+
+  for b in bookings:
+    if b.get('customer_id') and search_term.lower() in b['customer_id']['email'].lower():
+      return b
+
+  return None
+
+@anvil.server.callable
+def process_check_in(booking_id, checkin_data):
+  """Process guest check-in"""
+  try:
+    booking = app_tables.tbl_bookings.get_by_id(booking_id)
+
+    if not booking:
+      return {'success': False, 'error': 'Booking not found'}
+
+    if booking['status'] != 'confirmed':
+      return {'success': False, 'error': f'Cannot check in - status is {booking["status"]}'}
+
+    # Update booking
+    booking['status'] = 'checked_in'
+    booking['checked_in_at'] = datetime.now()
+    booking['id_document'] = checkin_data['id_document']
+    booking['key_number'] = checkin_data.get('key_number', '')
+
+    # Add notes
+    if checkin_data.get('special_requests'):
+      current_notes = booking.get('notes', '')
+      booking['notes'] = f"{current_notes}\nCheck-in requests: {checkin_data['special_requests']}"
+
+    booking.update()
+
+    # TODO: Send welcome email
+
+    return {'success': True}
+
+  except Exception as e:
+    print(f"Error processing check-in: {e}")
+    return {'success': False, 'error': str(e)}
+
+@anvil.server.callable
+def process_check_out(booking_id, checkout_data):
+  """Process guest check-out"""
+  try:
+    booking = app_tables.tbl_bookings.get_by_id(booking_id)
+
+    if not booking:
+      return {'success': False, 'error': 'Booking not found'}
+
+    if booking['status'] != 'checked_in':
+      return {'success': False, 'error': f'Cannot check out - status is {booking["status"]}'}
+
+    # Update booking
+    booking['status'] = 'checked_out'
+    booking['checked_out_at'] = datetime.now()
+    booking['final_amount'] = checkout_data['total']
+    booking['payment_status'] = checkout_data['payment_status']
+
+    # Add charges breakdown to notes
+    notes = f"\nCheckout - Extras: ${checkout_data['extras']:.2f}, Tax: ${checkout_data['tax']:.2f}, Total: ${checkout_data['total']:.2f}"
+    current_notes = booking.get('notes', '')
+    booking['notes'] = current_notes + notes
+
+    booking.update()
+
+    # Update room status to 'dirty' (needs cleaning)
+    if booking.get('resource_id'):
+      booking['resource_id']['status'] = 'dirty'
+      booking['resource_id'].update()
+
+    # TODO: Send thank you email
+    # TODO: Process payment if outstanding
+
+    return {'success': True}
+
+  except Exception as e:
+    print(f"Error processing check-out: {e}")
+    return {'success': False, 'error': str(e)}
+
+*****
+
