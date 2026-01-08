@@ -122,6 +122,7 @@ unique_ids:
     settings: '1767517890074660043137708.6879'
     shared: '1767517904154196907642619.5383'
     shared.component_renderer: '1767522559256439768977490.7387'
+    shared.notification_helper: '1767874915567344358865472.5094'
   scripts: {}
   server_modules:
     server_analytics: '1767523415223348681311721.7667'
