@@ -1,5 +1,35 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'LQQFDJ,LXGARO'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    layout_properties: {grid_position: 'OOIGDQ,TRBKNT'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  - layout_properties: {grid_position: 'OOIGDQ,GQIXBI'}
+    name: lbl_step_indicator
+    properties: {}
+    type: Label
+  - layout_properties: {grid_position: 'HTNAIQ,NBUMIA'}
+    name: fp_steps
+    properties: {}
+    type: FlowPanel
+  - layout_properties: {grid_position: 'MYCACH,TKABWD'}
+    name: col_step_content
+    properties: {}
+    type: ColumnPanel
+  - layout_properties: {grid_position: 'ZUMDRU,GVXIMJ'}
+    name: btn_back
+    properties: {text: button_1}
+    type: Button
+  - layout_properties: {grid_position: 'ZUMDRU,ANDVWR'}
+    name: btn_next
+    properties: {text: button_1}
+    type: Button
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel
