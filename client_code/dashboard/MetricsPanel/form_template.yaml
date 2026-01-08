@@ -1,5 +1,24 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'VMFGUC,EHHSXP'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    - event_bindings: {}
+      layout_properties: {grid_position: 'VMFGUC,CWFPPE'}
+      name: btn_refresh
+      properties: {text: button_1}
+      type: Button
+    - layout_properties: {grid_position: 'YPUEWA,GEIBOV'}
+      name: fp_metrics
+      properties: {}
+      type: FlowPanel
+    layout_properties: {grid_position: 'XCAPYH,ZMQZEP'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel

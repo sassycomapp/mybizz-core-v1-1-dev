@@ -11,15 +11,230 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
 
-# This is a server module. It runs on the Anvil server,
-# rather than in the user's browser.
-#
-# To allow anvil.server.call() to call functions here, we mark
-# them with @anvil.server.callable.
-# Here is an example - you can replace it with your own:
-#
-# @anvil.server.callable
-# def say_hello(name):
-#   print("Hello, " + name + "!")
-#   return 42
-#
+@anvil.server.callable
+@anvil.users.login_required
+def get_recent_activity(limit=10):
+  """
+  Get recent activity feed.
+  
+  Args:
+    limit (int): Number of activities to return
+    
+  Returns:
+    dict: {'success': bool, 'data': list} or {'success': bool, 'error': str}
+  """
+  try:
+    user = anvil.users.get_user()
+
+    # Check permissions
+    if user['role'] not in ['owner', 'manager', 'staff']:
+      return {'success': False, 'error': 'Access denied'}
+
+    activities = []
+
+    # Get recent bookings
+    recent_bookings = list(app_tables.bookings.search(
+      tables.order_by('created_at', ascending=False)
+    ))[:limit]
+
+    for booking in recent_bookings:
+      customer_email = booking['customer_id']['email'] if booking.get('customer_id') else 'Guest'
+      resource_name = booking['resource_id']['resource_name'] if booking.get('resource_id') else 'Unknown'
+
+      # Different descriptions based on status
+      if booking['status'] == 'checked_out':
+        description = f"{customer_email} checked out from {resource_name}"
+      else:
+        description = f"{customer_email} booked {resource_name}"
+
+      activities.append({
+        'type': 'checkout' if booking['status'] == 'checked_out' else 'booking',
+        'description': description,
+        'timestamp': booking['created_at']
+      })
+
+    # Get recent orders
+    recent_orders = list(app_tables.orders.search(
+      tables.order_by('created_at', ascending=False)
+    ))[:limit]
+
+    for order in recent_orders:
+      amount = order.get('total_amount', 0)
+      activities.append({
+        'type': 'order',
+        'description': f"New order {order['order_number']} received (${amount:.2f})",
+        'timestamp': order['created_at']
+      })
+
+    # Get new customers
+    recent_customers = list(app_tables.customers.search(
+      tables.order_by('created_at', ascending=False)
+    ))[:limit]
+
+    for customer in recent_customers:
+      activities.append({
+        'type': 'customer',
+        'description': f"New customer registered: {customer['email']}",
+        'timestamp': customer['created_at']
+      })
+
+    # Get recent blog posts (if blog module exists)
+    try:
+      recent_posts = list(app_tables.blog_posts.search(
+        status='published',
+        tables.order_by('published_at', ascending=False)
+      ))[:5]
+
+      for post in recent_posts:
+        activities.append({
+          'type': 'blog',
+          'description': f"Blog post \"{post['title']}\" published",
+          'timestamp': post['published_at']
+        })
+    except:
+      pass  # Blog table doesn't exist yet
+
+    # Sort all activities by timestamp
+    activities.sort(key=lambda x: x['timestamp'], reverse=True)
+
+    # Return requested limit
+    return {'success': True, 'data': activities[:limit]}
+
+  except Exception as e:
+    print(f"Error getting recent activity: {e}")
+    return {'success': False, 'error': str(e)}
+
+@anvil.server.callable
+@anvil.users.login_required
+def get_dashboard_metrics():
+  """
+  Get dashboard metrics for current user.
+  
+  Returns:
+    dict: {'success': bool, 'data': dict} or {'success': bool, 'error': str}
+  """
+  try:
+    user = anvil.users.get_user()
+
+    # Check permissions
+    if user['role'] not in ['owner', 'manager', 'staff']:
+      return {'success': False, 'error': 'Access denied'}
+
+    from datetime import datetime, timedelta
+
+    today = datetime.now().date()
+    week_start = today - timedelta(days=today.weekday())
+    last_week_start = week_start - timedelta(days=7)
+
+    # Today's revenue
+    today_orders = list(app_tables.orders.search(
+      q.fetch_only('total_amount'),
+      created_at=q.greater_than_or_equal_to(datetime.combine(today, datetime.min.time()))
+    ))
+    today_revenue = sum(o['total_amount'] for o in today_orders if o.get('total_amount'))
+
+    # Yesterday's revenue for comparison
+    yesterday = today - timedelta(days=1)
+    yesterday_orders = list(app_tables.orders.search(
+      q.fetch_only('total_amount'),
+      created_at=q.between(
+        datetime.combine(yesterday, datetime.min.time()),
+        datetime.combine(yesterday, datetime.max.time())
+      )
+    ))
+    yesterday_revenue = sum(o['total_amount'] for o in yesterday_orders if o.get('total_amount'))
+
+    # Calculate revenue change
+    if yesterday_revenue > 0:
+      revenue_change_pct = ((today_revenue - yesterday_revenue) / yesterday_revenue) * 100
+      revenue_change = f"+{revenue_change_pct:.0f}%" if revenue_change_pct > 0 else f"{revenue_change_pct:.0f}%"
+    else:
+      revenue_change = "+0%"
+
+    # This week's bookings
+    week_bookings = len(list(app_tables.bookings.search(
+      created_at=q.greater_than_or_equal_to(datetime.combine(week_start, datetime.min.time()))
+    )))
+
+    # Last week's bookings
+    last_week_bookings = len(list(app_tables.bookings.search(
+      created_at=q.between(
+        datetime.combine(last_week_start, datetime.min.time()),
+        datetime.combine(week_start, datetime.min.time())
+      )
+    )))
+
+    # Calculate booking change
+    if last_week_bookings > 0:
+      bookings_change_pct = ((week_bookings - last_week_bookings) / last_week_bookings) * 100
+      bookings_change = f"+{bookings_change_pct:.0f}%" if bookings_change_pct > 0 else f"{bookings_change_pct:.0f}%"
+    else:
+      bookings_change = "+0%"
+
+    # New customers this week
+    new_customers = len(list(app_tables.customers.search(
+      created_at=q.greater_than_or_equal_to(datetime.combine(week_start, datetime.min.time()))
+    )))
+
+    # Pending tasks (bookings pending confirmation)
+    pending_tasks = len(list(app_tables.bookings.search(
+      status='pending'
+    )))
+
+    return {
+      'success': True,
+      'data': {
+        'today_revenue': today_revenue,
+        'revenue_change': revenue_change,
+        'week_bookings': week_bookings,
+        'bookings_change': bookings_change,
+        'new_customers': new_customers,
+        'customers_change': f"+{new_customers}",
+        'pending_tasks': pending_tasks
+      }
+    }
+
+  except Exception as e:
+    print(f"Error getting dashboard metrics: {e}")
+    return {'success': False, 'error': str(e)}
+
+@anvil.server.callable
+@anvil.users.login_required
+def get_storage_usage():
+  """
+  Get storage usage statistics.
+  
+  Returns:
+    dict: {'success': bool, 'data': dict} or {'success': bool, 'error': str}
+  """
+  try:
+    user = anvil.users.get_user()
+
+    # Check permissions
+    if user['role'] not in ['owner', 'manager']:
+      return {'success': False, 'error': 'Access denied'}
+
+    # Count database rows
+    total_rows = 0
+    for table in [app_tables.bookings, app_tables.customers, app_tables.products]:
+      try:
+        total_rows += len(list(table.search()))
+      except:
+        pass
+
+    # TODO: Calculate media storage (requires traversing media columns)
+    media_bytes = 0
+
+    return {
+      'success': True,
+      'data': {
+        'database_rows': total_rows,
+        'database_limit': 150000,
+        'media_bytes': media_bytes,
+        'media_limit_bytes': 10 * 1024 * 1024 * 1024  # 10 GB
+      }
+    }
+
+  except Exception as e:
+    print(f"Error getting storage usage: {e}")
+    return {'success': False, 'error': str(e)}
