@@ -118,3 +118,13 @@ class CartForm(CartFormTemplate):
   def btn_continue_shopping_click(self, **event_args):
     """This method is called when the button is clicked"""
     pass
+
+  @handle("btn_shop_empty", "click")
+  def btn_shop_empty_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass
+
+  @handle("btn_checkout", "click")
+  def btn_checkout_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass

@@ -22,7 +22,8 @@ components:
       name: lbl_empty
       properties: {}
       type: Label
-    - layout_properties: {grid_position: 'AGCUCW,OLQOSE'}
+    - event_bindings: {}
+      layout_properties: {grid_position: 'AGCUCW,OLQOSE'}
       name: btn_shop_empty
       properties: {text: button_1}
       type: Button
@@ -42,7 +43,8 @@ components:
       name: lbl_total
       properties: {}
       type: Label
-    - layout_properties: {grid_position: 'KXLJAD,HGRONB'}
+    - event_bindings: {}
+      layout_properties: {grid_position: 'KXLJAD,HGRONB'}
       name: btn_checkout
       properties: {text: button_1}
       type: Button
