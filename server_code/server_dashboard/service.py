@@ -238,3 +238,122 @@ def get_storage_usage():
   except Exception as e:
     print(f"Error getting storage usage: {e}")
     return {'success': False, 'error': str(e)}
+
+@anvil.server.callable
+@anvil.users.login_required
+def get_storage_usage():
+  """
+  Get storage usage statistics.
+  
+  Returns:
+    dict: {'success': bool, 'data': dict} or {'success': bool, 'error': str}
+  """
+  try:
+    user = anvil.users.get_user()
+
+    # Check permissions
+    if user['role'] not in ['owner', 'manager']:
+      return {'success': False, 'error': 'Access denied'}
+
+    # Count database rows across all tables
+    total_rows = 0
+
+    tables_to_check = [
+      app_tables.bookings,
+      app_tables.customers,
+      app_tables.products,
+      app_tables.orders,
+      app_tables.order_items,
+      app_tables.services,
+      app_tables.reviews,
+      app_tables.blog_posts
+    ]
+
+    for table in tables_to_check:
+      try:
+        table_rows = len(list(table.search()))
+        total_rows += table_rows
+      except Exception as e:
+        # Table might not exist yet
+        print(f"Could not count rows in table: {e}")
+        pass
+
+    # Calculate media storage
+    # Note: This is an approximation - actual calculation requires
+    # iterating through all media columns
+    media_bytes = 0
+
+    # TODO: Implement actual media calculation by checking media columns
+    # For now, return 0
+
+    # Anvil Hobby Plan limits
+    database_limit = 150000  # rows
+    media_limit_bytes = 10 * 1024 * 1024 * 1024  # 10 GB
+
+    return {
+      'success': True,
+      'data': {
+        'database_rows': total_rows,
+        'database_limit': database_limit,
+        'media_bytes': media_bytes,
+        'media_limit_bytes': media_limit_bytes
+      }
+    }
+
+  except Exception as e:
+    print(f"Error getting storage usage: {e}")
+    return {'success': False, 'error': str(e)}
+
+@anvil.server.callable
+@anvil.users.login_required
+def get_detailed_storage_report():
+  """
+  Get detailed breakdown of storage by table.
+  
+  Returns:
+    dict: {'success': bool, 'data': dict} or {'success': bool, 'error': str}
+  """
+  try:
+    user = anvil.users.get_user()
+
+    # Check permissions
+    if user['role'] not in ['owner', 'manager']:
+      return {'success': False, 'error': 'Access denied'}
+
+    table_counts = {}
+    total_rows = 0
+
+    # Define all tables to check
+    tables_map = {
+      'bookings': app_tables.bookings,
+      'customers': app_tables.customers,
+      'products': app_tables.products,
+      'orders': app_tables.orders,
+      'order_items': app_tables.order_items,
+      'services': app_tables.services,
+      'reviews': app_tables.reviews,
+      'blog_posts': app_tables.blog_posts,
+      'tickets': app_tables.tickets,
+      'ticket_messages': app_tables.ticket_messages
+    }
+
+    for table_name, table in tables_map.items():
+      try:
+        count = len(list(table.search()))
+        table_counts[table_name] = count
+        total_rows += count
+      except Exception as e:
+        # Table doesn't exist yet
+        table_counts[table_name] = 0
+
+    return {
+      'success': True,
+      'data': {
+        'table_counts': table_counts,
+        'total_rows': total_rows
+      }
+    }
+
+  except Exception as e:
+    print(f"Error getting detailed report: {e}")
+    return {'success': False, 'error': str(e)}
