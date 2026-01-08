@@ -1,5 +1,33 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'HITBEJ,LMLPDA'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    - event_bindings: {}
+      layout_properties: {grid_position: 'HITBEJ,VKXXOF'}
+      name: btn_refresh
+      properties: {text: button_1}
+      type: Button
+    - layout_properties: {grid_position: 'BNQQAF,YACMWJ'}
+      name: rp_activities
+      properties: {item_template: dashboard.ActivityFeed.ActivityItemTemplate}
+      type: RepeatingPanel
+    - layout_properties: {grid_position: 'ZQMHGG,PHWNAV'}
+      name: lbl_no_activity
+      properties: {}
+      type: Label
+    - event_bindings: {}
+      layout_properties: {grid_position: 'APRCOU,QITEZR'}
+      name: btn_load_more
+      properties: {text: button_1}
+      type: Button
+    layout_properties: {grid_position: 'DSAOES,KZOCJA'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel

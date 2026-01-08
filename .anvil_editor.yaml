@@ -59,6 +59,7 @@ unique_ids:
     customers.GuestHistoryForm.GuestNoteTemplate: '1767795498813350187195681.5992'
     customers.MyTicketsForm: '1767522251531586308083423.7158'
     dashboard.ActivityFeed: '1767519460449426773004564.13525'
+    dashboard.ActivityFeed.ActivityItemTemplate: '1767862083182373855556288.6307'
     dashboard.DashboardForm: '176751940404389610798146.29724'
     dashboard.MetricsPanel: '1767519430531846716731739.3143'
     dashboard.NotificationComponent: '1767519508539523307945187.9107'
