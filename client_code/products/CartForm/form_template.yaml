@@ -1,5 +1,56 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'ICWHDW,OYQPMT'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    - event_bindings: {}
+      layout_properties: {grid_position: 'ICWHDW,EGIPGD'}
+      name: btn_continue_shopping
+      properties: {text: button_1}
+      type: Button
+    - layout_properties: {grid_position: 'HZGOJY,ATTPNO'}
+      name: rp_cart_items
+      properties: {item_template: products.CartForm.CartItemTemplate}
+      type: RepeatingPanel
+    - layout_properties: {grid_position: 'JXBZGK,SWBCFV'}
+      name: col_empty
+      properties: {}
+      type: ColumnPanel
+    - layout_properties: {grid_position: 'GKWECJ,ODNVRW'}
+      name: lbl_empty
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'AGCUCW,OLQOSE'}
+      name: btn_shop_empty
+      properties: {text: button_1}
+      type: Button
+    - layout_properties: {grid_position: 'XBTRMJ,ATIUUE'}
+      name: col_summary
+      properties: {}
+      type: ColumnPanel
+    - layout_properties: {grid_position: 'TCYFVX,VQMKRZ'}
+      name: lbl_subtotal
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'CVCIRH,WGTAJZ'}
+      name: lbl_tax
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'SDVHPV,RIENJL'}
+      name: lbl_total
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'KXLJAD,HGRONB'}
+      name: btn_checkout
+      properties: {text: button_1}
+      type: Button
+    layout_properties: {grid_position: 'DPZXED,ZZPDNZ'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel
