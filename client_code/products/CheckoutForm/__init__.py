@@ -403,3 +403,13 @@ class CheckoutForm(CheckoutFormTemplate):
     except Exception as e:
       print(f"Error placing order: {e}")
       alert(f"Failed to place order: {str(e)}")
+
+  @handle("btn_back", "click")
+  def btn_back_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass
+
+  @handle("btn_next", "click")
+  def btn_next_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass

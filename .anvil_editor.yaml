@@ -67,6 +67,7 @@ unique_ids:
     products.CartForm: '1767520209798866436167605.9094'
     products.CartForm.CartItemTemplate: '1767876189632800714173603.1887'
     products.CheckoutForm: '176752025442273811016652.87814'
+    products.CheckoutForm.ItemTemplate3: '1767942953507680893954299.4888'
     products.InvoiceListForm: '1767520329326188036343516.10043'
     products.OrderListForm: '1767520280487324228502011.66797'
     products.ProductDetailForm: '1767520186736993179586142.0547'
