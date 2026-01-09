@@ -1,5 +1,50 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'BHMFEE,TJSPUR'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'FLDXMJ,VECZWO'}
+      name: txt_search
+      properties: {}
+      type: TextBox
+    - event_bindings: {}
+      layout_properties: {grid_position: 'FLDXMJ,ZNWDSM'}
+      name: btn_search
+      properties: {text: button_1}
+      type: Button
+    - event_bindings: {}
+      layout_properties: {grid_position: 'FLDXMJ,VWFNVL'}
+      name: dd_status_filter
+      properties: {}
+      type: DropDown
+    - event_bindings: {}
+      layout_properties: {grid_position: 'FLDXMJ,MAJKPX'}
+      name: dd_date_filter
+      properties: {}
+      type: DropDown
+    - components:
+      - name: repeating_panel_1
+        properties: {item_template: products.OrderListForm.OrderRowTemplate}
+        type: RepeatingPanel
+      layout_properties: {grid_position: 'LMCAWH,CQIKFH'}
+      name: dg_orders
+      properties:
+        columns:
+        - {data_key: column_1, id: JKSDUP, title: Column 1}
+        - {data_key: column_2, id: VJQQOR, title: Column 2}
+        - {data_key: column_3, id: OJLQEN, title: Column 3}
+      type: DataGrid
+    - layout_properties: {grid_position: 'SGNHRY,JLZDAQ'}
+      name: lbl_stats
+      properties: {}
+      type: Label
+    layout_properties: {grid_position: 'OVBNZR,NXZKDG'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel
