@@ -1,5 +1,15 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'XPTUCL,AGUYVF'}
+      name: file_loader_1
+      properties: {}
+      type: FileLoader
+    layout_properties: {grid_position: 'QYSPSR,SYDPRG'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel
