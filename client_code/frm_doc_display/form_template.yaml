@@ -2,9 +2,37 @@ components:
 - components:
   - components:
     - layout_properties: {grid_position: 'XPTUCL,AGUYVF'}
-      name: file_loader_1
-      properties: {}
+      name: fl_new_doc
+      properties: {icon: 'fa:upload', text: Upload New Doc}
       type: FileLoader
+    - layout_properties: {grid_position: 'XPTUCL,SRSDFW'}
+      name: btn_save_new
+      properties: {text: Save New File}
+      type: Button
+    - layout_properties: {grid_position: 'XPTUCL,IEJZSD'}
+      name: btn_select_doc
+      properties: {text: Select Doc}
+      type: Button
+    - layout_properties: {grid_position: 'CLKOVE,YLVBGC'}
+      name: lbl_new_file
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'CLKOVE,GYHYWE'}
+      name: dd_select_doc
+      properties: {}
+      type: DropDown
+    - layout_properties: {grid_position: 'ECEQYW,BSYHXI'}
+      name: btn_edit
+      properties: {text: Edit}
+      type: Button
+    - layout_properties: {grid_position: 'ECEQYW,LIOBRO'}
+      name: btn_save
+      properties: {text: Save}
+      type: Button
+    - layout_properties: {grid_position: 'ECEQYW,DPFYGP'}
+      name: btn_cancel
+      properties: {text: Cancel}
+      type: Button
     layout_properties: {grid_position: 'QYSPSR,SYDPRG'}
     name: column_panel_1
     properties: {}
