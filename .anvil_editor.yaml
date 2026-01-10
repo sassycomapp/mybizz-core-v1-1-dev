@@ -64,6 +64,7 @@ unique_ids:
     dashboard.MetricsPanel: '1767519430531846716731739.3143'
     dashboard.NotificationComponent: '1767519508539523307945187.9107'
     dashboard.StorageWidget: '1767519477862403872976320.36115'
+    frm_doc_display: '1768065021017202898766687.33698'
     products.CartForm: '1767520209798866436167605.9094'
     products.CartForm.CartItemTemplate: '1767876189632800714173603.1887'
     products.CheckoutForm: '176752025442273811016652.87814'
