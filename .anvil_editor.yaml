@@ -130,6 +130,9 @@ unique_ids:
     shared.notification_helper: '1767874915567344358865472.5094'
   scripts: {}
   server_modules:
+    Docs: '1768045108278409974163239.26215'
+    Docs.ServerPackage1: '1768045460181427106855010.0519'
+    Docs.ServerPackage1.ops_anvil_setup: '1768045359238701684856803.9133'
     server_analytics: '1767523415223348681311721.7667'
     server_analytics.booking_service: '1767524355992844321262383.8818'
     server_analytics.customer_service: '1767524342292720196415098.4109'
