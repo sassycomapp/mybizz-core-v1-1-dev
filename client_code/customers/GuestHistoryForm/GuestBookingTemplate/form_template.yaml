@@ -2,15 +2,7 @@ components:
 - components:
   - components:
     - layout_properties: {grid_position: 'RIYBOP,MJFJDH'}
-      name: lbl_dates
-      properties: {}
-      type: Label
-    - layout_properties: {grid_position: 'RIYBOP,XIQFCO'}
-      name: lbl_details
-      properties: {}
-      type: Label
-    - layout_properties: {grid_position: 'RIYBOP,RTPKQM'}
-      name: lbl_status
+      name: lbl_note
       properties: {}
       type: Label
     layout_properties: {grid_position: 'OREZJE,XYUOIR'}

@@ -29,17 +29,16 @@ components:
       name: dd_status_filter
       properties: {}
       type: DropDown
-    - components:
-      - name: repeating_panel_1
-        properties: {item_template: customers.CustomerListForm.CustomerRowTemplate}
-        type: RepeatingPanel
+    - components: []
       layout_properties: {grid_position: 'JVPHXR,RFZQQM'}
       name: dg_customers
       properties:
         columns:
-        - {data_key: column_1, id: JKSDUP, title: Column 1}
-        - {data_key: column_2, id: VJQQOR, title: Column 2}
-        - {data_key: column_3, id: OJLQEN, title: Column 3}
+        - {data_key: column_1, id: JKSDUP, title: email}
+        - {data_key: column_2, id: VJQQOR, title: role}
+        - {data_key: column_3, id: OJLQEN, title: account _status}
+        - {data_key: column_1, id: MSEVDP, title: created_at}
+        - {data_key: column_1, id: PIYYYN, title: actions}
       type: DataGrid
     - layout_properties: {grid_position: 'BLMRZH,YPHUOK'}
       name: lbl_stats

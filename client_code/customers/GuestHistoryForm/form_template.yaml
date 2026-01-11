@@ -32,15 +32,15 @@ components:
       type: Label
     - layout_properties: {grid_position: 'AKLOER,ECPKYU'}
       name: rp_bookings
-      properties: {item_template: customers.GuestHistoryForm.GuestNoteTemplate}
+      properties: {item_template: customers.GuestHistoryForm.GuestBookingTemplate}
       type: RepeatingPanel
     - layout_properties: {grid_position: 'YXUZJF,QUMOAK'}
       name: lbl_notes_section
       properties: {}
       type: Label
-    - layout_properties: {grid_position: 'VXMCEL,SUJLKW'}
+    - layout_properties: {grid_position: 'NHAGRR,SESUNL'}
       name: rp_notes
-      properties: {item_template: customers.GuestHistoryForm.ItemTemplate2}
+      properties: {item_template: customers.GuestHistoryForm.GuestNoteTemplate}
       type: RepeatingPanel
     - event_bindings: {}
       layout_properties: {grid_position: 'VWYAAT,DTWGOP'}
