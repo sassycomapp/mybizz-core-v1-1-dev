@@ -12,7 +12,7 @@ components:
   properties: {}
   type: Link
 - layout_properties: {grid_position: 'CGRZBY,IKVKIX'}
-  name: link_cancel
+  name: link_delete
   properties: {}
   type: Link
 container: {type: ColumnPanel}

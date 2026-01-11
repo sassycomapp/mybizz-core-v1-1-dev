@@ -34,9 +34,11 @@ components:
       name: dg_posts
       properties:
         columns:
-        - {data_key: column_1, id: JKSDUP, title: Column 1}
-        - {data_key: column_2, id: VJQQOR, title: Column 2}
-        - {data_key: column_3, id: OJLQEN, title: Column 3}
+        - {data_key: column_1, id: JKSDUP, title: title}
+        - {data_key: column_2, id: VJQQOR, title: category}
+        - {data_key: column_3, id: OJLQEN, title: status}
+        - {data_key: column_1, id: LCAMGK, title: published_at}
+        - {data_key: column_1, id: ACOOCL, title: actions}
       type: DataGrid
     - layout_properties: {grid_position: 'SWDGKR,TRNETG'}
       name: lbl_no_posts

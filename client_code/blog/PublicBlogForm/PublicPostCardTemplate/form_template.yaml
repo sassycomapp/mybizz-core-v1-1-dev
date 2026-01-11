@@ -18,7 +18,7 @@ components:
 - event_bindings: {}
   layout_properties: {grid_position: 'FVLRES,XLDLTC'}
   name: link_read_more
-  properties: {}
+  properties: {align: right}
   type: Link
 container: {type: ColumnPanel}
 is_package: true

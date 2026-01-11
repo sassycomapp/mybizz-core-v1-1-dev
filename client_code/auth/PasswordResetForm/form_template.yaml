@@ -3,11 +3,11 @@ components:
   - components:
     - layout_properties: {grid_position: 'FEVXUN,KPCHQG'}
       name: lbl_title
-      properties: {}
+      properties: {align: center}
       type: Label
     - layout_properties: {grid_position: 'JYXBAD,TVOHWD'}
       name: lbl_subtitle
-      properties: {}
+      properties: {align: center}
       type: Label
     - layout_properties: {grid_position: 'JTHBIO,FEZUVZ'}
       name: txt_email
@@ -29,7 +29,7 @@ components:
     - event_bindings: {}
       layout_properties: {grid_position: 'MZFGGG,ITMELA'}
       name: link_back_to_login
-      properties: {}
+      properties: {align: center}
       type: Link
     layout_properties: {grid_position: 'VDWGJU,VNJUTJ'}
     name: column_panel_1

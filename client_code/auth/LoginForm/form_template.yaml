@@ -20,7 +20,7 @@ components:
     - event_bindings: {}
       layout_properties: {grid_position: 'YTAAOD,VBMYLF'}
       name: link_forgot_password
-      properties: {}
+      properties: {align: right}
       type: Link
     - event_bindings: {}
       layout_properties: {grid_position: 'BZBMHJ,KAXWYM'}
@@ -33,12 +33,12 @@ components:
     type: ColumnPanel
   - layout_properties: {grid_position: 'THSIDS,BUEFOW'}
     name: lbl_divider
-    properties: {}
+    properties: {align: center}
     type: Label
   - event_bindings: {}
     layout_properties: {grid_position: 'OGZHWV,WWWQPS'}
     name: link_create_account
-    properties: {}
+    properties: {align: center}
     type: Link
   - layout_properties: {grid_position: 'BYABYZ,TCTRUL'}
     name: lbl_error
