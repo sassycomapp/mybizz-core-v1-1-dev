@@ -9,7 +9,7 @@ components:
     properties: {}
     type: TextBox
   - event_bindings: {}
-    layout_properties: {grid_position: 'ZMSQCB,UDOWGB'}
+    layout_properties: {grid_position: 'QYHBXR,COUSVP'}
     name: btn_search
     properties: {text: button_1}
     type: Button
@@ -27,7 +27,7 @@ components:
     properties: {}
     type: Label
   - layout_properties: {grid_position: 'QBDRTB,NHHWUE'}
-    name: text_box_1
+    name: txt_id_document
     properties: {}
     type: TextBox
   - layout_properties: {grid_position: 'ZFPYIU,DMWDSV'}

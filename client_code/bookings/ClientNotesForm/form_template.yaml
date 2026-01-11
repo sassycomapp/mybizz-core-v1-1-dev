@@ -10,6 +10,10 @@ components:
       name: lbl_title
       properties: {}
       type: Label
+    - layout_properties: {grid_position: 'ALZOZP,CEYYUR'}
+      name: lbl_privacy_notice
+      properties: {}
+      type: Label
     - layout_properties: {grid_position: 'KHGXWY,WYPLPL'}
       name: rp_notes
       properties: {item_template: bookings.ClientNotesForm.ClientNoteTemplate}

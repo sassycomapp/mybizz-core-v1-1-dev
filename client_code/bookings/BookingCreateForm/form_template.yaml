@@ -5,15 +5,15 @@ components:
       name: lbl_title
       properties: {}
       type: Label
+    - event_bindings: {}
+      layout_properties: {grid_position: 'YNNLVJ,QPDJIJ'}
+      name: btn_check_availability
+      properties: {text: button_1}
+      type: Button
     layout_properties: {grid_position: 'UZIDEF,OBIFEC'}
     name: column_panel_1
     properties: {}
     type: ColumnPanel
-  - event_bindings: {}
-    layout_properties: {grid_position: 'TXEENH,PNSMEB'}
-    name: btn_check_availability
-    properties: {text: button_1}
-    type: Button
   - layout_properties: {grid_position: 'CEUPEP,HFYVQF'}
     name: lbl_customer_field
     properties: {}
@@ -47,7 +47,7 @@ components:
     name: dp_start_date
     properties: {}
     type: DatePicker
-  - layout_properties: {grid_position: 'WPUHTN,LMLDCS'}
+  - layout_properties: {grid_position: 'BURLLA,EOLRQS'}
     name: txt_start_time
     properties: {}
     type: TextBox
@@ -59,7 +59,7 @@ components:
     name: dp_end_date
     properties: {}
     type: DatePicker
-  - layout_properties: {grid_position: 'MXORPU,MNRKPV'}
+  - layout_properties: {grid_position: 'HOJPGE,EYVDFW'}
     name: txt_end_time
     properties: {}
     type: TextBox
@@ -85,12 +85,12 @@ components:
     properties: {text: button_3}
     type: Button
   - event_bindings: {}
-    layout_properties: {grid_position: 'TOPAKW,LDVMGH'}
+    layout_properties: {grid_position: 'LDJAFO,GFZOXH'}
     name: btn_save_pending
     properties: {text: button_2}
     type: Button
   - event_bindings: {}
-    layout_properties: {grid_position: 'YVCXVK,QAFRMZ'}
+    layout_properties: {grid_position: 'LDJAFO,ADVKUK'}
     name: btn_confirm_pay
     properties: {text: button_4}
     type: Button

@@ -1,51 +1,51 @@
 components:
 - components:
   - components:
-    - layout_properties: {grid_position: 'ONKZKM,WJZTQB'}
+    - layout_properties: {grid_position: 'VRVEIP,VKKVKE'}
       name: lbl_title
       properties: {}
       type: Label
-    layout_properties: {grid_position: 'ILSGYU,VUBDUE'}
+    - event_bindings: {}
+      layout_properties: {grid_position: 'BBDEUB,ADOODV'}
+      name: btn_view_day
+      properties: {text: button_1}
+      type: Button
+    - event_bindings: {}
+      layout_properties: {grid_position: 'BBDEUB,CDZBOZ'}
+      name: btn_view_week
+      properties: {text: button_1}
+      type: Button
+    - event_bindings: {}
+      layout_properties: {grid_position: 'BBDEUB,UARFIO'}
+      name: btn_next
+      properties: {text: button_1}
+      type: Button
+    - event_bindings: {}
+      layout_properties: {grid_position: 'BBDEUB,VWTDZF LNQIKK,GNIZUJ'}
+      name: btn_prev
+      properties: {text: button_1}
+      type: Button
+    - event_bindings: {}
+      layout_properties: {grid_position: 'BBDEUB,VWTDZF LNQIKK,UCAJHA'}
+      name: btn_today
+      properties: {text: button_1}
+      type: Button
+    - layout_properties: {grid_position: 'PYPPPY,SVQQYY'}
+      name: col_timeline
+      properties: {}
+      type: ColumnPanel
+    - layout_properties: {grid_position: 'QARGMR,FUUHAY'}
+      name: lbl_legend
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'ZWTMBK,YRYPRS'}
+      name: lbl_loading
+      properties: {}
+      type: Label
+    layout_properties: {grid_position: 'RAZUIL,DRPCVY'}
     name: column_panel_1
-    properties: {}
+    properties: {col_widths: '{"ADOODV":10,"CDZBOZ":15,"UARFIO":15,"VWTDZF":20}'}
     type: ColumnPanel
-  - event_bindings: {}
-    layout_properties: {grid_position: 'ILSGYU,YRPLZE'}
-    name: btn_view_day
-    properties: {text: button_1}
-    type: Button
-  - event_bindings: {}
-    layout_properties: {grid_position: 'ILSGYU,YLRKZP'}
-    name: btn_view_week
-    properties: {text: button_1}
-    type: Button
-  - event_bindings: {}
-    layout_properties: {grid_position: 'ILSGYU,DPZJMI'}
-    name: btn_prev
-    properties: {text: button_1}
-    type: Button
-  - event_bindings: {}
-    layout_properties: {grid_position: 'ILSGYU,MTKNBU'}
-    name: btn_next
-    properties: {text: button_1}
-    type: Button
-  - event_bindings: {}
-    layout_properties: {grid_position: 'ILSGYU,AQYXXT'}
-    name: btn_today
-    properties: {text: button_1}
-    type: Button
-  - layout_properties: {grid_position: 'KFUBDO,JPFSGP'}
-    name: col_timeline
-    properties: {}
-    type: ColumnPanel
-  - layout_properties: {grid_position: 'URIKJU,ZVFOOK'}
-    name: lbl_legend
-    properties: {}
-    type: Label
-  - layout_properties: {grid_position: 'MFSYIO,LUYEWJ'}
-    name: lbl_loading
-    properties: {}
-    type: Label
   layout_properties: {slot: default}
   name: content_panel
   properties: {}

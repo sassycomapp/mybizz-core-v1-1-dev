@@ -47,6 +47,8 @@ unique_ids:
     customers.ClientPortalForm: '1767522211333432793843844.0637'
     customers.ClientPortalForm.DocumentTemplate: '1767791897452902313101059.2926'
     customers.ClientPortalForm.InvoiceTemplate: '1767791819469677299130711.7383'
+    customers.ClientPortalForm.ItemTemplate4: '1768142809710480160195826.6192'
+    customers.ClientPortalForm.ItemTemplate5: '1768142809889331427920475.0676'
     customers.ClientPortalForm.PastAppointmentTemplate: '1767791660365355059334736.92096'
     customers.ClientPortalForm.UpcomingAppointmentTemplate: '1767794151216544377232198.98883'
     customers.CustomerDetailForm: '1767522173242523997932621.83966'

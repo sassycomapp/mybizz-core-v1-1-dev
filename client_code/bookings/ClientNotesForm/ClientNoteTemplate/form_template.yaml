@@ -1,17 +1,17 @@
 components:
-- layout_properties: {grid_position: 'XBZZKQ,IGFHJY'}
+- layout_properties: {grid_position: 'SCIOCU,HYLUDP'}
   name: lbl_timestamp
   properties: {}
   type: Label
-- layout_properties: {grid_position: 'XBZZKQ,VGXRBX'}
+- layout_properties: {grid_position: 'AYCAVS,OWQCYM'}
   name: lbl_author
   properties: {}
   type: Label
-- layout_properties: {grid_position: 'XBZZKQ,BXYXVY'}
+- layout_properties: {grid_position: 'OTNJXX,WMQNLP'}
   name: lbl_note
   properties: {}
   type: Label
-- layout_properties: {grid_position: 'XBZZKQ,CYKTXJ'}
+- layout_properties: {grid_position: 'HCXNNB,VFVICB'}
   name: lbl_confidential
   properties: {}
   type: Label

@@ -4,27 +4,27 @@ components:
     name: lbl_date
     properties: {}
     type: Label
-  - layout_properties: {grid_position: 'YEPTJG,XLQDST'}
+  - layout_properties: {grid_position: 'FOXGMP,XYCABM'}
     name: lbl_client
     properties: {}
     type: Label
-  - layout_properties: {grid_position: 'BHQAHK,BZRZYO'}
+  - layout_properties: {grid_position: 'FOXGMP,XHIXAA'}
     name: lbl_service
     properties: {}
     type: Label
-  - layout_properties: {grid_position: 'UJUMSZ,AGWPHA'}
+  - layout_properties: {grid_position: 'FOXGMP,EGSYZH'}
     name: lbl_duration
     properties: {}
     type: Label
-  - layout_properties: {grid_position: 'PEVIZE,QITMPC'}
+  - layout_properties: {grid_position: 'FOXGMP,WCGVLW'}
     name: lbl_rate
     properties: {}
     type: Label
-  - layout_properties: {grid_position: 'RKZJTN,LYONUS'}
+  - layout_properties: {grid_position: 'FOXGMP,JMYKCV'}
     name: lbl_total
     properties: {}
     type: Label
-  - layout_properties: {grid_position: 'HRJTNT,EOZJNT'}
+  - layout_properties: {grid_position: 'FOXGMP,LYLYGF'}
     name: link_delete
     properties: {}
     type: Link

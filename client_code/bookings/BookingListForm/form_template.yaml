@@ -6,7 +6,7 @@ components:
       properties: {}
       type: Label
     - event_bindings: {}
-      layout_properties: {grid_position: 'EPGGCX,KUNQGC'}
+      layout_properties: {grid_position: 'JSOCWQ,SSDCWS'}
       name: btn_new_booking
       properties: {text: button_1}
       type: Button
@@ -20,7 +20,7 @@ components:
       properties: {}
       type: DropDown
     - event_bindings: {}
-      layout_properties: {grid_position: 'EMPTWH,ZFSIQM'}
+      layout_properties: {grid_position: 'XBRMWG,DYMVXW'}
       name: dd_resource_filter
       properties: {}
       type: DropDown
@@ -29,12 +29,12 @@ components:
       properties: {}
       type: DatePicker
     - event_bindings: {}
-      layout_properties: {grid_position: 'CJVGVT,CCLPZK'}
+      layout_properties: {grid_position: 'FUPGOT,BHPODO'}
       name: dp_date_to
       properties: {}
       type: DatePicker
     - event_bindings: {}
-      layout_properties: {grid_position: 'GSYERP,MUABER'}
+      layout_properties: {grid_position: 'FUPGOT,YJMTNR'}
       name: btn_search
       properties: {text: button_1}
       type: Button

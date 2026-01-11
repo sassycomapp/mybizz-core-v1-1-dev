@@ -55,9 +55,13 @@ components:
     name: lbl_documents_section
     properties: {}
     type: Label
-  - layout_properties: {grid_position: 'KIRHZN,WKRESV'}
+  - layout_properties: {grid_position: 'UMTFYD,HGZUSN'}
     name: rp_documents
     properties: {item_template: customers.ClientPortalForm.ItemTemplate5}
+    type: RepeatingPanel
+  - layout_properties: {grid_position: 'UMTFYD,HGZUSN'}
+    name: repeating_panel_1
+    properties: {item_template: customers.ClientPortalForm.ItemTemplate4}
     type: RepeatingPanel
   layout_properties: {slot: default}
   name: content_panel

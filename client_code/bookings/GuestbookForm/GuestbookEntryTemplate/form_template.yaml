@@ -1,17 +1,17 @@
 components:
-- layout_properties: {grid_position: 'CHUHCF,NPHJNQ'}
+- layout_properties: {grid_position: 'QYRDVB,CKQYOP'}
   name: lbl_stars
   properties: {}
   type: Label
-- layout_properties: {grid_position: 'CHUHCF,YFYBEL'}
+- layout_properties: {grid_position: 'XPNKUU,QLVETL'}
   name: lbl_title
   properties: {}
   type: Label
-- layout_properties: {grid_position: 'CHUHCF,TQEHBY'}
+- layout_properties: {grid_position: 'ANNVAS,DHHGOQ'}
   name: lbl_comment
   properties: {}
   type: Label
-- layout_properties: {grid_position: 'CHUHCF,GKDEVO'}
+- layout_properties: {grid_position: 'WELZHR,PRJQEY'}
   name: lbl_meta
   properties: {}
   type: Label
