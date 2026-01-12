@@ -1,0 +1,67 @@
+components:
+- components:
+  - components:
+    - layout_properties: {grid_position: 'VLWSCF,YSAEWV'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'VLWSCF,JFPWAF'}
+      name: btn_add
+      properties: {text: button_1}
+      type: Button
+    layout_properties: {grid_position: 'CQMNVX,IAQMPN'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  - layout_properties: {grid_position: 'THQRQB,RRRRIG'}
+    name: lbl_search_field
+    properties: {align: right, text: Search}
+    type: Label
+  - layout_properties: {grid_position: 'THQRQB,OAVURQ'}
+    name: txt_search
+    properties: {}
+    type: TextBox
+  - layout_properties: {grid_position: 'THQRQB,MFVOOO'}
+    name: btn_search
+    properties: {text: button_1}
+    type: Button
+  - layout_properties: {grid_position: 'JJJVTZ,ABQSZY'}
+    name: lbl_category_field
+    properties: {align: right, text: Category}
+    type: Label
+  - layout_properties: {grid_position: 'JJJVTZ,ZVWCXF'}
+    name: dd_category_filter
+    properties: {}
+    type: DropDown
+  - layout_properties: {grid_position: 'JJJVTZ,KGBIKT'}
+    name: d_stock_filter
+    properties: {}
+    type: DropDown
+  - components:
+    - name: repeating_panel_1
+      properties: {item_template: products.ProductListForm.ProductRowTemplate}
+      type: RepeatingPanel
+    layout_properties: {grid_position: 'XZASYP,UDILFG'}
+    name: dg_products
+    properties:
+      columns:
+      - {data_key: column_1, id: JKSDUP, title: Column 1}
+      - {data_key: column_2, id: VJQQOR, title: Column 2}
+      - {data_key: column_3, id: OJLQEN, title: Column 3}
+    type: DataGrid
+  - layout_properties: {grid_position: 'UBSSRI,KVZZDY'}
+    name: lbl_stats
+    properties: {}
+    type: Label
+  layout_properties: {slot: default}
+  name: content_panel
+  properties: {}
+  type: ColumnPanel
+- layout_properties: {slot: nav-right}
+  name: navbar_links
+  properties: {}
+  type: FlowPanel
+container:
+  properties: {html: '@theme:standard-page.html'}
+  type: HtmlTemplate
+is_package: true

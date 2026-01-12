@@ -2,6 +2,7 @@ components:
 - components:
   - components:
     - components: []
+      event_bindings: {}
       layout_properties: {grid_position: 'HOODEU,FQTFSL'}
       name: link_back
       properties: {}
@@ -14,7 +15,8 @@ components:
       name: lbl_product_name_field
       properties: {align: right, text: Product Name}
       type: Label
-    - layout_properties: {grid_position: 'JMUUVN,BVNVTS'}
+    - event_bindings: {}
+      layout_properties: {grid_position: 'JMUUVN,BVNVTS'}
       name: txt_name
       properties: {}
       type: TextBox
@@ -76,21 +78,97 @@ components:
       name: lbl_product_type
       properties: {}
       type: Label
-    - layout_properties: {grid_position: 'UGZSFY,VJGGYW'}
+    - event_bindings: {}
+      layout_properties: {grid_position: 'UGZSFY,VJGGYW'}
       name: rb_physical
       properties: {text: radio_button_1}
       type: RadioButton
-    - layout_properties: {grid_position: 'UGZSFY,DTWJWS'}
+    - event_bindings: {}
+      layout_properties: {grid_position: 'UGZSFY,DTWJWS'}
       name: rb_digital
       properties: {text: radio_button_2}
       type: RadioButton
-    - layout_properties: {grid_position: 'UGZSFY,PQUYCI'}
+    - event_bindings: {}
+      layout_properties: {grid_position: 'UGZSFY,PQUYCI'}
       name: rb_service
       properties: {text: radio_button_3}
       type: RadioButton
-    - layout_properties: {grid_position: 'RAVYOE,CJXXYW'}
+    - components:
+      - layout_properties: {grid_position: 'EELGIR,BXRLSU'}
+        name: lbl_sku_field
+        properties: {align: right, text: SKU}
+        type: Label
+      - layout_properties: {grid_position: 'EELGIR,IGVJIC'}
+        name: txt_sku
+        properties: {}
+        type: TextBox
+      - layout_properties: {grid_position: 'NYVWMP,APPIQH'}
+        name: lbl_stock_quantity_field
+        properties: {align: right, text: Stock Quantity}
+        type: Label
+      - layout_properties: {grid_position: 'NYVWMP,GMPEGK'}
+        name: txt_stock
+        properties: {}
+        type: TextBox
+      - layout_properties: {grid_position: 'OYPKTZ,CYZGRJ'}
+        name: lbl_low_stock_alert
+        properties: {align: right, text: Low Stock Alert}
+        type: Label
+      - layout_properties: {grid_position: 'OYPKTZ,LSEYOV'}
+        name: txt_low_stock_alert
+        properties: {}
+        type: TextBox
+      - layout_properties: {grid_position: 'IXPKME,ESMBZQ'}
+        name: lbl_weight_field
+        properties: {align: right, text: Weight (kg)}
+        type: Label
+      - layout_properties: {grid_position: 'IXPKME,ZCPJOX IVPDZY,FRTSYO'}
+        name: txt_weight
+        properties: {}
+        type: TextBox
+      - layout_properties: {grid_position: 'IXPKME,ZCPJOX VOPPUT,SEEBSS'}
+        name: cb_track_inventory
+        properties: {align: center, text: check_box_1}
+        type: CheckBox
+      - layout_properties: {grid_position: 'IXPKME,ZCPJOX GDQXOB,BFIHJO'}
+        name: cb_allow_backorders
+        properties: {align: center, text: check_box_1}
+        type: CheckBox
+      - layout_properties: {grid_position: 'SKAVIJ,SFEFHD'}
+        name: lbl_images_field
+        properties: {text: Images}
+        type: Label
+      - event_bindings: {}
+        layout_properties: {grid_position: 'SKAVIJ,JQMFWV'}
+        name: file_images
+        properties: {align: right}
+        type: FileLoader
+      - layout_properties: {grid_position: 'SKAVIJ,VOOLOH'}
+        name: cb_active
+        properties: {align: center, text: check_box_1}
+        type: CheckBox
+      - layout_properties: {grid_position: 'MCJGAY,YDJIDF'}
+        name: fp_image_preview
+        properties: {}
+        type: FlowPanel
+      - event_bindings: {}
+        layout_properties: {grid_position: 'FRCDHS,XTMONF'}
+        name: btn_cancel
+        properties: {text: button_1}
+        type: Button
+      - event_bindings: {}
+        layout_properties: {grid_position: 'FRCDHS,FBYLJX'}
+        name: btn_save
+        properties: {text: button_1}
+        type: Button
+      - event_bindings: {}
+        layout_properties: {grid_position: 'FRCDHS,XHFHRL'}
+        name: btn_save_and_new
+        properties: {text: button_1}
+        type: Button
+      layout_properties: {grid_position: 'RAVYOE,CJXXYW'}
       name: col_physical_fields
-      properties: {}
+      properties: {col_widths: '{"SFEFHD":15,"JQMFWV":15,"VOOLOH":30}'}
       type: ColumnPanel
     layout_properties: {grid_position: 'ZCVKOS,CWUYJQ'}
     name: column_panel_1

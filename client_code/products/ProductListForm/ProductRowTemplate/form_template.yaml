@@ -1,0 +1,40 @@
+components:
+- components:
+  - layout_properties: {grid_position: 'VOFNGV,JQDRAE'}
+    name: img_product
+    properties: {height: 41.33331298828125}
+    type: Image
+  - layout_properties: {grid_position: 'VOFNGV,UTIDRD'}
+    name: lbl_name
+    properties: {}
+    type: Label
+  - layout_properties: {grid_position: 'VOFNGV,VPLTXD'}
+    name: lbl_price
+    properties: {}
+    type: Label
+  - layout_properties: {grid_position: 'VOFNGV,LYDAAQ'}
+    name: lbl_stock
+    properties: {}
+    type: Label
+  - layout_properties: {grid_position: 'VOFNGV,EQWVHA'}
+    name: lbl_status
+    properties: {}
+    type: Label
+  - layout_properties: {grid_position: 'VOFNGV,DEIHAP'}
+    name: link_edit
+    properties: {}
+    type: Link
+  - layout_properties: {grid_position: 'VOFNGV,EVGEIN'}
+    name: link_duplicate
+    properties: {}
+    type: Link
+  - layout_properties: {grid_position: 'VOFNGV,IIZCJO'}
+    name: link_delete
+    properties: {}
+    type: Link
+  layout_properties: {column: 'null'}
+  name: column_panel_1
+  properties: {}
+  type: ColumnPanel
+container: {type: DataRowPanel}
+is_package: true
