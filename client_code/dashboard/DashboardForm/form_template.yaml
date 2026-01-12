@@ -1,5 +1,62 @@
 components:
-- components: []
+- components:
+  - components:
+    - components:
+      - layout_properties: {grid_position: 'NDZDDU,LYOEDV'}
+        name: link_menu
+        properties: {}
+        type: Link
+      - layout_properties: {grid_position: 'NDZDDU,OZIJJQ'}
+        name: lbl_app_name
+        properties: {}
+        type: Label
+      - layout_properties: {grid_position: 'NDZDDU,QWQWFS'}
+        name: lbl_user_name
+        properties: {}
+        type: Label
+      - layout_properties: {grid_position: 'NDZDDU,GJYSLC'}
+        name: btn_logout
+        properties: {text: button_1}
+        type: Button
+      layout_properties: {grid_position: 'LLVQBR,QUKPXV'}
+      name: col_header
+      properties: {}
+      type: ColumnPanel
+    - components:
+      - components: []
+        name: col_sidebar
+        properties: {}
+        type: ColumnPanel
+      - components:
+        - layout_properties: {grid_position: 'OHXGHP,MTIOJR'}
+          name: lbl_page_title
+          properties: {background: 'theme:Primary Container'}
+          type: Label
+        - components: []
+          layout_properties: {grid_position: 'DRQMPQ,UVOBWX'}
+          name: col_metrics
+          properties: {role: tonal-card}
+          type: ColumnPanel
+        - components: []
+          layout_properties: {grid_position: 'JYLRPZ,TVJHXE'}
+          name: col_activity
+          properties: {role: tonal-card}
+          type: ColumnPanel
+        - layout_properties: {grid_position: 'TKUYIS,HHKTFU'}
+          name: col_storage
+          properties: {role: tonal-card}
+          type: ColumnPanel
+        name: col_content
+        properties: {background: 'theme:Primary'}
+        type: ColumnPanel
+      layout_properties: {grid_position: 'UPDICE,NMKERN'}
+      name: linear_main
+      properties: {}
+      type: LinearPanel
+    layout_properties: {grid_position: 'EFHMFU,BUHPIP'}
+    name: column_panel_1
+    properties: {col_widths: '{"NMKERN":40}'}
+    type: ColumnPanel
   layout_properties: {slot: default}
   name: content_panel
   properties: {}
