@@ -1,17 +1,98 @@
 components:
 - components:
   - components:
-    - name: column_panel_2
+    - event_bindings: {}
+      layout_properties: {grid_position: 'RDVIWZ,UKFCAT'}
+      name: link_back
+      properties: {}
+      type: Link
+    - components:
+      - layout_properties: {grid_position: 'ZVBOPO,YBQNDK'}
+        name: img_main
+        properties: {}
+        type: Image
+      - layout_properties: {grid_position: 'KJVNVR,TQZHDC'}
+        name: fp_thumbnails
+        properties: {}
+        type: FlowPanel
+      layout_properties: {grid_position: 'QMVWWK,IJICNS'}
+      name: column_panel_2
       properties: {}
       type: ColumnPanel
-    - components: []
-      name: column_panel_1
+    - components:
+      - layout_properties: {grid_position: 'CVIOBV,PUGZUS'}
+        name: lbl_name
+        properties: {}
+        type: Label
+      - layout_properties: {grid_position: 'DLLOTJ,ZGJTJM'}
+        name: fp_price
+        properties: {}
+        type: FlowPanel
+      - layout_properties: {grid_position: 'GMFFTQ,BSSOIA'}
+        name: lbl_price
+        properties: {}
+        type: Label
+      - layout_properties: {grid_position: 'BBTHUQ,IDNCOA'}
+        name: lbl_compare_price
+        properties: {}
+        type: Label
+      - layout_properties: {grid_position: 'IOODMC,XRZMKW'}
+        name: fp_rating
+        properties: {}
+        type: FlowPanel
+      - layout_properties: {grid_position: 'ZSNREH,LKUOLB'}
+        name: lbl_description
+        properties: {}
+        type: Label
+      - layout_properties: {grid_position: 'FIKZFC,EQEWGV'}
+        name: dd_variant
+        properties: {}
+        type: DropDown
+      - components:
+        - event_bindings: {}
+          layout_properties: {}
+          name: btn_decrease
+          properties: {text: button_1}
+          type: Button
+        - layout_properties: {width: 85.000251953125}
+          name: txt_quantity
+          properties: {align: center}
+          type: TextBox
+        - event_bindings: {}
+          layout_properties: {}
+          name: btn_increase
+          properties: {text: button_1}
+          type: Button
+        layout_properties: {grid_position: 'ECTTWF,LWNOJE'}
+        name: fp_quantity
+        properties: {}
+        type: FlowPanel
+      - layout_properties: {grid_position: 'DZXWTZ,UYHDIV'}
+        name: lbl_stock_status
+        properties: {}
+        type: Label
+      - event_bindings: {}
+        layout_properties: {grid_position: 'DZXWTZ,PKYYHW'}
+        name: btn_add_to_cart
+        properties: {text: button_1}
+        type: Button
+      - event_bindings: {}
+        layout_properties: {grid_position: 'NICDUP,VJVTSA'}
+        name: btn_buy_now
+        properties: {text: button_1}
+        type: Button
+      - layout_properties: {grid_position: 'KVRKSJ,AHMNKP'}
+        name: fp_share
+        properties: {}
+        type: FlowPanel
+      layout_properties: {grid_position: 'QMVWWK,FOIJLP'}
+      name: col_details
       properties: {}
       type: ColumnPanel
-    layout_properties: {grid_position: 'JZZOOE,FWXVZI'}
-    name: linear_main
+    layout_properties: {grid_position: 'GQEICT,QRATMI'}
+    name: col_images
     properties: {}
-    type: LinearPanel
+    type: ColumnPanel
   layout_properties: {slot: default}
   name: content_panel
   properties: {}
