@@ -1,0 +1,47 @@
+components:
+- components:
+  - layout_properties: {grid_position: 'OQDSFA,LEGRIX'}
+    name: img_product
+    properties: {height: 369.5}
+    type: Image
+  layout_properties: {grid_position: 'BVZUES,XNWHYO'}
+  name: column_panel_1
+  properties: {}
+  type: ColumnPanel
+- layout_properties: {grid_position: 'BVZUES,OPZQKE QRUHKG,SKBOTH'}
+  name: lbl_name
+  properties: {}
+  type: Label
+- layout_properties: {grid_position: 'BVZUES,OPZQKE ZXHBMU,TXAFPC'}
+  name: lbl_variant
+  properties: {}
+  type: Label
+- layout_properties: {grid_position: 'BVZUES,OPZQKE AIXEBX,KUHYGR'}
+  name: lbl_price
+  properties: {}
+  type: Label
+- event_bindings: {}
+  layout_properties: {grid_position: 'BVZUES,OPZQKE PQKRCL,YFFIAW'}
+  name: btn_decrease
+  properties: {text: button_1}
+  type: Button
+- layout_properties: {grid_position: 'BVZUES,OPZQKE CFRVNE,HUETVV'}
+  name: txt_quantity
+  properties: {}
+  type: TextBox
+- layout_properties: {grid_position: 'BVZUES,OPZQKE WQPNIX,CUKSEK'}
+  name: btn_increase
+  properties: {text: button_1}
+  type: Button
+- layout_properties: {grid_position: 'BVZUES,OPZQKE QTSWPH,PNAONL'}
+  name: lbl_subtotal
+  properties: {}
+  type: Label
+- layout_properties: {grid_position: 'BVZUES,OPZQKE AFJXEF,CNGXMC'}
+  name: link_remove
+  properties: {}
+  type: Link
+container:
+  properties: {col_widths: '{"XNWHYO":35,"OPZQKE":25}'}
+  type: ColumnPanel
+is_package: true

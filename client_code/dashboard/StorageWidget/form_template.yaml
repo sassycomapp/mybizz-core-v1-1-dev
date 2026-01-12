@@ -27,7 +27,7 @@ components:
       properties: {}
       type: Label
     - layout_properties: {grid_position: 'JWEWGG,FAWOQC'}
-      name: determinate_1
+      name: progress_media
       properties: {}
       type: form:dep_drhle3x51mp2ek:ProgressBar.Determinate
     - layout_properties: {grid_position: 'AQZCPN,NHLXXZ'}

@@ -1,5 +1,51 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'NLJCMR,NVOOIA'}
+      name: lbl_order_number
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'ZHIQDP,MFQFUE'}
+      name: lbl_customer
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'LJOIIK,REYOPV'}
+      name: lbl_date
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'DFXWRF,UUUSPS'}
+      name: lbl_status
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'MSOTTQ,STTQEL'}
+      name: lbl_shipping_address
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'QJYUDZ,VPLNYW'}
+      name: rp_items
+      properties: {item_template: products.OrderDetailModal.ItemTemplate3}
+      type: RepeatingPanel
+    - layout_properties: {grid_position: 'IBOXTI,QTLYAS'}
+      name: lbl_subtotal
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'CYYFZR,BMQWFO'}
+      name: lbl_tax
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'XWOFPR,ROUPAT'}
+      name: lbl_shipping
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'MPLGVK,QTULMZ'}
+      name: lbl_total
+      properties: {}
+      type: Label
+    layout_properties: {grid_position: 'SVPEUN,HHXGDO'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel

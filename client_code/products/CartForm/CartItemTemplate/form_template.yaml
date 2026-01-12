@@ -16,15 +16,18 @@ components:
     name: lbl_price
     properties: {}
     type: Label
-  - layout_properties: {grid_position: 'WOOFXA,TOCLSS'}
+  - event_bindings: {}
+    layout_properties: {grid_position: 'WOOFXA,TOCLSS'}
     name: btn_decrease
     properties: {text: button_1}
     type: Button
-  - layout_properties: {grid_position: 'QUTHEU,JMYBWS'}
+  - event_bindings: {}
+    layout_properties: {grid_position: 'QUTHEU,JMYBWS'}
     name: txt_quantity
     properties: {}
     type: TextBox
-  - layout_properties: {grid_position: 'HHMITK,JZQCKF'}
+  - event_bindings: {}
+    layout_properties: {grid_position: 'HHMITK,JZQCKF'}
     name: btn_increase
     properties: {text: button_1}
     type: Button
@@ -32,7 +35,8 @@ components:
     name: lbl_subtotal
     properties: {}
     type: Label
-  - layout_properties: {grid_position: 'SHTYDN,TTOIJG'}
+  - event_bindings: {}
+    layout_properties: {grid_position: 'SHTYDN,TTOIJG'}
     name: link_remove
     properties: {}
     type: Link

@@ -214,47 +214,6 @@ def get_storage_usage():
     if user['role'] not in ['owner', 'manager']:
       return {'success': False, 'error': 'Access denied'}
 
-    # Count database rows
-    total_rows = 0
-    for table in [app_tables.bookings, app_tables.customers, app_tables.products]:
-      try:
-        total_rows += len(list(table.search()))
-      except:
-        pass
-
-    # TODO: Calculate media storage (requires traversing media columns)
-    media_bytes = 0
-
-    return {
-      'success': True,
-      'data': {
-        'database_rows': total_rows,
-        'database_limit': 150000,
-        'media_bytes': media_bytes,
-        'media_limit_bytes': 10 * 1024 * 1024 * 1024  # 10 GB
-      }
-    }
-
-  except Exception as e:
-    print(f"Error getting storage usage: {e}")
-    return {'success': False, 'error': str(e)}
-
-@anvil.server.callable
-@anvil.users.login_required
-def get_storage_usage():
-  """
-  Get storage usage statistics.
-  
-  Returns:
-    dict: {'success': bool, 'data': dict} or {'success': bool, 'error': str}
-  """
-  try:
-    user = anvil.users.get_user()
-
-    # Check permissions
-    if user['role'] not in ['owner', 'manager']:
-      return {'success': False, 'error': 'Access denied'}
-
     # Count database rows across all tables
     total_rows = 0
 

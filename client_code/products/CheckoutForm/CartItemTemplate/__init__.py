@@ -99,7 +99,6 @@ class CartItemTemplate(CartItemTemplateTemplate):
       print(f"Error updating quantity: {e}")
       alert(f"Failed to update: {str(e)}")
 
-  @handle("link_remove", "click")
   def link_remove_click(self, **event_args):
     """Remove item from cart"""
     if confirm("Remove this item from cart?"):
@@ -119,14 +118,4 @@ class CartItemTemplate(CartItemTemplateTemplate):
   @handle("btn_decrease", "click")
   def btn_decrease_click(self, **event_args):
     """This method is called when the button is clicked"""
-    pass
-
-  @handle("btn_increase", "click")
-  def btn_increase_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    pass
-
-  @handle("txt_quantity", "pressed_enter")
-  def txt_quantity_pressed_enter(self, **event_args):
-    """This method is called when the user presses Enter in this text box"""
     pass
