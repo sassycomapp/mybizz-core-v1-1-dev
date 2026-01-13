@@ -1,5 +1,58 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - event_bindings: {}
+      layout_properties: {grid_position: 'ZFIRYP,RBWOJF'}
+      name: btn_chat_toggle
+      properties: {text: button_1}
+      type: Button
+    - components:
+      - layout_properties: {grid_position: 'YKQGKG,DUPWMV'}
+        name: lbl_section_title
+        properties: {text: FAQ ChatBot}
+        type: Label
+      - event_bindings: {}
+        layout_properties: {grid_position: 'YKQGKG,MPKMAG'}
+        name: btn_close
+        properties: {align: right, text: button_2}
+        type: Button
+      - components:
+        - layout_properties: {grid_position: 'FJTABK,JIAFLI'}
+          name: rp_messages
+          properties: {item_template: shared.FAQChatbotWidget.ChatMessageTemplate}
+          type: RepeatingPanel
+        layout_properties: {grid_position: 'FSAVIN,XAACWY'}
+        name: col_messages
+        properties: {}
+        type: ColumnPanel
+      layout_properties: {grid_position: 'KPVRKY,ASBHXU'}
+      name: col_chat_window
+      properties: {}
+      type: ColumnPanel
+    - event_bindings: {}
+      layout_properties: {grid_position: 'OARQKL,IYROIM'}
+      name: txt_question
+      properties: {}
+      type: TextBox
+    - event_bindings: {}
+      layout_properties: {grid_position: 'OARQKL,DUPCED'}
+      name: btn_send
+      properties: {text: button_1}
+      type: Button
+    - layout_properties: {grid_position: 'CMIHTU,KSBMNI'}
+      name: lbl_question
+      properties: {text: 'Cant find what you need?'}
+      type: Label
+    - event_bindings: {}
+      layout_properties: {grid_position: 'UFWELV,YQEEGM'}
+      name: btn_submit_ticket
+      properties: {text: button_1}
+      type: Button
+    layout_properties: {grid_position: 'DIPOZT,BESAVU'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel

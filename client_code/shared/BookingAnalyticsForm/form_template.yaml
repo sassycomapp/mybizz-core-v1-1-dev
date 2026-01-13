@@ -1,5 +1,35 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'IVJUMS,DFXSSK'}
+      name: lbl_total
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'IVJUMS,LMRUMT'}
+      name: lbl_avg_value
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'IVJUMS,GQECLR'}
+      name: lbl_occupancy
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'NDMLDV,IFGXTG'}
+      name: lbl_no_show
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'NDMLDV,BNORXO'}
+      name: plot_trend
+      properties: {}
+      type: Plot
+    - layout_properties: {grid_position: 'CMTECM,WWYYHK'}
+      name: plot_heatmap
+      properties: {}
+      type: Plot
+    layout_properties: {grid_position: 'XKNNDK,MRRQBK'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel
