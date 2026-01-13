@@ -1,5 +1,45 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'RYGOIL,RISUNP'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    layout_properties: {grid_position: 'NNFTLL,QRMWQH'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  - layout_properties: {grid_position: 'QSUOHZ,SJEWAK'}
+    name: lbl_warning
+    properties: {}
+    type: Label
+  - layout_properties: {grid_position: 'MJCSQX,RVDEDA'}
+    name: dd_system_currency
+    properties: {}
+    type: DropDown
+  - layout_properties: {grid_position: 'HRAKRZ,HFDBRD'}
+    name: lbl_locked
+    properties: {}
+    type: Label
+  - event_bindings: {}
+    layout_properties: {grid_position: 'XWBXVT,WTSPSJ'}
+    name: cb_enable_display
+    properties: {text: check_box_1}
+    type: CheckBox
+  - layout_properties: {grid_position: 'PWYMMR,NDLJGI'}
+    name: dd_display_currency
+    properties: {}
+    type: DropDown
+  - layout_properties: {grid_position: 'ZLWBRZ,EIHZUM'}
+    name: txt_exchange_rate
+    properties: {}
+    type: TextBox
+  - event_bindings: {}
+    layout_properties: {grid_position: 'BOBDPQ,TZJHVV'}
+    name: btn_save
+    properties: {text: button_1}
+    type: Button
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel

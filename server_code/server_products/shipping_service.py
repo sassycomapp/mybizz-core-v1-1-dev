@@ -10,16 +10,60 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
+from datetime import datetime
 
-# This is a server module. It runs on the Anvil server,
-# rather than in the user's browser.
-#
-# To allow anvil.server.call() to call functions here, we mark
-# them with @anvil.server.callable.
-# Here is an example - you can replace it with your own:
-#
-# @anvil.server.callable
-# def say_hello(name):
-#   print("Hello, " + name + "!")
-#   return 42
-#
+@anvil.server.callable
+@anvil.users.login_required
+def get_unshipped_orders():
+  """Get orders that haven't been shipped"""
+  try:
+    user = anvil.users.get_user()
+
+    if user['role'] not in ['owner', 'manager', 'staff']:
+      return {'success': False, 'error': 'Access denied'}
+
+    # Get orders with status 'paid' or 'processing' (not shipped yet)
+    orders = list(app_tables.orders.search(
+      status=q.any_of('paid', 'processing')
+    ))
+
+    # Add customer email for display
+    for order in orders:
+      if order.get('customer_id'):
+        order['customer_email'] = order['customer_id']['email']
+      else:
+        order['customer_email'] = 'Guest'
+
+    return {'success': True, 'data': orders}
+
+  except Exception as e:
+    return {'success': False, 'error': str(e)}
+
+@anvil.server.callable
+@anvil.users.login_required
+def create_manual_shipment(shipment_data):
+  """Create manual shipment entry"""
+  try:
+    user = anvil.users.get_user()
+
+    if user['role'] not in ['owner', 'manager', 'staff']:
+      return {'success': False, 'error': 'Access denied'}
+
+    order_id = shipment_data['order_id']
+    order = app_tables.orders.get_by_id(order_id)
+
+    if not order:
+      return {'success': False, 'error': 'Order not found'}
+
+    # Update order status
+    order['status'] = 'shipped'
+    order['updated_at'] = datetime.now()
+    order.update()
+
+    # TODO: Create shipment record in shipments table
+    # TODO: Send shipping notification email
+
+    return {'success': True}
+
+  except Exception as e:
+    return {'success': False, 'error': str(e)}

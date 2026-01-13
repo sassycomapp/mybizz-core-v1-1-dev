@@ -1,5 +1,40 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'GGZTRC,HOKMLZ'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'OQFGHM,NZFMNG'}
+      name: dd_order
+      properties: {}
+      type: DropDown
+    - layout_properties: {grid_position: 'CUZCJX,BAJTBX'}
+      name: txt_courier
+      properties: {}
+      type: TextBox
+    - layout_properties: {grid_position: 'QUUNST,UIXKRE'}
+      name: txt_tracking_number
+      properties: {}
+      type: TextBox
+    - layout_properties: {grid_position: 'UMYUPW,NNSUGA'}
+      name: txt_shipping_cost
+      properties: {}
+      type: TextBox
+    - layout_properties: {grid_position: 'ZNOVTX,WVCCCA'}
+      name: txt_tracking_url
+      properties: {}
+      type: TextBox
+    - event_bindings: {}
+      layout_properties: {grid_position: 'TXBKSY,QBOECZ'}
+      name: btn_submit
+      properties: {text: button_1}
+      type: Button
+    layout_properties: {grid_position: 'FMXDXT,UVJLGD'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel

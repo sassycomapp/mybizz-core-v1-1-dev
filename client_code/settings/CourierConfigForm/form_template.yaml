@@ -1,5 +1,52 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'SKHMQT,DZDSVB'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'YQJGUS,XHXAOF'}
+      name: lbl_sa_courier
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'SGMPGB,UIHSMX'}
+      name: dd_sa_provider
+      properties: {}
+      type: DropDown
+    - layout_properties: {grid_position: 'SDRMOD,LKSPUD'}
+      name: txt_sa_api_key
+      properties: {}
+      type: TextBox
+    - layout_properties: {grid_position: 'WLOXWM,DCYBUD'}
+      name: cb_sa_enabled
+      properties: {text: check_box_1}
+      type: CheckBox
+    - layout_properties: {grid_position: 'NDCDBZ,LASSOS'}
+      name: lbl_int_courier
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'ZXSPAT,ZPYQTA'}
+      name: dd_int_provider
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'GDVVNY,ECOMTS'}
+      name: txt_int_api_key
+      properties: {}
+      type: TextBox
+    - layout_properties: {grid_position: 'LEPJCZ,AOSSBE'}
+      name: cb_int_enabled
+      properties: {text: check_box_1}
+      type: CheckBox
+    - event_bindings: {}
+      layout_properties: {grid_position: 'OMTXMS,JCPGNQ'}
+      name: btn_save
+      properties: {text: button_1}
+      type: Button
+    layout_properties: {grid_position: 'EHTHVQ,ZJDHTD'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel

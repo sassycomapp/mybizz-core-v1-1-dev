@@ -1,5 +1,72 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'LLMMDA,DOBUUY'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'XXIOCP,OYJFZN'}
+      name: lbl_info
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'RFDZVS,RLIDZS'}
+      name: cb_bookings
+      properties: {text: check_box_1}
+      type: CheckBox
+    - layout_properties: {grid_position: 'RFDZVS,DVWKDP'}
+      name: lbl_bookings_desc
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'PRAZLJ,QFWOXH'}
+      name: cb_ecommerce
+      properties: {text: check_box_1}
+      type: CheckBox
+    - layout_properties: {grid_position: 'PRAZLJ,TXEUBF'}
+      name: lbl_ecommerce_desc
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'NQJPPH,NPZYTE'}
+      name: cb_subscriptions
+      properties: {text: check_box_1}
+      type: CheckBox
+    - layout_properties: {grid_position: 'NQJPPH,LGRHQO'}
+      name: lbl_subs_desc
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'JWSJTI,KCPWGF'}
+      name: cb_services
+      properties: {text: check_box_1}
+      type: CheckBox
+    - layout_properties: {grid_position: 'JWSJTI,NCWOVO'}
+      name: lbl_services_desc
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'COVFCF,LZEEAP'}
+      name: cb_hospitality
+      properties: {text: check_box_1}
+      type: CheckBox
+    - layout_properties: {grid_position: 'COVFCF,OOEAUA'}
+      name: lbl_hosp_desc
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'RQSEVC,SDIZIJ'}
+      name: check_box_1
+      properties: {text: check_box_1}
+      type: CheckBox
+    - layout_properties: {grid_position: 'RQSEVC,AZDMKV'}
+      name: lbl_blog_desc
+      properties: {}
+      type: Label
+    - event_bindings: {}
+      layout_properties: {grid_position: 'GLAQEG,VSFJUR'}
+      name: btn_save
+      properties: {text: button_1}
+      type: Button
+    layout_properties: {grid_position: 'XYDOSR,GKNOLW'}
+    name: column_panel_1
+    properties: {col_widths: '{"RLIDZS":15,"DVWKDP":45,"QFWOXH":15,"TXEUBF":45,"NPZYTE":15,"LGRHQO":45,"KCPWGF":15,"NCWOVO":45,"LZEEAP":15,"OOEAUA":45,"SDIZIJ":15,"AZDMKV":45}'}
+    type: ColumnPanel
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel
