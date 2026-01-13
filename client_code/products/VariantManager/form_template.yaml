@@ -1,0 +1,36 @@
+components:
+- components:
+  - components:
+    - layout_properties: {grid_position: 'KJVSAR,WXUYGP'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    - event_bindings: {}
+      layout_properties: {grid_position: 'KJVSAR,OTKXHN'}
+      name: btn_add_variant
+      properties: {text: button_1}
+      type: Button
+    - layout_properties: {grid_position: 'HCTSME,TCPAPB'}
+      name: rp_variants
+      properties: {item_template: products.VariantManager.VariantItemTemplate}
+      type: RepeatingPanel
+    layout_properties: {grid_position: 'HCGOXN,GHVICQ'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  - layout_properties: {grid_position: 'UXISGM,HOLUGD'}
+    name: lbl_no_variants
+    properties: {}
+    type: Label
+  layout_properties: {slot: default}
+  name: content_panel
+  properties: {}
+  type: ColumnPanel
+- layout_properties: {slot: nav-right}
+  name: navbar_links
+  properties: {}
+  type: FlowPanel
+container:
+  properties: {html: '@theme:standard-page.html'}
+  type: HtmlTemplate
+is_package: true

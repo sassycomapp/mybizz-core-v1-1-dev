@@ -489,3 +489,140 @@ def add_to_cart(product_id, variant_id, quantity):
   except Exception as e:
     print(f"Error adding to cart: {e}")
     return {'success': False, 'error': str(e)}
+
+@anvil.server.callable
+@anvil.users.login_required
+def get_product_variants(product_id):
+  """
+  Get all variants for a product.
+  
+  Args:
+    product_id (str): Product ID
+    
+  Returns:
+    dict: {'success': bool, 'data': list} or {'success': bool, 'error': str}
+  """
+  try:
+    user = anvil.users.get_user()
+
+    if user['role'] not in ['owner', 'manager', 'staff']:
+      return {'success': False, 'error': 'Access denied'}
+
+    product = app_tables.products.get_by_id(product_id)
+
+    if not product:
+      return {'success': False, 'error': 'Product not found'}
+
+    # Get variants from product_variants table
+    variants = list(app_tables.product_variants.search(
+      product_id=product,
+      tables.order_by('variant_name')
+    ))
+
+    return {'success': True, 'data': variants}
+
+  except Exception as e:
+    print(f"Error getting variants: {e}")
+    return {'success': False, 'error': str(e)}
+
+@anvil.server.callable
+@anvil.users.login_required
+def get_variant(variant_id):
+  """Get single variant by ID"""
+  try:
+    user = anvil.users.get_user()
+
+    if user['role'] not in ['owner', 'manager', 'staff']:
+      return {'success': False, 'error': 'Access denied'}
+
+    variant = app_tables.product_variants.get_by_id(variant_id)
+
+    if not variant:
+      return {'success': False, 'error': 'Variant not found'}
+
+    return {'success': True, 'data': variant}
+
+  except Exception as e:
+    print(f"Error getting variant: {e}")
+    return {'success': False, 'error': str(e)}
+
+@anvil.server.callable
+@anvil.users.login_required
+def save_variant(product_id, variant_id, variant_data):
+  """
+  Save or update variant.
+  
+  Args:
+    product_id (str): Product ID
+    variant_id (str): Variant ID (None for new)
+    variant_data (dict): Variant fields
+    
+  Returns:
+    dict: {'success': bool} or {'success': bool, 'error': str}
+  """
+  try:
+    user = anvil.users.get_user()
+
+    if user['role'] not in ['owner', 'manager', 'staff']:
+      return {'success': False, 'error': 'Access denied'}
+
+    product = app_tables.products.get_by_id(product_id)
+
+    if not product:
+      return {'success': False, 'error': 'Product not found'}
+
+    row_data = {
+      'variant_name': variant_data['variant_name'],
+      'sku': variant_data.get('sku'),
+      'price_adjustment': variant_data.get('price_adjustment', 0),
+      'stock_quantity': variant_data.get('stock_quantity', 0)
+    }
+
+    if variant_id:
+      # Update existing
+      variant = app_tables.product_variants.get_by_id(variant_id)
+      if variant:
+        variant.update(**row_data)
+      else:
+        return {'success': False, 'error': 'Variant not found'}
+    else:
+      # Create new
+      row_data['product_id'] = product
+      app_tables.product_variants.add_row(**row_data)
+
+    return {'success': True}
+
+  except Exception as e:
+    print(f"Error saving variant: {e}")
+    return {'success': False, 'error': str(e)}
+
+@anvil.server.callable
+@anvil.users.login_required
+def delete_variant(variant_id):
+  """Delete variant"""
+  try:
+    user = anvil.users.get_user()
+
+    if user['role'] not in ['owner', 'manager']:
+      return {'success': False, 'error': 'Access denied'}
+
+    variant = app_tables.product_variants.get_by_id(variant_id)
+
+    if not variant:
+      return {'success': False, 'error': 'Variant not found'}
+
+    # Check if variant has orders
+    orders = list(app_tables.order_items.search(variant_id=variant))
+
+    if orders:
+      return {'success': False, 'error': 'Cannot delete variant with existing orders'}
+
+    variant.delete()
+
+    return {'success': True}
+
+  except Exception as e:
+    print(f"Error deleting variant: {e}")
+    return {'success': False, 'error': str(e)}
+
+    

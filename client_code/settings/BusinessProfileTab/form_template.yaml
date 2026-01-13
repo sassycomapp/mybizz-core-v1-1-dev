@@ -1,5 +1,77 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'KRPPDM,AFCRYP'}
+      name: lbl_section_title
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'NHWEPX,QXRMFO'}
+      name: txt_business_name
+      properties: {}
+      type: TextBox
+    - layout_properties: {grid_position: 'WTZUVQ,IGYRRI'}
+      name: txt_description
+      properties: {}
+      type: TextArea
+    - layout_properties: {grid_position: 'KJYXRU,VINWHO'}
+      name: lbl_logo
+      properties: {}
+      type: Label
+    - event_bindings: {}
+      layout_properties: {grid_position: 'KJYXRU,KXSYBX'}
+      name: file_logo
+      properties: {}
+      type: FileLoader
+    - layout_properties: {grid_position: 'KJYXRU,STFLGU'}
+      name: img_logo_preview
+      properties: {}
+      type: Image
+    - layout_properties: {grid_position: 'GPITWG,IIAZEV'}
+      name: txt_contact_email
+      properties: {}
+      type: TextBox
+    - layout_properties: {grid_position: 'SXXARH,LSLKUD'}
+      name: txt_phone
+      properties: {}
+      type: TextBox
+    - layout_properties: {grid_position: 'PIMHHU,GEHHON'}
+      name: txt_address
+      properties: {}
+      type: TextArea
+    - layout_properties: {grid_position: 'UQCEHA,KORSIU'}
+      name: txt_website
+      properties: {}
+      type: TextBox
+    - layout_properties: {grid_position: 'ANDQFT,NHQVOM'}
+      name: lbl_social
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'KQNQCU,HPMZVI'}
+      name: txt_facebook
+      properties: {}
+      type: TextBox
+    - layout_properties: {grid_position: 'QAPYSJ,PNGZLD'}
+      name: txt_instagram
+      properties: {}
+      type: TextBox
+    - layout_properties: {grid_position: 'MBBJWU,SQKHAD'}
+      name: txt_twitter
+      properties: {}
+      type: TextBox
+    - layout_properties: {grid_position: 'ECGATO,CLEUCD'}
+      name: txt_linkedin
+      properties: {}
+      type: TextBox
+    - event_bindings: {}
+      layout_properties: {grid_position: 'TQZFHH,HOQQUG'}
+      name: btn_save
+      properties: {text: button_1}
+      type: Button
+    layout_properties: {grid_position: 'JZKHJR,CKHXUV'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel
