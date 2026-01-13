@@ -1,7 +1,53 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'FBUSZS,OHXFKW'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    layout_properties: {grid_position: 'CXKVPK,KYSPFR'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  - event_bindings: {}
+    layout_properties: {grid_position: 'CXKVPK,KRVZJZ'}
+    name: btn_cart
+    properties: {text: button_1}
+    type: Button
+  - layout_properties: {grid_position: 'PODEJZ,VVKONN'}
+    name: col_sidebar
+    properties: {}
+    type: ColumnPanel
+  - components:
+    - layout_properties: {grid_position: 'HMSOPY,QHBFWG'}
+      name: txt_search
+      properties: {}
+      type: TextBox
+    - event_bindings: {}
+      layout_properties: {grid_position: 'HMSOPY,XKIFUP'}
+      name: btn_search
+      properties: {text: button_1}
+      type: Button
+    - event_bindings: {}
+      layout_properties: {grid_position: 'AJTCQW,AXXDPU'}
+      name: dd_sort
+      properties: {}
+      type: DropDown
+    - layout_properties: {grid_position: 'EXGYZM,DIQJWQ'}
+      name: rp_products
+      properties: {item_template: products.PublicCatalogForm.ProductCardTemplate}
+      type: RepeatingPanel
+    layout_properties: {grid_position: 'PODEJZ,WHHBDO'}
+    name: col_content
+    properties: {col_widths: '{"QHBFWG":50,"XKIFUP":10}'}
+    type: ColumnPanel
+  - layout_properties: {grid_position: 'YFRADY,FPMJSC'}
+    name: col_pagination
+    properties: {}
+    type: ColumnPanel
+  layout_properties: {slot: default}
   name: content_panel
-  properties: {}
+  properties: {col_widths: '{"VVKONN":15,"WHHBDO":45}'}
   type: ColumnPanel
 - layout_properties: {slot: nav-right}
   name: navbar_links

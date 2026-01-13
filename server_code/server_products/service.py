@@ -307,3 +307,185 @@ def delete_product(product_id):
     
     print(f"Error saving product: {e}")
     return {'success': False, 'error': str(e)}
+
+
+@anvil.server.callable
+def get_public_categories():
+  """Get active categories for public"""
+  try:
+    categories = list(app_tables.product_categories.search(
+      is_active=True,
+      tables.order_by('sort_order')
+    ))
+
+    return categories
+
+  except Exception as e:
+    print(f"Error getting categories: {e}")
+    return []
+
+@anvil.server.callable
+def get_public_products(filters):
+  """
+  Get products for public catalog.
+  
+  Args:
+    filters (dict): search, category_id, sort, page, per_page
+    
+  Returns:
+    dict: {'success': bool, 'data': {'products': list, 'total_count': int}}
+  """
+  try:
+    # Build query
+    query = {'is_active': True}
+
+    # Category filter
+    if filters.get('category_id'):
+      category = app_tables.product_categories.get_by_id(filters['category_id'])
+      if category:
+        query['category_id'] = category
+
+    # Get all matching products
+    all_products = list(app_tables.products.search(**query))
+
+    # Search filter
+    if filters.get('search'):
+      search_term = filters['search'].lower()
+      all_products = [
+        p for p in all_products
+        if search_term in p['name'].lower() or 
+        (p.get('description') and search_term in p['description'].lower())
+      ]
+
+    # Sort
+    sort_key = filters.get('sort', 'newest')
+    if sort_key == 'newest':
+      all_products.sort(key=lambda p: p['created_at'], reverse=True)
+    elif sort_key == 'price_asc':
+      all_products.sort(key=lambda p: p['price'])
+    elif sort_key == 'price_desc':
+      all_products.sort(key=lambda p: p['price'], reverse=True)
+    elif sort_key == 'name_asc':
+      all_products.sort(key=lambda p: p['name'])
+
+    # Pagination
+    page = filters.get('page', 1)
+    per_page = filters.get('per_page', 20)
+    start_idx = (page - 1) * per_page
+    end_idx = start_idx + per_page
+
+    products = all_products[start_idx:end_idx]
+
+    return {
+      'success': True,
+      'data': {
+        'products': products,
+        'total_count': len(all_products)
+      }
+    }
+
+  except Exception as e:
+    print(f"Error getting public products: {e}")
+    return {'success': False, 'error': str(e)}
+
+@anvil.server.callable
+def get_cart_count():
+  """Get current cart item count"""
+  try:
+    # Get or create cart
+    user = anvil.users.get_user()
+
+    if user:
+      cart = app_tables.cart.get(customer_id=user)
+    else:
+      # Guest cart (using session)
+      # TODO: Implement session-based cart
+      return {'count': 0}
+
+    if not cart:
+      return {'count': 0}
+
+    # Count items
+    items = list(app_tables.cart_items.search(cart_id=cart))
+    total_count = sum(item['quantity'] for item in items)
+
+    return {'count': total_count}
+
+  except Exception as e:
+    print(f"Error getting cart count: {e}")
+    return {'count': 0}
+
+@anvil.server.callable
+def add_to_cart(product_id, variant_id, quantity):
+  """
+  Add product to cart.
+  
+  Args:
+    product_id (str): Product ID
+    variant_id (str): Variant ID (optional)
+    quantity (int): Quantity to add
+    
+  Returns:
+    dict: {'success': bool} or {'success': bool, 'error': str}
+  """
+  try:
+    # Get product
+    product = app_tables.products.get_by_id(product_id)
+
+    if not product or not product['is_active']:
+      return {'success': False, 'error': 'Product not available'}
+
+    # Check stock
+    if product['track_inventory'] and product['inventory_quantity'] < quantity:
+      return {'success': False, 'error': 'Insufficient stock'}
+
+    # Get or create cart
+    user = anvil.users.get_user()
+
+    if user:
+      cart = app_tables.cart.get(customer_id=user)
+      if not cart:
+        cart = app_tables.cart.add_row(
+          customer_id=user,
+          created_at=datetime.now(),
+          updated_at=datetime.now()
+        )
+    else:
+      # TODO: Implement guest cart
+      return {'success': False, 'error': 'Please login to add to cart'}
+
+    # Check if item already in cart
+    variant = None
+    if variant_id:
+      variant = app_tables.product_variants.get_by_id(variant_id)
+
+    existing_item = app_tables.cart_items.get(
+      cart_id=cart,
+      product_id=product,
+      variant_id=variant
+    )
+
+    if existing_item:
+      # Update quantity
+      existing_item['quantity'] += quantity
+      existing_item.update()
+    else:
+      # Add new item
+      app_tables.cart_items.add_row(
+        cart_id=cart,
+        product_id=product,
+        variant_id=variant,
+        quantity=quantity,
+        price_at_add=product['price'],
+        added_at=datetime.now()
+      )
+
+    # Update cart timestamp
+    cart['updated_at'] = datetime.now()
+    cart.update()
+
+    return {'success': True}
+
+  except Exception as e:
+    print(f"Error adding to cart: {e}")
+    return {'success': False, 'error': str(e)}

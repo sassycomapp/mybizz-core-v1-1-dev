@@ -1,0 +1,25 @@
+components:
+- components:
+  - layout_properties: {grid_position: 'RNDUFG,JJSRAA'}
+    name: img_product
+    properties: {}
+    type: Image
+  layout_properties: {grid_position: 'WELULN,IJTCED'}
+  name: column_panel_1
+  properties: {}
+  type: ColumnPanel
+- layout_properties: {grid_position: 'WELULN,GNAPXI'}
+  name: lbl_name
+  properties: {}
+  type: Label
+- layout_properties: {grid_position: 'WELULN,ILTEVU'}
+  name: lbl_price
+  properties: {}
+  type: Label
+- event_bindings: {}
+  layout_properties: {grid_position: 'WELULN,KJOHEW'}
+  name: btn_add_to_cart
+  properties: {text: button_1}
+  type: Button
+container: {type: ColumnPanel}
+is_package: true
