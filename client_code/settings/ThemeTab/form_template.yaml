@@ -1,5 +1,36 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'AOYXIJ,QLXSLC'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'VQDLJC,VKKZBM'}
+      name: txt_primary_color
+      properties: {}
+      type: TextBox
+    - layout_properties: {grid_position: 'CXBOOV,INBWIP'}
+      name: txt_accent_color
+      properties: {}
+      type: TextBox
+    - layout_properties: {grid_position: 'UDRBCA,ZICJLO'}
+      name: dd_font
+      properties: {}
+      type: DropDown
+    - layout_properties: {grid_position: 'WPMMZE,YNSEXR'}
+      name: dd_header_style
+      properties: {}
+      type: DropDown
+    - event_bindings: {}
+      layout_properties: {grid_position: 'GDERNL,SKVEOM'}
+      name: btn_save
+      properties: {text: button_1}
+      type: Button
+    layout_properties: {grid_position: 'XEQYMX,NQFVVM'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel

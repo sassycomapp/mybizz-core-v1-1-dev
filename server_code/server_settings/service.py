@@ -367,3 +367,107 @@ def save_paystack_api_key(api_key):
 
   except Exception as e:
     return {'success': False, 'error': str(e)}
+
+@anvil.server.callable
+@anvil.users.login_required
+def get_theme_settings():
+  """Get theme settings"""
+  try:
+    user = anvil.users.get_user()
+
+    if user['role'] not in ['owner', 'manager']:
+      return {'success': False, 'error': 'Access denied'}
+
+    config = app_tables.config.get(key='theme_settings')
+
+    if config:
+      return {'success': True, 'data': config['value']}
+    else:
+      return {'success': True, 'data': {
+        'primary_color': '#2196F3',
+        'accent_color': '#FF9800',
+        'font_family': 'default',
+        'header_style': 'light'
+      }}
+
+  except Exception as e:
+    return {'success': False, 'error': str(e)}
+
+@anvil.server.callable
+@anvil.users.login_required
+def save_theme_settings(theme_data):
+  """Save theme settings"""
+  try:
+    user = anvil.users.get_user()
+
+    if user['role'] not in ['owner', 'manager']:
+      return {'success': False, 'error': 'Access denied'}
+
+    config = app_tables.config.get(key='theme_settings')
+
+    if config:
+      config['value'] = theme_data
+      config['updated_at'] = datetime.now()
+      config['updated_by'] = user
+      config.update()
+    else:
+      app_tables.config.add_row(
+        key='theme_settings',
+        value=theme_data,
+        category='client',
+        updated_at=datetime.now(),
+        updated_by=user
+      )
+
+    return {'success': True}
+
+  except Exception as e:
+    return {'success': False, 'error': str(e)}
+
+@anvil.server.callable
+@anvil.users.login_required
+def get_all_users():
+  """Get all users in account"""
+  try:
+    user = anvil.users.get_user()
+
+    if user['role'] not in ['owner', 'manager']:
+      return {'success': False, 'error': 'Access denied'}
+
+    users = list(app_tables.users.search())
+
+    return {'success': True, 'data': users}
+
+  except Exception as e:
+    return {'success': False, 'error': str(e)}
+
+@anvil.server.callable
+@anvil.users.login_required
+def invite_user(email, role):
+  """Invite new user"""
+  try:
+    user = anvil.users.get_user()
+
+    if user['role'] != 'owner':
+      return {'success': False, 'error': 'Only owner can invite users'}
+
+    # Check if user exists
+    existing = app_tables.users.get(email=email)
+    if existing:
+      return {'success': False, 'error': 'User already exists'}
+
+    # Create user
+    new_user = app_tables.users.add_row(
+      email=email,
+      enabled=True,
+      role=role,
+      account_status='active',
+      created_at=datetime.now()
+    )
+
+    # TODO: Send invitation email
+
+    return {'success': True}
+
+  except Exception as e:
+    return {'success': False, 'error': str(e)}
