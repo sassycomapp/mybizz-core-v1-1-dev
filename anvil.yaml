@@ -42,8 +42,8 @@ dependencies:
   resolution_hints: {app_id: C6ZZPAPN4YYF5NVJ, name: Anvil Extras, package_name: anvil_extras}
   version: {version_tag: v3.6.1}
 metadata: {description: 'mybizz_core_v1_dev ', title: MyBizz Master Template}
-name: mybizz_core_v1_dev
-package_name: mybizz_core_v1_dev
+name: mybizz_core_v1.1_dev
+package_name: mybizz_core_v1_1_dev
 renamed: true
 runtime_options:
   client_version: '3'
