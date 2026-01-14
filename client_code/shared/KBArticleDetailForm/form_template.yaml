@@ -1,6 +1,11 @@
 components:
 - components:
-  - layout_properties: {grid_position: 'THQEBD,HGGCID'}
+  - components:
+    - layout_properties: {grid_position: 'QMRDIO,LIAJAY'}
+      name: lbl_breadcrumb
+      properties: {}
+      type: Label
+    layout_properties: {grid_position: 'THQEBD,HGGCID'}
     name: column_panel_1
     properties: {}
     type: ColumnPanel
