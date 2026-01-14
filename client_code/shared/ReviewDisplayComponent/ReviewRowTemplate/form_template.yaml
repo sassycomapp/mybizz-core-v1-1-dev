@@ -16,11 +16,13 @@ components:
     name: lbl_comment
     properties: {}
     type: Label
-  - layout_properties: {grid_position: 'EHTAPS,UKATNU'}
+  - event_bindings: {}
+    layout_properties: {grid_position: 'EHTAPS,UKATNU'}
     name: btn_helpful
     properties: {text: button_1}
     type: Button
-  - layout_properties: {grid_position: 'EHTAPS,DDKFCP'}
+  - event_bindings: {}
+    layout_properties: {grid_position: 'EHTAPS,DDKFCP'}
     name: btn_report
     properties: {text: button_1}
     type: Button

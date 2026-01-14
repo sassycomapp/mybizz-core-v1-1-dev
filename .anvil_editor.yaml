@@ -214,6 +214,7 @@ unique_ids:
     server_shared.encryption_service: '1767524565896400744742967.09937'
     server_shared.kb_service: '1767524656840642542608136.4133'
     server_shared.page_service: '17675247172965767222081.203837'
+    server_shared.review_service: '1768396665053661516080075.553'
     server_shared.server_review_service: '176752458712851903471442.15479'
     server_shared.ticket_service: '1767524642769242285990121.88467'
     server_shared.utilities: '1767524512784235425936777.61548'
