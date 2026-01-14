@@ -1,5 +1,42 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'XRHFMB,RPIJPV'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    - event_bindings: {}
+      layout_properties: {grid_position: 'AJSHTD,QTFUCD'}
+      name: dd_status_filter
+      properties: {}
+      type: DropDown
+    - event_bindings: {}
+      layout_properties: {grid_position: 'AJSHTD,GBYMXP'}
+      name: dd_priority_filter
+      properties: {}
+      type: DropDown
+    - event_bindings: {}
+      layout_properties: {grid_position: 'AJSHTD,UBAHAY'}
+      name: dd_assigned_filer
+      properties: {}
+      type: DropDown
+    - components:
+      - name: repeating_panel_1
+        properties: {item_template: shared.TicketManagementForm.TicketRowTemplate}
+        type: RepeatingPanel
+      layout_properties: {grid_position: 'YTWWFX,XGSUIJ'}
+      name: dg_tickets
+      properties:
+        columns:
+        - {data_key: column_1, id: JKSDUP, title: Column 1}
+        - {data_key: column_2, id: VJQQOR, title: Column 2}
+        - {data_key: column_3, id: OJLQEN, title: Column 3}
+      type: DataGrid
+    layout_properties: {grid_position: 'CDERDR,HIEZXM'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel

@@ -1,5 +1,50 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'OCOSYQ,YPSMLM'}
+      name: lbl_share
+      properties: {}
+      type: Label
+    - components:
+      - event_bindings: {}
+        layout_properties: {}
+        name: btn_facebook
+        properties: {text: button_1}
+        type: Button
+      - event_bindings: {}
+        layout_properties: {}
+        name: btn_twitter
+        properties: {text: button_1}
+        type: Button
+      - event_bindings: {}
+        layout_properties: {}
+        name: btn_linkedin
+        properties: {text: button_1}
+        type: Button
+      - event_bindings: {}
+        layout_properties: {}
+        name: btn_whatsapp
+        properties: {text: button_1}
+        type: Button
+      - event_bindings: {}
+        layout_properties: {}
+        name: btn_email
+        properties: {text: button_1}
+        type: Button
+      - event_bindings: {}
+        layout_properties: {}
+        name: btn_copy_link
+        properties: {text: button_1}
+        type: Button
+      layout_properties: {grid_position: 'CTYBYP,BAZMSZ'}
+      name: flow_share_buttons
+      properties: {}
+      type: FlowPanel
+    layout_properties: {grid_position: 'MXWUQG,SFWAQU'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel

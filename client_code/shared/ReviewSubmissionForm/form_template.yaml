@@ -1,5 +1,52 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'EHEHBF,HJSVIU'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'IEUUAM,JWPBLM'}
+      name: lbl_rating
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'TYOFNZ,OHBFEI'}
+      name: lnk_star_1
+      properties: {}
+      type: Link
+    - layout_properties: {grid_position: 'TYOFNZ,NBOPTQ'}
+      name: lnk_star_2
+      properties: {}
+      type: Link
+    - components: []
+      layout_properties: {grid_position: 'TYOFNZ,KHYFUB'}
+      name: lnk_star_3
+      properties: {}
+      type: Link
+    - layout_properties: {grid_position: 'TYOFNZ,SEODKO'}
+      name: lnk_star_4
+      properties: {}
+      type: Link
+    - layout_properties: {grid_position: 'TYOFNZ,BUPJAM'}
+      name: lnk_star_5
+      properties: {}
+      type: Link
+    - layout_properties: {grid_position: 'FBFQDS,GJVZMZ'}
+      name: txt_title
+      properties: {}
+      type: TextBox
+    - layout_properties: {grid_position: 'MBSSWM,EQPGLY'}
+      name: txt_review
+      properties: {}
+      type: TextArea
+    - layout_properties: {grid_position: 'GDSOKO,ULBUDI'}
+      name: btn_submit
+      properties: {text: button_1}
+      type: Button
+    layout_properties: {grid_position: 'DBLKTT,ERYXFJ'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel

@@ -1,5 +1,55 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'ZOAVAJ,XLZVYL'}
+      name: lbl_ticket_number
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'CAJZAP,WSJYCA'}
+      name: lbl_subject
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'KKXONP,YTDBJY'}
+      name: lbl_customer
+      properties: {}
+      type: Label
+    - event_bindings: {}
+      layout_properties: {grid_position: 'IJOBZV,BKRAFE'}
+      name: dd_priority
+      properties: {}
+      type: DropDown
+    - event_bindings: {}
+      layout_properties: {grid_position: 'IJOBZV,GONDQK'}
+      name: dd_status
+      properties: {}
+      type: DropDown
+    - event_bindings: {}
+      layout_properties: {grid_position: 'IJOBZV,DNFIAZ'}
+      name: dd_assigned
+      properties: {}
+      type: DropDown
+    - layout_properties: {grid_position: 'XNNODF,KTMKBX'}
+      name: rp_messages
+      properties: {item_template: shared.TicketDetailForm.MessageRowTemplate}
+      type: RepeatingPanel
+    - layout_properties: {grid_position: 'GAMUUH,NFGLKO'}
+      name: txt_reply
+      properties: {}
+      type: TextArea
+    - layout_properties: {grid_position: 'HCKCGJ,KAKKBY'}
+      name: cb_internal_note
+      properties: {text: check_box_1}
+      type: CheckBox
+    - event_bindings: {}
+      layout_properties: {grid_position: 'HCKCGJ,YSWKEN'}
+      name: btn_send_reply
+      properties: {text: button_1}
+      type: Button
+    layout_properties: {grid_position: 'PDYHAQ,SPXGAU'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel
