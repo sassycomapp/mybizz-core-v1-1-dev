@@ -1,5 +1,53 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'GTTKXP,BBUYFU'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    - event_bindings: {}
+      layout_properties: {grid_position: 'MSXGMT,RIARQT'}
+      name: dd_page_selector
+      properties: {}
+      type: DropDown
+    - event_bindings: {}
+      layout_properties: {grid_position: 'MSXGMT,EATAPR'}
+      name: btn_new_page
+      properties: {text: button_1}
+      type: Button
+    - layout_properties: {grid_position: 'CXXXEP,EZMHBE'}
+      name: lbl_components
+      properties: {}
+      type: Label
+    - event_bindings: {}
+      layout_properties: {grid_position: 'CXXXEP,LQBYCR'}
+      name: btn_add_component
+      properties: {text: button_1}
+      type: Button
+    - layout_properties: {grid_position: 'VIAEDE,ETHHQG'}
+      name: rp_components
+      properties: {item_template: shared.PageEditorForm.ComponentEditorTemplate}
+      type: RepeatingPanel
+    - event_bindings: {}
+      layout_properties: {grid_position: 'WSKJXX,FWNJOT'}
+      name: btn_save_draft
+      properties: {text: button_1}
+      type: Button
+    - event_bindings: {}
+      layout_properties: {grid_position: 'WSKJXX,DOSQSA'}
+      name: btn_publish
+      properties: {text: button_1}
+      type: Button
+    - event_bindings: {}
+      layout_properties: {grid_position: 'WSKJXX,IHOZVD'}
+      name: btn_preview
+      properties: {text: button_1}
+      type: Button
+    layout_properties: {grid_position: 'KKEBHU,FVOJSA'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel

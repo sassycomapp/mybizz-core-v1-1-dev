@@ -1,0 +1,28 @@
+components:
+- components:
+  - layout_properties: {grid_position: 'HPNWUA,JTKUSJ'}
+    name: lbl_type
+    properties: {}
+    type: Label
+  - layout_properties: {grid_position: 'HPNWUA,XJAJRE'}
+    name: btn_edit
+    properties: {text: button_1}
+    type: Button
+  - layout_properties: {grid_position: 'HPNWUA,EDGSUQ'}
+    name: btn_delete
+    properties: {text: button_1}
+    type: Button
+  - layout_properties: {grid_position: 'HPNWUA,NDEEYU'}
+    name: btn_up
+    properties: {text: button_1}
+    type: Button
+  - layout_properties: {grid_position: 'HPNWUA,QDJJFV'}
+    name: btn_down
+    properties: {text: button_1}
+    type: Button
+  layout_properties: {grid_position: 'KRBHUE,XIGQKV'}
+  name: column_panel_1
+  properties: {}
+  type: ColumnPanel
+container: {type: ColumnPanel}
+is_package: true
