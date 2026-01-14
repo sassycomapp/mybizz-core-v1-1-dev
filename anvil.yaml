@@ -1,42 +1,222 @@
 allow_embedding: true
 db_schema:
+  activity_log:
+    client: none
+    columns: []
+    server: full
+    title: activity_log
+  availability_exceptions:
+    client: none
+    columns: []
+    server: full
+    title: availability_exceptions
+  availability_rules:
+    client: none
+    columns: []
+    server: full
+    title: availability_rules
+  blog_categories:
+    client: none
+    columns: []
+    server: full
+    title: blog_categories
+  blog_posts:
+    client: none
+    columns: []
+    server: full
+    title: blog_posts
+  bookable_resources:
+    client: none
+    columns: []
+    server: full
+    title: bookable_resources
+  booking_metadata_schemas:
+    client: none
+    columns: []
+    server: full
+    title: booking_metadata_schemas
+  bookings:
+    client: none
+    columns: []
+    server: full
+    title: bookings
+  cart:
+    client: none
+    columns: []
+    server: full
+    title: cart
+  cart_items:
+    client: none
+    columns: []
+    server: full
+    title: cart_items
+  client_notes:
+    client: none
+    columns: []
+    server: full
+    title: client_notes
+  config:
+    client: none
+    columns: []
+    server: full
+    title: config
+  customers:
+    client: none
+    columns: []
+    server: full
+    title: customers
+  email_log:
+    client: none
+    columns: []
+    server: full
+    title: email_log
+  email_templates:
+    client: none
+    columns: []
+    server: full
+    title: email_templates
+  event_registrations:
+    client: none
+    columns: []
+    server: full
+    title: event_registrations
+  events:
+    client: none
+    columns: []
+    server: full
+    title: events
   files:
     client: none
     columns:
-    - admin_ui: {order: 0, width: 200}
+    - admin_ui: {width: 200}
       name: path
       type: string
-    - admin_ui: {order: 1, width: 200}
+    - admin_ui: {width: 200}
       name: file
       type: media
-    - admin_ui: {order: 2, width: 200}
+    - admin_ui: {width: 200}
       name: file_version
       type: string
     server: full
     title: Files
+  guestbook_entries:
+    client: none
+    columns: []
+    server: full
+    title: guestbook_entries
+  kb_articles:
+    client: none
+    columns: []
+    server: full
+    title: kb_articles
+  kb_categories:
+    client: none
+    columns: []
+    server: full
+    title: kb_categories
+  order_items:
+    client: none
+    columns: []
+    server: full
+    title: order_items
+  orders:
+    client: none
+    columns: []
+    server: full
+    title: orders
+  pages:
+    client: none
+    columns: []
+    server: full
+    title: pages
+  product_categories:
+    client: none
+    columns: []
+    server: full
+    title: product_categories
+  product_variants:
+    client: none
+    columns: []
+    server: full
+    title: product_variants
+  products:
+    client: none
+    columns: []
+    server: full
+    title: products
+  reviews:
+    client: none
+    columns: []
+    server: full
+    title: reviews
+  services:
+    client: none
+    columns: []
+    server: full
+    title: services
+  subscriptions:
+    client: none
+    columns: []
+    server: full
+    title: subscriptions
+  ticket_messages:
+    client: none
+    columns: []
+    server: full
+    title: ticket_messages
+  tickets:
+    client: none
+    columns: []
+    server: full
+    title: tickets
+  time_entries:
+    client: none
+    columns: []
+    server: full
+    title: time_entries
   users:
     client: none
     columns:
-    - admin_ui: {order: 0, width: 200}
+    - admin_ui: {width: 200}
       name: email
       type: string
-    - admin_ui: {order: 1, width: 200}
+    - admin_ui: {width: 200}
       name: enabled
       type: bool
-    - admin_ui: {order: 2, width: 200}
+    - admin_ui: {width: 200}
       name: last_login
       type: datetime
-    - admin_ui: {order: 3, width: 200}
+    - admin_ui: {width: 200}
       name: password_hash
       type: string
-    - admin_ui: {order: 4, width: 200}
+    - admin_ui: {width: 200}
       name: n_password_failures
       type: number
-    - admin_ui: {order: 5, width: 200}
+    - admin_ui: {width: 200}
       name: confirmed_email
       type: bool
+    - admin_ui: {width: 200}
+      name: role
+      type: string
+    - admin_ui: {width: 200}
+      name: account_status
+      type: string
+    - admin_ui: {width: 200}
+      name: phone
+      type: string
+    - admin_ui: {width: 200}
+      name: permissions
+      type: simpleObject
+    - admin_ui: {width: 200}
+      name: created_at
+      type: datetime
     server: full
     title: Users
+  vertical_config:
+    client: none
+    columns: []
+    server: full
+    title: vertical_config
 dependencies:
 - dep_id: dep_drhle3x51mp2ek
   resolution_hints: {app_id: C6ZZPAPN4YYF5NVJ, name: Anvil Extras, package_name: anvil_extras}
