@@ -1,0 +1,21 @@
+components:
+- components:
+  - components:
+    - layout_properties: {grid_position: 'NZWYDE,ZYKAGN'}
+      name: lbl_icon
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'WMJAOP,PGIYMM'}
+      name: lbl_name
+      properties: {}
+      type: Label
+    layout_properties: {grid_position: 'OPLWEY,ZBMBNO'}
+    name: link_1
+    properties: {}
+    type: Link
+  layout_properties: {grid_position: 'QOBMQS,XKZGEX'}
+  name: col_card
+  properties: {col_widths: '{}'}
+  type: ColumnPanel
+container: {type: ColumnPanel}
+is_package: true

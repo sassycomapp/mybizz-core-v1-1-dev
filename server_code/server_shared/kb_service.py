@@ -44,3 +44,106 @@ def create_kb_article(article_data):
 
   except Exception as e:
     return {'success': False, 'error': str(e)}
+
+@anvil.server.callable
+def get_kb_categories():
+  """
+  Get all KB categories.
+  
+  Returns:
+    dict: {'success': bool, 'data': list} or {'success': bool, 'error': str}
+  """
+  try:
+    categories = list(app_tables.kb_categories.search(
+      tables.order_by('sort_order')
+    ))
+
+    return {'success': True, 'data': categories}
+
+  except Exception as e:
+    print(f"Error getting KB categories: {e}")
+    return {'success': False, 'error': str(e)}
+
+
+@anvil.server.callable
+def get_popular_articles(limit=5):
+  """
+  Get most viewed articles.
+  
+  Args:
+    limit (int): Maximum number of articles to return
+    
+  Returns:
+    dict: {'success': bool, 'data': list} or {'success': bool, 'error': str}
+  """
+  try:
+    articles = list(app_tables.kb_articles.search(
+      published=True,
+      tables.order_by('view_count', ascending=False)
+    ))
+
+    return {'success': True, 'data': articles[:limit]}
+
+  except Exception as e:
+    print(f"Error getting popular articles: {e}")
+    return {'success': False, 'error': str(e)}
+
+
+@anvil.server.callable
+def get_recent_articles(limit=5):
+  """
+  Get recently published articles.
+  
+  Args:
+    limit (int): Maximum number of articles to return
+    
+  Returns:
+    dict: {'success': bool, 'data': list} or {'success': bool, 'error': str}
+  """
+  try:
+    articles = list(app_tables.kb_articles.search(
+      published=True,
+      tables.order_by('created_at', ascending=False)
+    ))
+
+    return {'success': True, 'data': articles[:limit]}
+
+  except Exception as e:
+    print(f"Error getting recent articles: {e}")
+    return {'success': False, 'error': str(e)}
+
+
+@anvil.server.callable
+def search_kb_articles(query):
+  """
+  Search KB articles by keyword.
+  
+  Args:
+    query (str): Search query
+    
+  Returns:
+    dict: {'success': bool, 'data': list} or {'success': bool, 'error': str}
+  """
+  try:
+    query_lower = query.lower()
+    articles = list(app_tables.kb_articles.search(published=True))
+
+    # Filter articles by query in title, content, or keywords
+    results = [
+      a for a in articles
+      if query_lower in a['title'].lower() or
+      query_lower in a.get('content', '').lower() or
+      any(query_lower in kw.lower() for kw in a.get('keywords', []))
+    ]
+
+    # Sort by relevance (title matches first)
+    results.sort(key=lambda a: (
+      query_lower not in a['title'].lower(),  # Title matches first (False < True)
+      -a.get('view_count', 0)  # Then by popularity
+    ))
+
+    return {'success': True, 'data': results}
+
+  except Exception as e:
+    print(f"Error searching KB articles: {e}")
+    return {'success': False, 'error': str(e)}

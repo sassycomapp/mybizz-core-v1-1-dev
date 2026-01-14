@@ -1,5 +1,43 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'AIQLHD,IODFYA'}
+      name: lbl_tier
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'SCZPVO,SSMDVR'}
+      name: lbl_member_name
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'AFTLGG,NFUQXW'}
+      name: lbl_member_number
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'FNVMND,ZGDFBM WCCLBE,ELDVQS'}
+      name: img_qr_code
+      properties: {}
+      type: Image
+    - layout_properties: {grid_position: 'FNVMND,ZGDFBM UUFGGQ,ATUPVH'}
+      name: lbl_tier_name
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'FNVMND,ZGDFBM MJILWB,XRGYAG'}
+      name: lbl_joined_date
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'FNVMND,ZGDFBM CWVMKL,VFKVIS'}
+      name: lbl_expiry_date
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'FNVMND,ZGDFBM BGIIQY,EVFJLF'}
+      name: lbl_benefits
+      properties: {}
+      type: Label
+    layout_properties: {grid_position: 'ZVENJK,EXEFZI'}
+    name: col_card
+    properties: {}
+    type: ColumnPanel
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel
