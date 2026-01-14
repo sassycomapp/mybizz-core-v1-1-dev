@@ -5,9 +5,39 @@ components:
       name: lbl_breadcrumb
       properties: {}
       type: Label
+    - layout_properties: {grid_position: 'XMJAPL,EUQEYO'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'UJCBPO,YPLMRO'}
+      name: rt_content
+      properties: {}
+      type: RichText
+    - layout_properties: {grid_position: 'NMHXRL,ZESCQX'}
+      name: lbl_helpful_question
+      properties: {}
+      type: Label
+    - event_bindings: {}
+      layout_properties: {grid_position: 'NMHXRL,BGXWNR'}
+      name: btn_helpful_yes
+      properties: {text: button_1}
+      type: Button
+    - event_bindings: {}
+      layout_properties: {grid_position: 'NMHXRL,NMSTEE'}
+      name: btn_helpful_no
+      properties: {text: button_1}
+      type: Button
+    - layout_properties: {grid_position: 'GCOBBG,VDDXNG'}
+      name: lbl_related
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'ZKAVCS,COEGBT'}
+      name: rp_related
+      properties: {item_template: shared.KBArticleDetailForm.RelatedArticleTemplate}
+      type: RepeatingPanel
     layout_properties: {grid_position: 'THQEBD,HGGCID'}
     name: column_panel_1
-    properties: {}
+    properties: {col_widths: '{"ZESCQX":25,"BGXWNR":15,"NMSTEE":20}'}
     type: ColumnPanel
   layout_properties: {slot: default}
   name: content_panel

@@ -105,6 +105,7 @@ unique_ids:
     shared.FAQChatbotWidget: '1767522833140210862617656.20786'
     shared.FAQChatbotWidget.ChatMessageTemplate: '176831768689048939407553.46382'
     shared.KBArticleDetailForm: '1767522924634307327000752.4943'
+    shared.KBArticleDetailForm.RelatedArticleTemplate: '176837158220676409300454.74226'
     shared.KBArticleEditorForm: '1767522890196365375839583.23016'
     shared.KnowledgeBaseForm: '1767522907534827658284954.4235'
     shared.MemberBroadcastForm: '1767523015822770004390548.1344'

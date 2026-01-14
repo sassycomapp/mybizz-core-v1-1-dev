@@ -1,5 +1,59 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'CCAGTI,PZHJQT'}
+      name: lbl_title
+      properties: {}
+      type: Label
+    - event_bindings: {}
+      layout_properties: {grid_position: 'HYZYZX,UDJYUK'}
+      name: txt_title
+      properties: {}
+      type: TextBox
+    - layout_properties: {grid_position: 'PPFVJF,EKOOLN'}
+      name: txt_slug
+      properties: {}
+      type: TextBox
+    - layout_properties: {grid_position: 'ORBDSI,FTIUMA'}
+      name: dd_category
+      properties: {}
+      type: DropDown
+    - layout_properties: {grid_position: 'FIVVNG,XNPXFI'}
+      name: txt_excerpt
+      properties: {}
+      type: TextArea
+    - layout_properties: {grid_position: 'LDUNNL,IMZAXS'}
+      name: rt_content
+      properties: {}
+      type: RichText
+    - layout_properties: {grid_position: 'PXGHAW,IJPAED'}
+      name: txt_keywords
+      properties: {}
+      type: TextBox
+    - layout_properties: {grid_position: 'TWKKQC,QDHLRB'}
+      name: cb_published
+      properties: {text: check_box_1}
+      type: CheckBox
+    - event_bindings: {}
+      layout_properties: {grid_position: 'FVSCSY,LGVUMF'}
+      name: btn_save_draft
+      properties: {text: button_1}
+      type: Button
+    - event_bindings: {}
+      layout_properties: {grid_position: 'FVSCSY,MZKFVG'}
+      name: btn_publish
+      properties: {text: button_1}
+      type: Button
+    - event_bindings: {}
+      layout_properties: {grid_position: 'FVSCSY,ACAKMK'}
+      name: btn_preview
+      properties: {text: button_1}
+      type: Button
+    layout_properties: {grid_position: 'DFWXOE,EUVOXB'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel
