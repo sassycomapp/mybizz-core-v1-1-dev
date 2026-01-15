@@ -1138,6 +1138,9 @@ dependencies:
 - dep_id: dep_drhle3x51mp2ek
   resolution_hints: {app_id: C6ZZPAPN4YYF5NVJ, name: Anvil Extras, package_name: anvil_extras}
   version: {version_tag: v3.6.1}
+- dep_id: dep_cs6h9sl44x1p3
+  resolution_hints: {app_id: 3PIDO5P3H4VPEMPL, name: routing, package_name: routing}
+  version: {version_tag: v0.5.0}
 metadata: {description: 'mybizz_core_v1_dev ', title: MyBizz Master Template}
 name: mybizz_core_v1.1_dev
 native_deps: {head_html: ''}
