@@ -1,5 +1,6 @@
 from ._anvil_designer import GuestNoteTemplateTemplate
 from anvil import *
+from routing import router
 import anvil.server
 import anvil.google.auth, anvil.google.drive
 from anvil.google.drive import app_files
