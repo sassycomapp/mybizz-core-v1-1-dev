@@ -1142,9 +1142,9 @@ dependencies:
   resolution_hints: {app_id: 3PIDO5P3H4VPEMPL, name: routing, package_name: routing}
   version: {version_tag: v0.5.0}
 metadata: {description: 'mybizz_core_v1_dev ', title: MyBizz Master Template}
-name: mybizz_core_v1.1_dev
+name: mybizz_core_v1.2_dev
 native_deps: {head_html: ''}
-package_name: mybizz_core_v1_1_dev
+package_name: mybizz_core_v1_2_dev
 renamed: true
 runtime_options:
   client_version: '3'
