@@ -3,20 +3,20 @@ db_schema:
   activity_log:
     client: none
     columns:
-    - admin_ui: {order: 0, width: 200}
+    - admin_ui: {width: 200}
       name: user_id
       target: users
       type: link_single
-    - admin_ui: {order: 1, width: 200}
+    - admin_ui: {width: 200}
       name: action_type
       type: string
-    - admin_ui: {order: 2, width: 200}
+    - admin_ui: {width: 200}
       name: description
       type: string
-    - admin_ui: {order: 3, width: 200}
+    - admin_ui: {width: 200}
       name: metadata
       type: simpleObject
-    - admin_ui: {order: 4, width: 200}
+    - admin_ui: {width: 200}
       name: created_at
       type: datetime
     server: full
@@ -24,23 +24,23 @@ db_schema:
   availability_exceptions:
     client: none
     columns:
-    - admin_ui: {order: 0, width: 200}
+    - admin_ui: {width: 200}
       name: resource_id
       target: bookable_resources
       type: link_single
-    - admin_ui: {order: 1, width: 200}
+    - admin_ui: {width: 200}
       name: exception_date
       type: date
-    - admin_ui: {order: 2, width: 200}
+    - admin_ui: {width: 200}
       name: start_time
       type: string
-    - admin_ui: {order: 3, width: 200}
+    - admin_ui: {width: 200}
       name: end_time
       type: string
-    - admin_ui: {order: 4, width: 200}
+    - admin_ui: {width: 200}
       name: is_available
       type: bool
-    - admin_ui: {order: 5, width: 200}
+    - admin_ui: {width: 200}
       name: reason
       type: string
     server: full
@@ -48,20 +48,20 @@ db_schema:
   availability_rules:
     client: none
     columns:
-    - admin_ui: {order: 0, width: 200}
+    - admin_ui: {width: 200}
       name: resource_id
       target: bookable_resources
       type: link_single
-    - admin_ui: {order: 1, width: 200}
+    - admin_ui: {width: 200}
       name: day_of_week
       type: number
-    - admin_ui: {order: 2, width: 200}
+    - admin_ui: {width: 200}
       name: start_time
       type: string
-    - admin_ui: {order: 3, width: 200}
+    - admin_ui: {width: 200}
       name: end_time
       type: string
-    - admin_ui: {order: 4, width: 200}
+    - admin_ui: {width: 200}
       name: is_active
       type: bool
     server: full
@@ -69,20 +69,20 @@ db_schema:
   blog_categories:
     client: none
     columns:
-    - admin_ui: {order: 0, width: 200}
+    - admin_ui: {width: 200}
       name: category_id
       type: string
-    - admin_ui: {order: 1, width: 200}
+    - admin_ui: {width: 200}
       name: client_id
       target: users
       type: link_single
-    - admin_ui: {order: 2, width: 200}
+    - admin_ui: {width: 200}
       name: name
       type: string
-    - admin_ui: {order: 3, width: 200}
+    - admin_ui: {width: 200}
       name: slug
       type: string
-    - admin_ui: {order: 4, width: 200}
+    - admin_ui: {width: 200}
       name: description
       type: string
     server: full
@@ -90,46 +90,46 @@ db_schema:
   blog_posts:
     client: none
     columns:
-    - admin_ui: {order: 0, width: 200}
+    - admin_ui: {width: 200}
       name: post_id
       type: string
-    - admin_ui: {order: 1, width: 200}
+    - admin_ui: {width: 200}
       name: client_id
       target: users
       type: link_single
-    - admin_ui: {order: 2, width: 200}
+    - admin_ui: {width: 200}
       name: title
       type: string
-    - admin_ui: {order: 3, width: 200}
+    - admin_ui: {width: 200}
       name: slug
       type: string
-    - admin_ui: {order: 4, width: 200}
+    - admin_ui: {width: 200}
       name: content
       type: string
-    - admin_ui: {order: 5, width: 200}
+    - admin_ui: {width: 200}
       name: excerpt
       type: string
-    - admin_ui: {order: 6, width: 200}
+    - admin_ui: {width: 200}
       name: featured_image
       type: media
-    - admin_ui: {order: 7, width: 200}
+    - admin_ui: {width: 200}
       name: author_id
       target: users
       type: link_single
-    - admin_ui: {order: 8, width: 200}
+    - admin_ui: {width: 200}
       name: category_id
       target: blog_categories
       type: link_single
-    - admin_ui: {order: 9, width: 200}
+    - admin_ui: {width: 200}
       name: status
       type: string
-    - admin_ui: {order: 10, width: 200}
+    - admin_ui: {width: 200}
       name: published_at
       type: datetime
-    - admin_ui: {order: 11, width: 200}
+    - admin_ui: {width: 200}
       name: crreated_at
       type: datetime
-    - admin_ui: {order: 12, width: 200}
+    - admin_ui: {width: 200}
       name: updated_at
       type: datetime
     server: full
@@ -137,34 +137,34 @@ db_schema:
   bookable_resources:
     client: none
     columns:
-    - admin_ui: {order: 0, width: 200}
+    - admin_ui: {width: 200}
       name: resource_id
       type: string
-    - admin_ui: {order: 1, width: 200}
+    - admin_ui: {width: 200}
       name: name
       type: string
-    - admin_ui: {order: 2, width: 200}
+    - admin_ui: {width: 200}
       name: resource_type
       type: string
-    - admin_ui: {order: 3, width: 200}
+    - admin_ui: {width: 200}
       name: description
       type: string
-    - admin_ui: {order: 4, width: 200}
+    - admin_ui: {width: 200}
       name: capacity
       type: number
-    - admin_ui: {order: 5, width: 200}
+    - admin_ui: {width: 200}
       name: hourly_rate
       type: number
-    - admin_ui: {order: 6, width: 200}
+    - admin_ui: {width: 200}
       name: daily_rate
       type: number
-    - admin_ui: {order: 7, width: 200}
+    - admin_ui: {width: 200}
       name: metadata
       type: simpleObject
-    - admin_ui: {order: 8, width: 200}
+    - admin_ui: {width: 200}
       name: is_active
       type: bool
-    - admin_ui: {order: 9, width: 200}
+    - admin_ui: {width: 200}
       name: created_at
       type: datetime
     server: full
@@ -172,16 +172,16 @@ db_schema:
   booking_metadata_schemas:
     client: none
     columns:
-    - admin_ui: {order: 0, width: 200}
+    - admin_ui: {width: 200}
       name: schema_name
       type: string
-    - admin_ui: {order: 1, width: 200}
+    - admin_ui: {width: 200}
       name: booking_type
       type: string
-    - admin_ui: {order: 2, width: 200}
+    - admin_ui: {width: 200}
       name: field_definitions
       type: simpleObject
-    - admin_ui: {order: 3, width: 200}
+    - admin_ui: {width: 200}
       name: is_active
       type: bool
     server: full
@@ -189,58 +189,58 @@ db_schema:
   bookings:
     client: none
     columns:
-    - admin_ui: {order: 0, width: 200}
+    - admin_ui: {width: 200}
       name: booking_id
       type: string
-    - admin_ui: {order: 1, width: 200}
+    - admin_ui: {width: 200}
       name: customer_id
       target: customers
       type: link_single
-    - admin_ui: {order: 2, width: 200}
+    - admin_ui: {width: 200}
       name: resource_id
       target: bookable_resources
       type: link_single
-    - admin_ui: {order: 3, width: 200}
+    - admin_ui: {width: 200}
       name: service_id
       target: services
       type: link_single
-    - admin_ui: {order: 4, width: 200}
+    - admin_ui: {width: 200}
       name: booking_type
       type: string
-    - admin_ui: {order: 5, width: 200}
+    - admin_ui: {width: 200}
       name: status
       type: string
-    - admin_ui: {order: 6, width: 200}
+    - admin_ui: {width: 200}
       name: start_datetime
       type: datetime
-    - admin_ui: {order: 7, width: 200}
+    - admin_ui: {width: 200}
       name: end_datetime
       type: datetime
-    - admin_ui: {order: 8, width: 200}
+    - admin_ui: {width: 200}
       name: total_price
       type: number
-    - admin_ui: {order: 9, width: 200}
+    - admin_ui: {width: 200}
       name: payment_status
       type: string
-    - admin_ui: {order: 10, width: 200}
+    - admin_ui: {width: 200}
       name: check_in_time
       type: datetime
-    - admin_ui: {order: 11, width: 200}
+    - admin_ui: {width: 200}
       name: check_out_time
       type: datetime
-    - admin_ui: {order: 12, width: 200}
+    - admin_ui: {width: 200}
       name: num_guests
       type: number
-    - admin_ui: {order: 13, width: 200}
+    - admin_ui: {width: 200}
       name: special_requests
       type: string
-    - admin_ui: {order: 14, width: 200}
+    - admin_ui: {width: 200}
       name: metadata
       type: simpleObject
-    - admin_ui: {order: 15, width: 200}
+    - admin_ui: {width: 200}
       name: created_at
       type: datetime
-    - admin_ui: {order: 16, width: 200}
+    - admin_ui: {width: 200}
       name: updated_at
       type: datetime
     server: full
@@ -248,17 +248,17 @@ db_schema:
   cart:
     client: none
     columns:
-    - admin_ui: {order: 0, width: 200}
+    - admin_ui: {width: 200}
       name: customer_id
       target: users
       type: link_single
-    - admin_ui: {order: 1, width: 200}
+    - admin_ui: {width: 200}
       name: session_id
       type: string
-    - admin_ui: {order: 2, width: 200}
+    - admin_ui: {width: 200}
       name: created_at
       type: datetime
-    - admin_ui: {order: 3, width: 200}
+    - admin_ui: {width: 200}
       name: updated_at
       type: datetime
     server: full
@@ -266,25 +266,25 @@ db_schema:
   cart_items:
     client: none
     columns:
-    - admin_ui: {order: 0, width: 200}
+    - admin_ui: {width: 200}
       name: cart_id
       target: cart
       type: link_single
-    - admin_ui: {order: 1, width: 200}
+    - admin_ui: {width: 200}
       name: product_id
       target: products
       type: link_single
-    - admin_ui: {order: 2, width: 200}
+    - admin_ui: {width: 200}
       name: variant_id
       target: product_variants
       type: link_single
-    - admin_ui: {order: 3, width: 200}
+    - admin_ui: {width: 200}
       name: quantity
       type: number
-    - admin_ui: {order: 4, width: 200}
+    - admin_ui: {width: 200}
       name: price_at_add
       type: number
-    - admin_ui: {order: 5, width: 200}
+    - admin_ui: {width: 200}
       name: added_at
       type: datetime
     server: full
@@ -292,24 +292,24 @@ db_schema:
   client_notes:
     client: none
     columns:
-    - admin_ui: {order: 0, width: 200}
+    - admin_ui: {width: 200}
       name: customer_id
       target: customers
       type: link_single
-    - admin_ui: {order: 1, width: 200}
+    - admin_ui: {width: 200}
       name: author_id
       target: users
       type: link_single
-    - admin_ui: {order: 2, width: 200}
+    - admin_ui: {width: 200}
       name: note_text
       type: string
-    - admin_ui: {order: 3, width: 200}
+    - admin_ui: {width: 200}
       name: note_type
       type: string
-    - admin_ui: {order: 4, width: 200}
+    - admin_ui: {width: 200}
       name: is_important
       type: bool
-    - admin_ui: {order: 5, width: 200}
+    - admin_ui: {width: 200}
       name: created_at
       type: datetime
     server: full
@@ -317,43 +317,180 @@ db_schema:
   config:
     client: none
     columns:
-    - admin_ui: {order: 0, width: 200}
+    - admin_ui: {width: 200}
       name: key
       type: string
-    - admin_ui: {order: 1, width: 200}
+    - admin_ui: {width: 200}
       name: value
       type: simpleObject
-    - admin_ui: {order: 2, width: 200}
+    - admin_ui: {width: 200}
       name: category
       type: string
-    - admin_ui: {order: 3, width: 200}
+    - admin_ui: {width: 200}
       name: updated_at
       type: datetime
     server: full
     title: config
   customers:
     client: none
-    columns: []
+    columns:
+    - admin_ui: {width: 200}
+      name: customer_id
+      type: string
+    - admin_ui: {width: 200}
+      name: user_id
+      target: users
+      type: link_single
+    - admin_ui: {width: 200}
+      name: first_name
+      type: string
+    - admin_ui: {width: 200}
+      name: last_name
+      type: string
+    - admin_ui: {width: 200}
+      name: email
+      type: string
+    - admin_ui: {width: 200}
+      name: phone
+      type: string
+    - admin_ui: {width: 200}
+      name: address
+      type: simpleObject
+    - admin_ui: {width: 200}
+      name: notes
+      type: string
+    - admin_ui: {width: 200}
+      name: tags
+      type: simpleObject
+    - admin_ui: {width: 200}
+      name: lifetime_value
+      type: number
+    - admin_ui: {width: 200}
+      name: total_bookings
+      type: number
+    - admin_ui: {width: 200}
+      name: status
+      type: string
+    - admin_ui: {width: 200}
+      name: created_at
+      type: datetime
+    - admin_ui: {width: 200}
+      name: updated_at
+      type: datetime
     server: full
     title: customers
   email_log:
     client: none
-    columns: []
+    columns:
+    - admin_ui: {width: 200}
+      name: recipient
+      type: string
+    - admin_ui: {width: 200}
+      name: subject
+      type: string
+    - admin_ui: {width: 200}
+      name: template_id
+      target: email_templates
+      type: link_single
+    - admin_ui: {order: 3, width: 200}
+      name: sent_at
+      type: datetime
+    - admin_ui: {order: 4, width: 200}
+      name: status
+      type: string
+    - admin_ui: {order: 5, width: 200}
+      name: error_message
+      type: string
     server: full
     title: email_log
   email_templates:
     client: none
-    columns: []
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: template_id
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: client_id
+      target: users
+      type: link_single
+    - admin_ui: {order: 2, width: 200}
+      name: name
+      type: string
+    - admin_ui: {order: 3, width: 200}
+      name: subject
+      type: string
+    - admin_ui: {order: 4, width: 200}
+      name: body_html
+      type: string
+    - admin_ui: {order: 5, width: 200}
+      name: body_text
+      type: string
+    - admin_ui: {order: 6, width: 200}
+      name: template_type
+      type: string
+    - admin_ui: {order: 7, width: 200}
+      name: is_active
+      type: bool
     server: full
     title: email_templates
   event_registrations:
     client: none
-    columns: []
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: registration_id
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: event_id
+      target: events
+      type: link_single
+    - admin_ui: {order: 2, width: 200}
+      name: customer_id
+      target: customers
+      type: link_single
+    - admin_ui: {order: 3, width: 200}
+      name: num_attendees
+      type: number
+    - admin_ui: {order: 4, width: 200}
+      name: total_paid
+      type: number
+    - admin_ui: {order: 5, width: 200}
+      name: payment_status
+      type: string
+    - admin_ui: {order: 6, width: 200}
+      name: registration_date
+      type: datetime
     server: full
     title: event_registrations
   events:
     client: none
-    columns: []
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: event_id
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: title
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: description
+      type: string
+    - admin_ui: {order: 3, width: 200}
+      name: event_date
+      type: datetime
+    - admin_ui: {order: 4, width: 200}
+      name: location
+      type: string
+    - admin_ui: {order: 5, width: 200}
+      name: capacity
+      type: number
+    - admin_ui: {order: 6, width: 200}
+      name: price_per_person
+      type: number
+    - admin_ui: {order: 7, width: 200}
+      name: status
+      type: string
+    - admin_ui: {order: 8, width: 200}
+      name: created_at
+      type: datetime
     server: full
     title: events
   files:
@@ -372,57 +509,403 @@ db_schema:
     title: Files
   guestbook_entries:
     client: none
-    columns: []
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: entry_id
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: customer_id
+      target: customers
+      type: link_single
+    - admin_ui: {order: 2, width: 200}
+      name: guest_name
+      type: string
+    - admin_ui: {order: 3, width: 200}
+      name: guest_email
+      type: string
+    - admin_ui: {order: 4, width: 200}
+      name: rating
+      type: number
+    - admin_ui: {order: 5, width: 200}
+      name: comment
+      type: string
+    - admin_ui: {order: 6, width: 200}
+      name: is_public
+      type: bool
+    - admin_ui: {order: 7, width: 200}
+      name: created_at
+      type: datetime
     server: full
     title: guestbook_entries
   kb_articles:
     client: none
-    columns: []
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: article_id
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: category_id
+      target: kb_categories
+      type: link_single
+    - admin_ui: {order: 2, width: 200}
+      name: title
+      type: string
+    - admin_ui: {order: 3, width: 200}
+      name: slug
+      type: string
+    - admin_ui: {order: 4, width: 200}
+      name: content
+      type: string
+    - admin_ui: {order: 5, width: 200}
+      name: keywords
+      type: simpleObject
+    - admin_ui: {order: 6, width: 200}
+      name: view_count
+      type: number
+    - admin_ui: {order: 7, width: 200}
+      name: helpful_count
+      type: number
+    - admin_ui: {order: 8, width: 200}
+      name: unhelpful_count
+      type: number
+    - admin_ui: {order: 9, width: 200}
+      name: is_published
+      type: bool
+    - admin_ui: {order: 10, width: 200}
+      name: created_at
+      type: datetime
+    - admin_ui: {order: 11, width: 200}
+      name: updated_at
+      type: datetime
     server: full
     title: kb_articles
   kb_categories:
     client: none
-    columns: []
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: name
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: slug
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: icon
+      type: string
+    - admin_ui: {order: 3, width: 200}
+      name: description
+      type: string
+    - admin_ui: {order: 4, width: 200}
+      name: sort_order
+      type: number
+    - admin_ui: {order: 5, width: 200}
+      name: created_at
+      type: datetime
     server: full
     title: kb_categories
   order_items:
     client: none
-    columns: []
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: order_id
+      target: orders
+      type: link_single
+    - admin_ui: {order: 1, width: 200}
+      name: product_id
+      target: products
+      type: link_single
+    - admin_ui: {order: 2, width: 200}
+      name: variant_id
+      target: product_variants
+      type: link_single
+    - admin_ui: {order: 3, width: 200}
+      name: quantity
+      type: number
+    - admin_ui: {order: 4, width: 200}
+      name: unit_price
+      type: number
+    - admin_ui: {order: 5, width: 200}
+      name: line_total
+      type: number
     server: full
     title: order_items
   orders:
     client: none
-    columns: []
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: order_id
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: customer_id
+      target: customers
+      type: link_single
+    - admin_ui: {order: 2, width: 200}
+      name: order_number
+      type: string
+    - admin_ui: {order: 3, width: 200}
+      name: status
+      type: string
+    - admin_ui: {order: 4, width: 200}
+      name: payment_status
+      type: string
+    - admin_ui: {order: 5, width: 200}
+      name: payment_method
+      type: string
+    - admin_ui: {order: 6, width: 200}
+      name: payment_gateway
+      type: string
+    - admin_ui: {order: 7, width: 200}
+      name: gateway_transaction_id
+      type: string
+    - admin_ui: {order: 8, width: 200}
+      name: subtotal
+      type: number
+    - admin_ui: {order: 9, width: 200}
+      name: tax
+      type: number
+    - admin_ui: {order: 10, width: 200}
+      name: shipping_cost
+      type: number
+    - admin_ui: {order: 11, width: 200}
+      name: total
+      type: number
+    - admin_ui: {order: 12, width: 200}
+      name: shipping_address
+      type: simpleObject
+    - admin_ui: {order: 13, width: 200}
+      name: billing_address
+      type: simpleObject
+    - admin_ui: {order: 14, width: 200}
+      name: notes
+      type: string
+    - admin_ui: {order: 15, width: 200}
+      name: created_at
+      type: datetime
+    - admin_ui: {order: 16, width: 200}
+      name: updated_at
+      type: datetime
     server: full
     title: orders
   pages:
     client: none
-    columns: []
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: name
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: slug
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: components
+      type: simpleObject
+    - admin_ui: {order: 3, width: 200}
+      name: is_published
+      type: bool
+    - admin_ui: {order: 4, width: 200}
+      name: view_count
+      type: number
+    - admin_ui: {order: 5, width: 200}
+      name: created_at
+      type: datetime
+    - admin_ui: {order: 6, width: 200}
+      name: updated_at
+      type: datetime
     server: full
     title: pages
   product_categories:
     client: none
-    columns: []
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: category_id
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: name
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: slug
+      type: string
+    - admin_ui: {order: 3, width: 200}
+      name: description
+      type: string
+    - admin_ui: {order: 4, width: 200}
+      name: parent_category_id
+      target: product_categories
+      type: link_single
+    - admin_ui: {order: 5, width: 200}
+      name: sort_order
+      type: number
     server: full
     title: product_categories
   product_variants:
     client: none
-    columns: []
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: product_id
+      target: products
+      type: link_single
+    - admin_ui: {order: 1, width: 200}
+      name: variant_name
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: sku
+      type: string
+    - admin_ui: {order: 3, width: 200}
+      name: price_adjustment
+      type: number
+    - admin_ui: {order: 4, width: 200}
+      name: stock_quantity
+      type: number
     server: full
     title: product_variants
   products:
     client: none
-    columns: []
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: product_id
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: name
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: slug
+      type: string
+    - admin_ui: {order: 3, width: 200}
+      name: description
+      type: string
+    - admin_ui: {order: 4, width: 200}
+      name: price
+      type: number
+    - admin_ui: {order: 5, width: 200}
+      name: compare_at_price
+      type: number
+    - admin_ui: {order: 6, width: 200}
+      name: cost
+      type: number
+    - admin_ui: {order: 7, width: 200}
+      name: sku
+      type: string
+    - admin_ui: {order: 8, width: 200}
+      name: stock_quantity
+      type: number
+    - admin_ui: {order: 9, width: 200}
+      name: track_inventory
+      type: bool
+    - admin_ui: {order: 10, width: 200}
+      name: category_id
+      target: product_categories
+      type: link_single
+    - admin_ui: {order: 11, width: 200}
+      name: images
+      type: media
+    - admin_ui: {order: 12, width: 200}
+      name: is_active
+      type: bool
+    - admin_ui: {order: 13, width: 200}
+      name: created_at
+      type: datetime
+    - admin_ui: {order: 14, width: 200}
+      name: updated_at
+      type: datetime
     server: full
     title: products
   reviews:
     client: none
-    columns: []
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: item_type
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: item_id
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: customer_id
+      target: users
+      type: link_single
+    - admin_ui: {order: 3, width: 200}
+      name: reviewer_name
+      type: string
+    - admin_ui: {order: 4, width: 200}
+      name: rating
+      type: number
+    - admin_ui: {order: 5, width: 200}
+      name: title
+      type: string
+    - admin_ui: {order: 6, width: 200}
+      name: comment
+      type: string
+    - admin_ui: {order: 7, width: 200}
+      name: is_verified_purchase
+      type: bool
+    - admin_ui: {order: 8, width: 200}
+      name: status
+      type: string
+    - admin_ui: {order: 9, width: 200}
+      name: business_response
+      type: string
+    - admin_ui: {order: 10, width: 200}
+      name: helpful_count
+      type: number
+    - admin_ui: {order: 11, width: 200}
+      name: reported
+      type: bool
+    - admin_ui: {order: 12, width: 200}
+      name: report_reason
+      type: string
+    - admin_ui: {order: 13, width: 200}
+      name: reported_at
+      type: datetime
+    - admin_ui: {order: 14, width: 200}
+      name: moderated_by
+      target: users
+      type: link_single
+    - admin_ui: {order: 15, width: 200}
+      name: moderated_at
+      type: datetime
+    - admin_ui: {order: 16, width: 200}
+      name: rejection_reason
+      type: string
+    - admin_ui: {order: 17, width: 200}
+      name: response_by
+      target: users
+      type: link_single
+    - admin_ui: {order: 18, width: 200}
+      name: response_at
+      type: datetime
+    - admin_ui: {order: 19, width: 200}
+      name: created_at
+      type: datetime
     server: full
     title: reviews
   services:
     client: none
-    columns: []
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: service_id
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: name
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: description
+      type: string
+    - admin_ui: {order: 3, width: 200}
+      name: duration_minutes
+      type: number
+    - admin_ui: {order: 4, width: 200}
+      name: price
+      type: number
+    - admin_ui: {order: 5, width: 200}
+      name: category
+      type: string
+    - admin_ui: {order: 6, width: 200}
+      name: provider_id
+      target: users
+      type: link_single
+    - admin_ui: {order: 7, width: 200}
+      name: is_active
+      type: bool
+    - admin_ui: {order: 8, width: 200}
+      name: created_at
+      type: datetime
     server: full
     title: services
   subscriptions:
