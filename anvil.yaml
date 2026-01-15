@@ -910,22 +910,176 @@ db_schema:
     title: services
   subscriptions:
     client: none
-    columns: []
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: subscription_id
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: customer_id
+      target: users
+      type: link_single
+    - admin_ui: {order: 2, width: 200}
+      name: product_id
+      target: products
+      type: link_single
+    - admin_ui: {order: 3, width: 200}
+      name: plan_name
+      type: string
+    - admin_ui: {order: 4, width: 200}
+      name: billing_period
+      type: string
+    - admin_ui: {order: 5, width: 200}
+      name: amount
+      type: number
+    - admin_ui: {order: 6, width: 200}
+      name: status
+      type: string
+    - admin_ui: {order: 7, width: 200}
+      name: start_date
+      type: date
+    - admin_ui: {order: 8, width: 200}
+      name: end_date
+      type: date
+    - admin_ui: {order: 9, width: 200}
+      name: ' next_billing_date'
+      type: date
+    - admin_ui: {order: 10, width: 200}
+      name: payment_gateway
+      type: string
+    - admin_ui: {order: 11, width: 200}
+      name: gateway_subscription_id
+      type: string
+    - admin_ui: {order: 12, width: 200}
+      name: created_at
+      type: datetime
+    - admin_ui: {order: 13, width: 200}
+      name: updated_at
+      type: datetime
     server: full
     title: subscriptions
   ticket_messages:
     client: none
-    columns: []
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: ticket_id
+      target: tickets
+      type: link_single
+    - admin_ui: {order: 1, width: 200}
+      name: author_id
+      target: users
+      type: link_single
+    - admin_ui: {order: 2, width: 200}
+      name: author_type
+      type: string
+    - admin_ui: {order: 3, width: 200}
+      name: message
+      type: string
+    - admin_ui: {order: 4, width: 200}
+      name: is_internal_note
+      type: bool
+    - admin_ui: {order: 5, width: 200}
+      name: attachments
+      type: media
+    - admin_ui: {order: 6, width: 200}
+      name: created_at
+      type: datetime
     server: full
     title: ticket_messages
   tickets:
     client: none
-    columns: []
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: ticket_number
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: customer_id
+      target: customers
+      type: link_single
+    - admin_ui: {order: 2, width: 200}
+      name: customer_name
+      type: string
+    - admin_ui: {order: 3, width: 200}
+      name: customer_email
+      type: string
+    - admin_ui: {order: 4, width: 200}
+      name: subject
+      type: string
+    - admin_ui: {order: 5, width: 200}
+      name: category
+      type: string
+    - admin_ui: {order: 6, width: 200}
+      name: status
+      type: string
+    - admin_ui: {order: 7, width: 200}
+      name: priority
+      type: string
+    - admin_ui: {order: 8, width: 200}
+      name: assigned_to
+      target: users
+      type: link_single
+    - admin_ui: {order: 9, width: 200}
+      name: resolved_at
+      type: datetime
+    - admin_ui: {order: 10, width: 200}
+      name: last_reply_at
+      type: datetime
+    - admin_ui: {order: 11, width: 200}
+      name: created_at
+      type: datetime
+    - admin_ui: {order: 12, width: 200}
+      name: updated_at
+      type: datetime
     server: full
     title: tickets
   time_entries:
     client: none
-    columns: []
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: entry_id
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: customer_id
+      target: customers
+      type: link_single
+    - admin_ui: {order: 2, width: 200}
+      name: staff_id
+      target: users
+      type: link_single
+    - admin_ui: {order: 3, width: 200}
+      name: service_id
+      target: services
+      type: link_single
+    - admin_ui: {order: 4, width: 200}
+      name: booking_id
+      target: bookings
+      type: link_single
+    - admin_ui: {order: 5, width: 200}
+      name: start_time
+      type: datetime
+    - admin_ui: {order: 6, width: 200}
+      name: end_time
+      type: datetime
+    - admin_ui: {order: 7, width: 200}
+      name: duration_hours
+      type: number
+    - admin_ui: {order: 8, width: 200}
+      name: hourly_rate
+      type: number
+    - admin_ui: {order: 9, width: 200}
+      name: total_amount
+      type: number
+    - admin_ui: {order: 10, width: 200}
+      name: description
+      type: string
+    - admin_ui: {order: 11, width: 200}
+      name: is_billable
+      type: bool
+    - admin_ui: {order: 12, width: 200}
+      name: is_invoiced
+      type: bool
+    - admin_ui: {order: 13, width: 200}
+      name: created_at
+      type: datetime
     server: full
     title: time_entries
   users:
@@ -968,7 +1122,16 @@ db_schema:
     title: Users
   vertical_config:
     client: none
-    columns: []
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: vertical_type
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: activated_date
+      type: date
+    - admin_ui: {order: 2, width: 200}
+      name: package_tier
+      type: string
     server: full
     title: vertical_config
 dependencies:
