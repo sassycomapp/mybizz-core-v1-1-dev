@@ -2,17 +2,68 @@ allow_embedding: true
 db_schema:
   activity_log:
     client: none
-    columns: []
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: user_id
+      target: users
+      type: link_single
+    - admin_ui: {order: 1, width: 200}
+      name: action_type
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: description
+      type: string
+    - admin_ui: {order: 3, width: 200}
+      name: metadata
+      type: simpleObject
+    - admin_ui: {order: 4, width: 200}
+      name: created_at
+      type: datetime
     server: full
     title: activity_log
   availability_exceptions:
     client: none
-    columns: []
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: resource_id
+      target: bookable_resources
+      type: link_single
+    - admin_ui: {order: 1, width: 200}
+      name: exception_date
+      type: date
+    - admin_ui: {order: 2, width: 200}
+      name: start_time
+      type: string
+    - admin_ui: {order: 3, width: 200}
+      name: end_time
+      type: string
+    - admin_ui: {order: 4, width: 200}
+      name: is_available
+      type: bool
+    - admin_ui: {order: 5, width: 200}
+      name: reason
+      type: string
     server: full
     title: availability_exceptions
   availability_rules:
     client: none
-    columns: []
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: resource_id
+      target: bookable_resources
+      type: link_single
+    - admin_ui: {order: 1, width: 200}
+      name: day_of_week
+      type: number
+    - admin_ui: {order: 2, width: 200}
+      name: start_time
+      type: string
+    - admin_ui: {order: 3, width: 200}
+      name: end_time
+      type: string
+    - admin_ui: {order: 4, width: 200}
+      name: is_active
+      type: bool
     server: full
     title: availability_rules
   blog_categories:
