@@ -27,7 +27,6 @@ class CourierConfigForm(CourierConfigFormTemplate):
 
     self.dd_sa_provider.items = [
       ('Select Provider', None),
-      ('uAfrica', 'uafrica'),
       ('Bob Go', 'bobgo')
     ]
 
@@ -43,7 +42,6 @@ class CourierConfigForm(CourierConfigFormTemplate):
 
     self.dd_int_provider.items = [
       ('Select Provider', None),
-      ('Shippo', 'shippo'),
       ('Easyship', 'easyship')
     ]
 
