@@ -19,6 +19,9 @@ db_schema:
     - admin_ui: {width: 200}
       name: created_at
       type: datetime
+    - admin_ui: {order: 5, width: 200}
+      name: ip_address
+      type: string
     server: full
     title: activity_log
   availability_exceptions:
@@ -66,6 +69,32 @@ db_schema:
       type: bool
     server: full
     title: availability_rules
+  backups:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: backup_id
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: backup_type
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: backup_date
+      type: datetime
+    - admin_ui: {order: 3, width: 200}
+      name: backup_size
+      type: number
+    - admin_ui: {order: 4, width: 200}
+      name: backup_url
+      type: string
+    - admin_ui: {order: 5, width: 200}
+      name: retention_days
+      type: number
+    - admin_ui: {order: 6, width: 200}
+      name: creation_date
+      type: datetime
+    server: full
+    title: backups
   blog_categories:
     client: none
     columns:
@@ -126,12 +155,15 @@ db_schema:
     - admin_ui: {width: 200}
       name: published_at
       type: datetime
-    - admin_ui: {width: 200}
-      name: crreated_at
+    - admin_ui: {order: 11, width: 200}
+      name: created_at
       type: datetime
     - admin_ui: {width: 200}
       name: updated_at
       type: datetime
+    - admin_ui: {order: 13, width: 200}
+      name: view_count
+      type: number
     server: full
     title: blog_posts
   bookable_resources:
@@ -243,6 +275,12 @@ db_schema:
     - admin_ui: {width: 200}
       name: updated_at
       type: datetime
+    - admin_ui: {order: 17, width: 200}
+      name: booking_number
+      type: string
+    - admin_ui: {order: 18, width: 200}
+      name: payment_id
+      type: string
     server: full
     title: bookings
   business_profile:
@@ -251,6 +289,42 @@ db_schema:
     - admin_ui: {order: 0, width: 200}
       name: business_name
       type: string
+    - admin_ui: {order: 1, width: 200}
+      name: description
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: logo
+      type: media
+    - admin_ui: {order: 3, width: 200}
+      name: contact_email
+      type: string
+    - admin_ui: {order: 4, width: 200}
+      name: phone
+      type: string
+    - admin_ui: {order: 5, width: 200}
+      name: address
+      type: string
+    - admin_ui: {order: 6, width: 200}
+      name: website_url
+      type: string
+    - admin_ui: {order: 7, width: 200}
+      name: social_facebook
+      type: string
+    - admin_ui: {order: 8, width: 200}
+      name: social_instagram
+      type: string
+    - admin_ui: {order: 9, width: 200}
+      name: social_x
+      type: string
+    - admin_ui: {order: 10, width: 200}
+      name: social_linkedin
+      type: string
+    - admin_ui: {order: 11, width: 200}
+      name: created_at
+      type: datetime
+    - admin_ui: {order: 12, width: 200}
+      name: updated_at
+      type: datetime
     server: full
     title: business_profile
   cart:
@@ -320,6 +394,9 @@ db_schema:
     - admin_ui: {width: 200}
       name: created_at
       type: datetime
+    - admin_ui: {order: 6, width: 200}
+      name: is_confidential
+      type: bool
     server: full
     title: client_notes
   config:
@@ -337,8 +414,35 @@ db_schema:
     - admin_ui: {width: 200}
       name: updated_at
       type: datetime
+    - admin_ui: {order: 4, width: 200}
+      name: updated_by
+      target: users
+      type: link_single
     server: full
     title: config
+  courier_config:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: bobgo_api_key
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: easyship_api_key
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: easyship_enabled
+      type: bool
+    - admin_ui: {order: 3, width: 200}
+      name: default_origin_address
+      type: simpleObject
+    - admin_ui: {order: 4, width: 200}
+      name: configured_at
+      type: datetime
+    - admin_ui: {order: 0.5, width: 200}
+      name: bobgo_enabled
+      type: bool
+    server: full
+    title: courier_config
   customers:
     client: none
     columns:
@@ -385,8 +489,43 @@ db_schema:
     - admin_ui: {width: 200}
       name: updated_at
       type: datetime
+    - admin_ui: {order: 14, width: 200}
+      name: total_orders
+      type: number
     server: full
     title: customers
+  email_config:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: email_provider
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: smtp_host
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: smtp_port
+      type: number
+    - admin_ui: {order: 3, width: 200}
+      name: smtp_username
+      type: string
+    - admin_ui: {order: 4, width: 200}
+      name: smtp_password
+      type: string
+    - admin_ui: {order: 5, width: 200}
+      name: from_email
+      type: string
+    - admin_ui: {order: 6, width: 200}
+      name: from_name
+      type: string
+    - admin_ui: {order: 7, width: 200}
+      name: configured
+      type: bool
+    - admin_ui: {order: 8, width: 200}
+      name: configured_at
+      type: datetime
+    server: full
+    title: email_config
   email_log:
     client: none
     columns:
@@ -499,8 +638,44 @@ db_schema:
     - admin_ui: {order: 8, width: 200}
       name: created_at
       type: datetime
+    - admin_ui: {order: 9, width: 200}
+      name: end_date
+      type: datetime
     server: full
     title: events
+  expenses:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: expense_id
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: expense_date
+      type: date
+    - admin_ui: {order: 2, width: 200}
+      name: category
+      type: string
+    - admin_ui: {order: 3, width: 200}
+      name: description
+      type: string
+    - admin_ui: {order: 4, width: 200}
+      name: amount
+      type: number
+    - admin_ui: {order: 5, width: 200}
+      name: currency
+      type: string
+    - admin_ui: {order: 6, width: 200}
+      name: receipt
+      type: media
+    - admin_ui: {order: 7, width: 200}
+      name: created_by
+      target: users
+      type: link_single
+    - admin_ui: {order: 8, width: 200}
+      name: created_at
+      type: datetime
+    server: full
+    title: expenses
   files:
     client: none
     columns:
@@ -543,8 +718,92 @@ db_schema:
     - admin_ui: {order: 7, width: 200}
       name: created_at
       type: datetime
+    - admin_ui: {order: 8, width: 200}
+      name: booking_id
+      target: bookings
+      type: link_single
+    - admin_ui: {order: 9, width: 200}
+      name: is_approved
+      type: bool
     server: full
     title: guestbook_entries
+  invoice:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: invoice_id
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: invoice_number
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: customer_id
+      target: customers
+      type: link_single
+    - admin_ui: {order: 3, width: 200}
+      name: order_id
+      target: orders
+      type: link_single
+    - admin_ui: {order: 4, width: 200}
+      name: subscription_id
+      target: subscriptions
+      type: link_single
+    - admin_ui: {order: 5, width: 200}
+      name: invoice_date
+      type: datetime
+    - admin_ui: {order: 6, width: 200}
+      name: due_date
+      type: datetime
+    - admin_ui: {order: 7, width: 200}
+      name: total_amount
+      type: number
+    - admin_ui: {order: 8, width: 200}
+      name: currency
+      type: string
+    - admin_ui: {order: 9, width: 200}
+      name: status
+      type: string
+    - admin_ui: {order: 9, width: 200}
+      name: paid_at
+      type: datetime
+    - admin_ui: {order: 10, width: 200}
+      name: payment_method
+      type: string
+    - admin_ui: {order: 11, width: 200}
+      name: payment_id
+      type: string
+    - admin_ui: {order: 12, width: 200}
+      name: pdf_url
+      type: string
+    - admin_ui: {order: 13, width: 200}
+      name: notes
+      type: string
+    - admin_ui: {order: 14, width: 200}
+      name: created_at
+      type: datetime
+    server: full
+    title: invoice
+  invoice_items:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: invoice_id
+      target: invoice
+      type: link_single
+    - admin_ui: {order: 1, width: 200}
+      name: description
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: quantity
+      type: number
+    - admin_ui: {order: 3, width: 200}
+      name: unit_price
+      type: number
+    - admin_ui: {order: 4, width: 200}
+      name: amount
+      type: number
+    server: full
+    title: invoice_items
   kb_articles:
     client: none
     columns:
@@ -585,6 +844,9 @@ db_schema:
     - admin_ui: {order: 11, width: 200}
       name: updated_at
       type: datetime
+    - admin_ui: {order: 12, width: 200}
+      name: excerpt
+      type: string
     server: full
     title: kb_articles
   kb_categories:
@@ -608,8 +870,49 @@ db_schema:
     - admin_ui: {order: 5, width: 200}
       name: created_at
       type: datetime
+    - admin_ui: {order: 6, width: 200}
+      name: category_id
+      type: string
     server: full
     title: kb_categories
+  membership_tiers:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: tier_id
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: name
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: description
+      type: string
+    - admin_ui: {order: 3, width: 200}
+      name: price_monthly
+      type: number
+    - admin_ui: {order: 4, width: 200}
+      name: price_quarterly
+      type: number
+    - admin_ui: {order: 5, width: 200}
+      name: price_annual
+      type: number
+    - admin_ui: {order: 6, width: 200}
+      name: benefits
+      type: simpleObject
+    - admin_ui: {order: 7, width: 200}
+      name: access_rules
+      type: simpleObject
+    - admin_ui: {order: 8, width: 200}
+      name: sort_order
+      type: number
+    - admin_ui: {order: 9, width: 200}
+      name: is_active
+      type: bool
+    - admin_ui: {order: 10, width: 200}
+      name: created_at
+      type: datetime
+    server: full
+    title: membership_tiers
   order_items:
     client: none
     columns:
@@ -634,6 +937,12 @@ db_schema:
     - admin_ui: {order: 5, width: 200}
       name: line_total
       type: number
+    - admin_ui: {order: 6, width: 200}
+      name: product_name
+      type: string
+    - admin_ui: {order: 7, width: 200}
+      name: variant_name
+      type: string
     server: full
     title: order_items
   orders:
@@ -691,6 +1000,9 @@ db_schema:
     - admin_ui: {order: 16, width: 200}
       name: updated_at
       type: datetime
+    - admin_ui: {order: 17, width: 200}
+      name: currency
+      type: string
     server: full
     title: orders
   pages:
@@ -717,8 +1029,55 @@ db_schema:
     - admin_ui: {order: 6, width: 200}
       name: updated_at
       type: datetime
+    - admin_ui: {order: 7, width: 200}
+      name: page_name
+      type: string
+    - admin_ui: {order: 8, width: 200}
+      name: page_title
+      type: string
     server: full
     title: pages
+  payment_config:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: active_gateway
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: stripe_publishable_key
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: stripe_secret_key
+      type: string
+    - admin_ui: {order: 3, width: 200}
+      name: stripe_connected
+      type: datetime
+    - admin_ui: {order: 4, width: 200}
+      name: paystack_public_key
+      type: string
+    - admin_ui: {order: 5, width: 200}
+      name: paystack_secret_key
+      type: string
+    - admin_ui: {order: 6, width: 200}
+      name: paystack_connected
+      type: bool
+    - admin_ui: {order: 7, width: 200}
+      name: paypal_client_id
+      type: string
+    - admin_ui: {order: 8, width: 200}
+      name: paypal_secret
+      type: string
+    - admin_ui: {order: 9, width: 200}
+      name: paypal_connected
+      type: bool
+    - admin_ui: {order: 10, width: 200}
+      name: test_mode
+      type: bool
+    - admin_ui: {order: 11, width: 200}
+      name: configured_at
+      type: datetime
+    server: full
+    title: payment_config
   product_categories:
     client: none
     columns:
@@ -801,9 +1160,6 @@ db_schema:
       name: category_id
       target: product_categories
       type: link_single
-    - admin_ui: {order: 11, width: 200}
-      name: images
-      type: media
     - admin_ui: {order: 12, width: 200}
       name: is_active
       type: bool
@@ -813,6 +1169,21 @@ db_schema:
     - admin_ui: {order: 14, width: 200}
       name: updated_at
       type: datetime
+    - admin_ui: {order: 15, width: 200}
+      name: display_price
+      type: number
+    - admin_ui: {order: 16, width: 200}
+      name: low_stock_threshold
+      type: number
+    - admin_ui: {order: 17, width: 200}
+      name: product_type
+      type: string
+    - admin_ui: {order: 18, width: 200}
+      name: images
+      type: simpleObject
+    - admin_ui: {order: 19, width: 200}
+      name: digital_file
+      type: media
     server: full
     title: products
   reviews:
@@ -852,9 +1223,6 @@ db_schema:
     - admin_ui: {order: 10, width: 200}
       name: helpful_count
       type: number
-    - admin_ui: {order: 11, width: 200}
-      name: reported
-      type: bool
     - admin_ui: {order: 12, width: 200}
       name: report_reason
       type: string
@@ -881,6 +1249,15 @@ db_schema:
     - admin_ui: {order: 19, width: 200}
       name: created_at
       type: datetime
+    - admin_ui: {order: 20, width: 200}
+      name: review_id
+      type: string
+    - admin_ui: {order: 21, width: 200}
+      name: photos
+      type: simpleObject
+    - admin_ui: {order: 22, width: 200}
+      name: reported_count
+      type: number
     server: full
     title: reviews
   services:
@@ -914,8 +1291,59 @@ db_schema:
     - admin_ui: {order: 8, width: 200}
       name: created_at
       type: datetime
+    - admin_ui: {order: 9, width: 200}
+      name: meeting_type
+      type: string
     server: full
     title: services
+  shipments:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: shipment_id
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: order_id
+      target: orders
+      type: link_single
+    - admin_ui: {order: 2, width: 200}
+      name: shipment_number
+      type: string
+    - admin_ui: {order: 3, width: 200}
+      name: courier_provider
+      type: string
+    - admin_ui: {order: 4, width: 200}
+      name: courier_name
+      type: string
+    - admin_ui: {order: 5, width: 200}
+      name: tracking_number
+      type: string
+    - admin_ui: {order: 6, width: 200}
+      name: tracking_url
+      type: string
+    - admin_ui: {order: 7, width: 200}
+      name: shipping_cost
+      type: number
+    - admin_ui: {order: 8, width: 200}
+      name: shipped_date
+      type: datetime
+    - admin_ui: {order: 9, width: 200}
+      name: estimated_delivery
+      type: datetime
+    - admin_ui: {order: 10, width: 200}
+      name: delivery_status
+      type: string
+    - admin_ui: {order: 11, width: 200}
+      name: label_url
+      type: string
+    - admin_ui: {order: 12, width: 200}
+      name: created_at
+      type: datetime
+    - admin_ui: {order: 13, width: 200}
+      name: updated_at
+      type: datetime
+    server: full
+    title: shipments
   subscriptions:
     client: none
     columns:
@@ -937,7 +1365,7 @@ db_schema:
       name: billing_period
       type: string
     - admin_ui: {order: 5, width: 200}
-      name: amount
+      name: billing_amount
       type: number
     - admin_ui: {order: 6, width: 200}
       name: status
@@ -949,7 +1377,7 @@ db_schema:
       name: end_date
       type: date
     - admin_ui: {order: 9, width: 200}
-      name: ' next_billing_date'
+      name: next_billing_date
       type: date
     - admin_ui: {order: 10, width: 200}
       name: payment_gateway
@@ -963,8 +1391,44 @@ db_schema:
     - admin_ui: {order: 13, width: 200}
       name: updated_at
       type: datetime
+    - admin_ui: {order: 14, width: 200}
+      name: subscription_number
+      type: string
+    - admin_ui: {order: 15, width: 200}
+      name: tier_id
+      target: membership_tiers
+      type: link_single
+    - admin_ui: {order: 16, width: 200}
+      name: billing_interval
+      type: string
+    - admin_ui: {order: 17, width: 200}
+      name: currency
+      type: string
+    - admin_ui: {order: 18, width: 200}
+      name: auto_renew
+      type: bool
     server: full
     title: subscriptions
+  theme_config:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: primary_color
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: accent_color
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: font_family
+      type: string
+    - admin_ui: {order: 3, width: 200}
+      name: header_style
+      type: string
+    - admin_ui: {order: 4, width: 200}
+      name: updated_at
+      type: datetime
+    server: full
+    title: theme_config
   ticket_messages:
     client: none
     columns:
@@ -1037,6 +1501,12 @@ db_schema:
     - admin_ui: {order: 12, width: 200}
       name: updated_at
       type: datetime
+    - admin_ui: {order: 13, width: 200}
+      name: ticket_id
+      type: string
+    - admin_ui: {order: 14, width: 200}
+      name: description
+      type: string
     server: full
     title: tickets
   time_entries:
@@ -1142,6 +1612,35 @@ db_schema:
       type: string
     server: full
     title: vertical_config
+  webhook_log:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: gateway
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: event_type
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: payload
+      type: simpleObject
+    - admin_ui: {order: 3, width: 200}
+      name: signature
+      type: string
+    - admin_ui: {order: 4, width: 200}
+      name: verified
+      type: bool
+    - admin_ui: {order: 5, width: 200}
+      name: processed
+      type: bool
+    - admin_ui: {order: 6, width: 200}
+      name: error_message
+      type: string
+    - admin_ui: {order: 7, width: 200}
+      name: received_at
+      type: datetime
+    server: full
+    title: webhook_log
 dependencies:
 - dep_id: dep_drhle3x51mp2ek
   resolution_hints: {app_id: C6ZZPAPN4YYF5NVJ, name: Anvil Extras, package_name: anvil_extras}
