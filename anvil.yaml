@@ -245,6 +245,14 @@ db_schema:
       type: datetime
     server: full
     title: bookings
+  business_profile:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: business_name
+      type: string
+    server: full
+    title: business_profile
   cart:
     client: none
     columns:
