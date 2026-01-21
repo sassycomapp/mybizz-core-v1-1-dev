@@ -7,12 +7,12 @@ import anvil.users
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
-# This is a module.
+# This is a package.
 # You can define variables and functions here, and use them from any form. For example, in a top-level form:
 #
-#    from ..routes import Module1
+#    from .. import Package1
 #
-#    Module1.say_hello()
+#    Package1.say_hello()
 #
 
 
