@@ -1965,5 +1965,5 @@ services:
 - client_config: {}
   server_config: {}
   source: /runtime/services/google.yml
-startup: {module: frm_doc_display, type: form}
+startup: {module: public_pages.HomePage, type: form}
 startup_form: null
