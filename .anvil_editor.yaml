@@ -108,6 +108,7 @@ unique_ids:
     products.VariantEditorModal: '1768296373464204933827479.55557'
     products.VariantManager: '1768295847052722656486402.8308'
     products.VariantManager.VariantItemTemplate: '1768295948122513555823985.87085'
+    routes.__init__: '1768996208167839489990427.519'
     settings.BusinessProfileTab: '1767522388373961695294719.7864'
     settings.CourierConfigForm: '1767522525475874030297562.8312'
     settings.CurrencyTab: '1767522434047656553590568.5541'
