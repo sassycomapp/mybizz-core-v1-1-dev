@@ -1,4 +1,4 @@
-from ._anvil_designer import a_testTemplate
+from ._anvil_designer import CampaignMetricWidgetTemplate
 from anvil import *
 import anvil.server
 from routing import router
@@ -11,7 +11,7 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 
 
-class a_test(a_testTemplate):
+class CampaignMetricWidget(CampaignMetricWidgetTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
